@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-
+//gggggg
 function reducer(state, action) {
     // action의 type에 따라서 다른 작업 수행
     switch(action.type) {
