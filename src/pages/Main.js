@@ -11,7 +11,10 @@ const Main = () => {
             <Link to="/ask">고객센터</Link>
             <Link to="/mypage">마이페이지</Link>
             
+
+
+            
         </div>
     )
 }
-export default Main();
+export default Main;
