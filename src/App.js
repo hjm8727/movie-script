@@ -1,25 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import Main from './Movie-script/Main'
+import SignUp from './Movie-script/Signup'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        {/* root = (/) path 에서 시작 */}
+        <Route path='/' element={<Main/>}/> 
+        {/* <Route path='/login' element={<login/>}/>
+        <Route path='/setting' element={<Setting/>}/>
+        <Route path='/news' element={<News/>} /> */}
+    </Router>
   );
 }
-
 export default App;
+
+            
