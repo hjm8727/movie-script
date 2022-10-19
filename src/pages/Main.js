@@ -1,9 +1,19 @@
+import CategoryA from "./Category";
+import Menu from "./Nav";
+import Trailer from "./Trailer";
+
+
+
 
 const Main = () => {
     return (
-        <div>
-
-        </div>
+        <>
+        <Menu/>
+        <br/>    
+        <Trailer/>
+        <br/>
+        <CategoryA/>
+        </>
     );
 };
 

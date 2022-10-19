@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.d-flex {
+  padding-left: 20px;
+  width: 400px;
+  margin-right: 350px;
+}
+#navbarDropdown {
+  padding-left: 20px;
+}
+#search {
+  background-color: #f8de8d;
+  color: #901010;
+  border-color: #901010;
+}
+.container-fluid {
+  background-color: #f8de8d;
+}
+.dropdown-menu {
+  background-color: rgb(218, 28, 38);
+}

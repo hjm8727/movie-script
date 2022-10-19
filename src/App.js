@@ -1,16 +1,15 @@
 import './App.css';
-import Main from './pages/Main'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Main from './pages/Main';
+
 
 function App() {
   return (
     <Router>
       <Routes>
-          {/* root = (/) path 에서 시작 */}
-          <Route path='/' element={<Main/>}/> 
-          <Route path='/login' element={<login/>}/>
-        </Routes>
+        <Route path='/' element={<Main/>}></Route>
+      </Routes>
     </Router>
   );
 }
