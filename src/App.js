@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Main from './pages/Main'
-import SignUp from './pages/Signup'
-import { BrowserRouter as Router, Route, Routers, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -10,9 +9,7 @@ function App() {
       <Routes>
           {/* root = (/) path 에서 시작 */}
           <Route path='/' element={<Main/>}/> 
-          {/* <Route path='/login' element={<login/>}/>
-          <Route path='/setting' element={<Setting/>}/>
-          <Route path='/news' element={<News/>} /> */}
+          <Route path='/login' element={<login/>}/>
         </Routes>
     </Router>
   );
