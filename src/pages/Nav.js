@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 
 const Container = styled.div`
-    width:1920px ;
+    width : 1500px;
     background-color: black;
     color: white;
-    
     a{
         text-decoration: none;
         color: white;
@@ -17,7 +16,7 @@ const Container = styled.div`
         padding: 0;
     }
     .logo img{
-             
+        margin-right: -100px;
         margin-left :40px;
     }      
     img{
@@ -31,21 +30,13 @@ const Container = styled.div`
         display : inline-block; 
         list-style:none; 
         margin:1px;
-
-    }
-    .dropbtn{
-        margin-top: 18px;
-        /* margin-left: -200px; */
-        background-color: black;
+        margin-left: -120px;
+        margin-top: 20px;
         font-weight: 400;
-        color : white;
-        width :80px;
-        text-align: left;
         cursor : pointer;
         font-size : 20px;
     }
     .dropdown-content{
-        margin-left: -40px;
         display : none;
         position : absolute;
         z-index : 1; /*다른 요소들보다 앞에 배치*/
@@ -53,16 +44,19 @@ const Container = styled.div`
         background-color: black;
         color: white;
         width: 230px;
+        padding: 15px;
+        margin:0;
+        margin-left: -17px;
 
     }
 
     .dropdown-content li{
-        /* margin-left:-20px; */
         display : block;
         text-decoration : none;
         color : white;
-        font-size: 20px;
+        font-size: 18px;
         padding : 12px 5px;
+        
     }
 
     .dropdown-content :hover{
@@ -71,6 +65,7 @@ const Container = styled.div`
 
     .dropdown:hover .dropdown-content {
         display: block;
+        z-index: 5;
     }
     //검색창
     .serch{
@@ -79,20 +74,20 @@ const Container = styled.div`
     }
     .search-box{
         margin-top: 5px;
-        /* margin-left: -450px; */
-        margin-right: 15px;
+        margin-left: -100px;
         padding: 10px;
         border-radius: 15px;
         border:1px solid yellow;
-        width: 700px;
+        width: 500px;
         float: left;
         font-size: 13px;
         line-height: 10px;
+        margin-right: 15px;
     }
     // 검색 버튼
     .submit {
         box-sizing: border-box;
-        background-color: transparent;
+        background-color: black;
         border: 2px solid #f1c40f;
         border-radius: 0.6em;
         color: #f1c40f;
@@ -120,32 +115,36 @@ const Container = styled.div`
         display : inline-block; 
         list-style:none; 
         margin:1px;
-        margin-left: -50px;
-
+        margin-left: -120px;
+        margin-top: 20px;
+        font-weight: 400;
+        cursor : pointer;
+        font-size : 20px;
     }
     .dropbtn-icon{
-        margin-top: 18px;
-        margin-right: 50px;
-        cursor : pointer;
-        
+  
     }
     .dropdown-content-icon{
         display : none;
         position : absolute;
-        z-index : 2; /*다른 요소들보다 앞에 배치*/
+        z-index : 1; /*다른 요소들보다 앞에 배치*/
         font-weight: 400;
         background-color: black;
         color: white;
-        width: 190px;
-        margin-left: -30px;
+        width: 230px;
+        padding: 15px;
+        margin:0;
+        margin-left: -17px;
+
     }
 
     .dropdown-content-icon li{
         display : block;
         text-decoration : none;
         color : white;
-        font-size: 20px;
+        font-size: 18px;
         padding : 12px 5px;
+  
     }
 
     .dropdown-content-icon :hover{
@@ -169,8 +168,8 @@ const Menu = () => {
                 <li class="logo"><Link to ="/"><img src="images/Logo.png" alt="Logo"/></Link></li>
             
                 
-                <li class="dropdown">
-                    <p class="dropbtn">카테고리</p>
+                <li class="dropdown">카테고리
+                    <p class="dropbtn"></p>
                     <ul class="dropdown-content">
                         <li><Link to ="/">카테고리1</Link></li>
                         <li><Link to ="/">카테고리2</Link> </li>
