@@ -1,12 +1,25 @@
 import Carousel from 'react-bootstrap/Carousel';
+import tCss from '../css/Trailer.css';
 
 function Trailer() {
   return (
-    <Carousel>
-      <Carousel.Item>
+    <Carousel style={{width: '80%', margin: '5px auto', borderRadius: '10px', backgroundColor: 'rgb(255, 235, 59)', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
+      <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
         <embed
           className="d-block w-100"
-          width="800" height="600" 
+          width="800px" height="685px" 
+          src="https://www.youtube.com/embed/Dlfp3K11C_o"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>토르 : 러브 앤 썬더</h3>
+          <p>Thor</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
+        <embed
+          className="d-block w-100"
+          width="800px" height="685px" 
           src="https://www.youtube.com/embed/aGhqI3d6toc"
           alt="First slide"
         />
@@ -15,10 +28,10 @@ function Trailer() {
           <p>크리드 3</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
         <embed
           className="d-block w-100"
-          width="800" height="600" 
+          width="800px" height="685px" 
           src="https://www.youtube.com/embed/7Q70_m-59O8"
           alt="Second slide"
         />
@@ -28,10 +41,10 @@ function Trailer() {
           <p>아바타 2</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
         <embed
           className="d-block w-100"
-          width="800" height="600" 
+          width="800px" height="685px" 
           src="https://www.youtube.com/embed/FuPLLwH4lp4"
           alt="Third slide"
         />

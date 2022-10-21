@@ -1,19 +1,20 @@
-import CategoryA from "./Category";
+
+import CategoryB from "./CategoryB";
 import Menu from "./Nav";
 import Trailer from "./Trailer";
-
-
-
+// import Modal from "./Modal";
 
 const Main = () => {
     return (
-        <>
+        <div style={{backgroundColor: 'black'}}>
         <Menu/>
-        <br/>    
+        
         <Trailer/>
         <br/>
-        <CategoryA/>
-        </>
+        {/* <Modal/> */}
+        <br/>
+        <CategoryB/>
+        </div>
     );
 };
 
