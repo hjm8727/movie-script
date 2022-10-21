@@ -3,7 +3,7 @@ import tCss from '../css/Trailer.css';
 
 function Trailer() {
   return (
-    <Carousel style={{width: '80%', margin: '5px auto', borderRadius: '10px', backgroundColor: 'rgb(255, 235, 59)', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
+    <Carousel style={{width: '85%', margin: '5px auto', borderRadius: '10px', backgroundColor: 'rgb(255, 235, 59)', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
       <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
         <embed
           className="d-block w-100"

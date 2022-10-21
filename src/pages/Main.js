@@ -1,8 +1,7 @@
-
-import CategoryB from "./CategoryB";
+import Category from "./Category";
+// import MovDetail from "./MovDetail";
 import Menu from "./Nav";
 import Trailer from "./Trailer";
-// import Modal from "./Modal";
 
 const Main = () => {
     return (
@@ -11,9 +10,9 @@ const Main = () => {
         
         <Trailer/>
         <br/>
-        {/* <Modal/> */}
+        <Category/>
         <br/>
-        <CategoryB/>
+        {/* <MovDetail/> */}
         </div>
     );
 };
