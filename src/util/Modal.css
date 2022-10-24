@@ -18,32 +18,34 @@
     max-width: 450px;
     margin: 0 auto;
     border-radius: 0.3rem;
-    background-color: #fff;
+    background-color: black;
     /* 팝업이 열릴때 스르륵 열리는 효과 */
     animation: modal-show 0.3s;
     overflow: hidden;
+    color: yellow;
+    border: 1px solid yellow;
   }
   .modal > section > header {
     position: relative;
     padding: 16px 64px 16px 16px;
-    background-color: #f1f1f1;
+    background-color: black;
     font-weight: 700;
   }
   .modal > section > header button {
     position: absolute;
-    top: 15px;
+    top: 10px;
     right: 15px;
     width: 30px;
     font-size: 21px;
     font-weight: 700;
     text-align: center;
-    color: #999;
+    color: yellow;
     background-color: transparent;
   }
   .modal > section > main {
     padding: 16px;
-    border-bottom: 1px solid #dee2e6;
-    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid yellow;
+    border-top: 1px solid yellow;
   }
   .modal > section > footer {
     padding: 12px 16px;
@@ -51,8 +53,8 @@
   }
   .modal > section > footer button {
     padding: 6px 12px;
-    color: #fff;
-    background-color: #6c757d;
+    color: yellow;
+    background-color: #484b4d;
     border-radius: 5px;
     font-size: 13px;
   }

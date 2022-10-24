@@ -1,10 +1,10 @@
 import Card from 'react-bootstrap/Card';
-import test from './images/test.jpg';
+import logo from '../../components/images/Logo.png';
 
 const Like = () => {
   return (
     <Card className='box'>
-      <Card.Img className='img-poster' variant="top" src={test} />
+      <Card.Img className='img-poster' variant="top" src={logo} />
     </Card>
   );
 }

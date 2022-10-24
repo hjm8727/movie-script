@@ -4,8 +4,8 @@ const Inquire = () => {
     return (
     <div>  
         <nav className="nav nav-pills nav-justified">
-            <Link className="nav-link" to="/">마이페이지</Link>
-            <Link className="nav-link" to="/infoset">회원정보수정</Link>
+            <Link className="nav-link" to="/Mypage">마이페이지</Link>
+            <Link className="nav-link" to="/Infoset">회원정보수정</Link>
         </nav>
         <form className="inquire-container">
             <h1 className='inquire-head'>1:1 문의하기</h1>

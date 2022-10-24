@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 const Container = styled.div`
-    width : 1500px;
+    width : 100%;
     background-color: black;
     color: white;
     a{
@@ -154,11 +154,7 @@ const Container = styled.div`
     .dropdown-icon:hover .dropdown-content-icon {
         display: block;
     }
-    
-
-
 `;
-
 
 
 const Menu = () => {
@@ -186,7 +182,7 @@ const Menu = () => {
                 <li class="dropdown-icon">
                     <p class="dropbtn-icon"><img src="images/Bell3.png" alt="icon"/></p>
                     <ul class="dropdown-content-icon">
-                        <li><Link to ="/">My page</Link></li>
+                        <li><Link to ="/MyPage/Mypage">My page</Link></li>
                         <li><Link to ="/">고객센터</Link></li>
                         <li><Link to ="/">로그아웃</Link></li>
                     </ul>

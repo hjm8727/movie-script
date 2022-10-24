@@ -1,22 +1,18 @@
-// import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
-// import { Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsFillPeopleFill } from "react-icons/bs";
-import Test from "./Like";
-import mycss from 'src/styles/MyPage.css';
-
+import Test from "./Card";
 
 const Mypage = () => {
     return (
     <div>
         <nav className="nav nav-pills nav-justified">
-            <Link className="nav-link" to="/main">홈</Link>
-            <Link className="nav-link mypage" aria-current="page" to="/" aria-disabled>마이페이지</Link>
+            <Link className="nav-link" to="/">홈</Link>
+            <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>마이페이지</Link>
             {/* <Link className="nav-link" to="/infoset">회원정보수정</Link> */}
             <Link className="nav-link" to="/inquire">1:1 문의하기</Link>
         </nav>
         <div className="container">
-            <BsFillPeopleFill icon={BsFillPeopleFill} size='160px' style={{border:'1px solid rgba(35, 35, 35, .3)', margin:'30px 10px'}}/>
+            <BsFillPeopleFill icon={BsFillPeopleFill} size='160px' style={{border:'1px solid #eeeeee', margin:'30px 10px', backgroundColor: 'silver'}}/>
             <br />
             <Link className="profil" to="/infoset">회원정보수정</Link>
             <h3 className="info">이름 : 지민</h3>

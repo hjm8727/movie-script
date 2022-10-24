@@ -1,5 +1,5 @@
 import Category from "./Category";
-import Menu from "./Nav";
+import Menu from "./Menu";
 import Trailer from "./Trailer";
 
 
