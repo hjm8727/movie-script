@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import logo from '../../components/images/Logo.png';
+import logo from '../../images/Logo.png';
 
 const Like = () => {
   return (

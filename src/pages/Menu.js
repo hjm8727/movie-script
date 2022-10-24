@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-
 const Container = styled.div`
     width : 100%;
     background-color: black;
@@ -179,12 +178,20 @@ const Menu = () => {
                         <button class="submit">search</button>
                 </li>
                 
-                <li class="dropdown-icon">
+                {/* <li class="dropdown-icon">
                     <p class="dropbtn-icon"><img src="images/Bell3.png" alt="icon"/></p>
                     <ul class="dropdown-content-icon">
                         <li><Link to ="/MyPage/Mypage">My page</Link></li>
                         <li><Link to ="/">고객센터</Link></li>
                         <li><Link to ="/">로그아웃</Link></li>
+                    </ul>
+                </li> */}
+                <li class="dropdown-icon">
+                    <p class="dropbtn-icon"><img src="images/Bell3.png" alt="icon"/></p>
+                    <ul class="dropdown-content-icon">
+                        <li><Link to ="/MyPage/Mypage">My page</Link></li>
+                        <li><Link to ="/Login/LoginPage">로그인</Link></li>
+                        <li><Link to ="/">고객센터</Link></li>
                     </ul>
                 </li>
                 
