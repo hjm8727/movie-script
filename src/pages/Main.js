@@ -1,7 +1,7 @@
 import Category from "./Category";
-// import MovDetail from "./MovDetail";
 import Menu from "./Nav";
 import Trailer from "./Trailer";
+
 
 const Main = () => {
     return (
@@ -11,8 +11,6 @@ const Main = () => {
         <Trailer/>
         <br/>
         <Category/>
-        <br/>
-        {/* <MovDetail/> */}
         </div>
     );
 };

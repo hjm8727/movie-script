@@ -1,5 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel';
-import tCss from '../css/Trailer.css';
+import trailer from '../styles/Trailer.css';
 
 function Trailer() {
   return (
