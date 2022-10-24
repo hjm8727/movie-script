@@ -2,6 +2,8 @@ import React from 'react';
 import '../App';
 import './Modal.css';
 
+
+
 const Modal = (props) => {
     const { open, close, header } = props;
     return (

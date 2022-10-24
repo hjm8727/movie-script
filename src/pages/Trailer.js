@@ -1,8 +1,15 @@
 import Carousel from 'react-bootstrap/Carousel';
-import trailer from '../styles/Trailer.css';
+import styled from 'styled-components';
+
+const Trail = styled.div`
+.carousel-indicators {
+    visibility: hidden;
+}
+`;
 
 function Trailer() {
   return (
+    <Trail>
     <Carousel style={{width: '85%', margin: '5px auto', borderRadius: '10px', backgroundColor: 'rgb(255, 235, 59)', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
       <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
         <embed
@@ -55,6 +62,7 @@ function Trailer() {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    </Trail>
   );
 }
 
