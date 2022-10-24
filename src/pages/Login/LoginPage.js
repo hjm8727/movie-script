@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
 const LoginBlock=styled.div`
-    background: black; //적용안됨 ㅡㅡ
+    background-color: black; //적용안됨 ㅡㅡ
     color: #EEEEEE;
 .page{
     position: absolute;
@@ -137,7 +137,7 @@ const LoginPage=()=>{
     return(
     <LoginBlock>
     <div className="page">
-        <div className='titleWrap'><Link to ="/"><img src="images/Logo.png" alt="Logo"/></Link>LOGIN</div>
+        <div className='titleWrap'><Link to ="/"><img src="../../images/Logo.png" alt="Logo"/></Link>LOGIN</div>
             <div className="loginWrap">
                 <div className="inputTitle">아이디</div>
                 <div className="inputWrap">

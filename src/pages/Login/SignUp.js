@@ -187,7 +187,7 @@ const SignUp=()=>{
     return(
         <SignUpBlock>
         <div className="page">
-        <div className='logo'><Link to ="/"><img src="images/Logo.png" alt="Logo"/></Link></div>
+        <div className='logo'><Link to ="/"><img src="../../images/Logo.png" alt="Logo"/></Link></div>
         <div className='titleWrap'>회원가입</div>
             <div className="loginWrap">
                 <div className="inputTitle">아이디</div>
