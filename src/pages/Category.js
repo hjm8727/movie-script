@@ -6,16 +6,16 @@ import styled from 'styled-components';
 const CategoryBody = styled.div`
 .th {
     width: 140px;
-    height: 230px;
+    height: 240px;
 }
 .thm {
-    padding: 6px;
+    padding: 8px;
     float: left;
 }
 ul {
     padding-left: 240px;
     padding-right: 240px;
-    flex-wrap:nowrap;
+    /* flex-wrap: nowrap; */
     list-style: none;
 }
 .category {
@@ -26,9 +26,7 @@ ul {
 .carousel-indicators {
     visibility: hidden;
 }
-@media (min-width: 768px) {
-        width: 100% / 640px * 90vw;
-    }
+
 `;
 
 const Category = () =>{
@@ -47,10 +45,10 @@ const Category = () =>{
     
 
     return(
-        <CategoryBody>
+        <CategoryBody className='wrap'>
         <div><b className='category'>인기 상영작</b>
-    <Carousel>
-    <Carousel.Item>
+    <Carousel className='wrap'>
+    <Carousel.Item className='item'>
     <thumbGroup className="container">
     <div className="detail">
         <ul>

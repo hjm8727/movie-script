@@ -3,6 +3,8 @@ import {useNavigate} from 'react-router-dom';
 import styled from "styled-components";
 // import axios from "axios";
 import { Link } from 'react-router-dom';
+import Modal from "../../util/Modal";
+import MovieApi from "../../api/MovieApi";
 
 const LoginBlock=styled.div`
     background-color: black; //적용안됨 ㅡㅡ
@@ -110,22 +112,43 @@ const LoginPage=()=>{
     const [isPwd, setIsPwd] = useState(false);
     const [submit, setSubmit] = useState(true);
 
+// 입력창 한칸씩 삭제했을시 유효성검사 되는거 다시 구현 
     const onChangeId = (e) => {
-        setInputId(e.target.value);
+        const idCurrent = e.target.value; // 변수 하나 만들어서 실시간 적용되게
+        setInputId(idCurrent)
         const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
-        if(regId.test(inputId)){
+        if(regId.test(idCurrent)){
             setIsId(true);
-        } else{
-            setIsId(false);
+        }else{
+            setIsId(false)
         }};
     const onChangePwd = (e) => {
-        setInputPwd(e.target.value);
+        const pwdCurrent = e.target.value;
+        setInputPwd(pwdCurrent);
         const regPwd = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-        if(regPwd.test(inputPwd)){
+        if(regPwd.test(pwdCurrent)){
             setIsPwd(true);
         }else{
             setIsPwd(false)
         }};
+
+    // const onChangeId = (e) => {
+    //     console.log(inputId);
+    //     setInputId(e.target.value);
+    //     const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
+    //     if(regId.test(inputId)){
+    //         setIsId(true);
+    //     } else{
+    //         setIsId(false);
+    //     }};
+    // const onChangePwd = (e) => {
+    //     setInputPwd(e.target.value);
+    //     const regPwd = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+    //     if(regPwd.test(inputPwd)){
+    //         setIsPwd(true);
+    //     }else{
+    //         setIsPwd(false)
+    //     }};
 
     // 유효값 충족되는지 데이터 추가될때마다 확인
     useEffect(()=>{
@@ -134,6 +157,31 @@ const LoginPage=()=>{
             return;
         }setSubmit(true);
     }, [isId, isPwd]);
+    const [modalOpen, setModalOpen] = useState(false);
+    const openModal = () => {
+        setModalOpen(true);
+    };
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    const onClickLogin = async()=>{
+        try{
+            const res = await MovieApi.userLogin(inputId,inputPwd);
+            console.log(res.data.result);
+            
+            if(res.data.result === "OK"){
+                window.localStorage.setItem("userId", inputId);
+                window.localStorage.setItem("userpwd",inputPwd);
+                window.location.replace("/");
+            } else{
+                setModalOpen(true);
+            }
+        } catch(e){
+            setModalOpen(true);
+            console.log("로그인 에러..");
+        }
+    }
 
     return(
     <LoginBlock>
@@ -150,10 +198,11 @@ const LoginPage=()=>{
                 <div className="inputWrap">
                         <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd}/>
                 </div>
-                <div className="error">{!isPwd && inputPwd.length >0 &&('영문자 또는 숫자 8~16자')}</div>
+                <div className="error">{!isPwd && inputPwd.length >0 &&('영문자 포함 숫자 8~16자')}</div>
 
                 <div className="auto"><input type="checkbox" value="remember"/><span>자동로그인</span></div>
-                <div className="item"><button type="submit" className="loginButton" disabled={submit} onClick={()=>{navigate('/')}}>확인</button></div>
+                <div className="item"><button type="submit" className="loginButton" disabled={submit} onClick={onClickLogin} >확인</button></div>
+                <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
                 <div className="find" onClick={()=>{navigate('/Login/FindPwd')}}>😥패스워드를 잊으셨나요?</div>
                 <hr/>
                 <div className="item"><button type="submit" className="goButton" onClick={()=>{navigate('/Login/SignUp')}}>회원가입</button></div>

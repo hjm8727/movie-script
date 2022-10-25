@@ -12,7 +12,7 @@ const Main = () => {
         <br/>
         <Category/>
         <br/>
-        <Category/>
+        {/* <Category/> */}
         </div>
     );
 };
