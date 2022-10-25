@@ -140,21 +140,12 @@ const SignUp=()=>{
     const [submit, setSubmit] = useState(true);
 
     const onChangeId = (e) => {
-        // 입력시에만 정규식 체크
-        // setInputId(e.target.value);
-        // console.log(inputId);
-        // const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
-        // if(!regId.test(inputId)){
-        //     setIsId(false);
-        // } else {
-        //     setIsId(true);
-        // }};
-        
-        const IdCurrent = e.target.value;
-        setInputId(IdCurrent);
+
+        // 정규식
+        setInputId(e.target.value);
         console.log(inputId);
         const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
-        if(!regId.test(IdCurrent)){
+        if(!regId.test(inputId)){
             setIsId(false);
         } else {
             setIsId(true);
