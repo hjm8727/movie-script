@@ -15,7 +15,7 @@ const CategoryBody = styled.div`
 ul {
     padding-left: 240px;
     padding-right: 240px;
-    /* flex-wrap: nowrap; */
+    flex-wrap: nowrap;
     list-style: none;
 }
 .category {
@@ -27,9 +27,51 @@ ul {
     visibility: hidden;
 }
 
+@media screen and (max-width: 1530px) {
+    ul {
+    padding-left: 220px;
+    padding-right: 200px;
+    }
+}
+@media screen and (max-width: 1470px) {
+    ul {
+    padding-left: 170px;
+    padding-right: 160px;
+    }
+}
+@media screen and (max-width: 1380px) {
+    ul {
+        padding-left: 120px;
+        padding-right: 110px;
+    }
+}
+@media screen and (max-width: 1300px) {
+    ul {
+        padding-left: 120px;
+        padding-right: 110px;
+    }
+}
+@media screen and (max-width: 1280px) {
+    ul {
+        padding-left: 110px;
+        padding-right: 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    .wrap {
+        width: 785px;
+        /* justify-content: center; */
+        margin: 0 auto;
+    }
+    ul {
+        margin-left: 30px;
+        margin-right: 10px;
+    }
+}
 `;
 
-const Category = () =>{
+const Category = (props) =>{
     
     // 팝업
     const [modalOpen, setModalOpen] = useState(false);
@@ -45,8 +87,8 @@ const Category = () =>{
     
 
     return(
-        <CategoryBody className='wrap'>
-        <div><b className='category'>인기 상영작</b>
+    <CategoryBody className='wrap'>
+    <div><b className='category'>{props.name}</b>
     <Carousel className='wrap'>
     <Carousel.Item className='item'>
     <thumbGroup className="container">

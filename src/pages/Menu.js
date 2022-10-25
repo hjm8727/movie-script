@@ -225,7 +225,7 @@ const Menu = () => {
                     <ul class="dropdown-content-icon">
                         <li><Link to ="/MyPage/Mypage">My Page</Link></li>
                         <li><Link to ="/Login/LoginPage">로그인</Link></li>
-                        <li><Link to ="/">고객센터</Link></li>
+                        <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
                     </ul>
                 </li>
                 

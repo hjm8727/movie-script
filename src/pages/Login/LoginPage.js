@@ -22,6 +22,7 @@ const LoginBlock=styled.div`
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    height : 800px; // 높이 만 추가했습니다.
 }
 .titleWrap{
     margin-top: 87px;
@@ -158,6 +159,7 @@ const LoginPage=()=>{
         }setSubmit(true);
     }, [isId, isPwd]);
     const [modalOpen, setModalOpen] = useState(false);
+
     const openModal = () => {
         setModalOpen(true);
     };
@@ -166,7 +168,7 @@ const LoginPage=()=>{
     };
 
     const onClickLogin = async()=>{
-        try{
+        try {
             const res = await MovieApi.userLogin(inputId,inputPwd);
             console.log(res.data.result);
             
@@ -174,10 +176,10 @@ const LoginPage=()=>{
                 window.localStorage.setItem("userId", inputId);
                 window.localStorage.setItem("userpwd",inputPwd);
                 window.location.replace("/");
-            } else{
+            } else {
                 setModalOpen(true);
             }
-        } catch(e){
+        } catch(e) {
             setModalOpen(true);
             console.log("로그인 에러..");
         }
@@ -186,7 +188,7 @@ const LoginPage=()=>{
     return(
     <LoginBlock>
     <div className="page">
-        <div className='titleWrap'><Link to ="/"><img src="../../images/Logo.png" alt="Logo"/></Link>LOGIN</div>
+        <div className='titleWrap'><Link to ="/"><img src="/images/Logo.png" alt="Logo"/></Link>LOGIN</div>
             <div className="loginWrap">
                 <div className="inputTitle">아이디</div>
                 <div className="inputWrap">

@@ -20,6 +20,7 @@ const SignUpBlock=styled.div`
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    height : 800px; // 높이 만 추가했습니다.
 }
 .titleWrap{
     margin-top: 87px;
@@ -140,16 +141,24 @@ const SignUp=()=>{
     const [submit, setSubmit] = useState(true);
 
     const onChangeId = (e) => {
-
-        // 정규식
-        setInputId(e.target.value);
-        console.log(inputId);
+        // 회원 가입도 변수 만드신걸로 바꿔놨습니다.
+        const idCurrent = e.target.value; // 변수 하나 만들어서 실시간 적용되게
+        setInputId(idCurrent)
         const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
-        if(!regId.test(inputId)){
-            setIsId(false);
-        } else {
+        if(regId.test(idCurrent)){
             setIsId(true);
+        }else{
+            setIsId(false)
         }};
+        // 정규식
+        // setInputId(e.target.value);
+        // console.log(inputId);
+        // const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
+        // if(!regId.test(inputId)){
+        //     setIsId(false);
+        // } else {
+        //     setIsId(true);
+        // }};
 
     const onChangePwd = (e) => {
         // passwordCurrent 변수 : 비번, 비번재확인 실시간 반영을 위해 변수 생성 

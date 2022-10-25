@@ -6,6 +6,8 @@ import Mypage from './pages/MyPage/Mypage';
 import LoginPage from './pages/Login/LoginPage';
 import SignUp from './pages/Login/SignUp';
 import FindPwd from './pages/Login/FindPwd';
+import InfoSet from './pages/MyPage/InfoSet';
+import Inquire from './pages/MyPage/Inquire';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Main/>}></Route>
         <Route path='/MyPage/Mypage' element={<Mypage />} />
+        <Route path='/MyPage/InfoSet' element={<InfoSet />} />
+        <Route path='/MyPage/Inquire' element={<Inquire />} />
         <Route path='/Login/LoginPage' element={<LoginPage/>}/>
         <Route path='/Login/SignUp' element={<SignUp/>}/>
         <Route path='/Login/FindPwd' element={<FindPwd/>}/>
