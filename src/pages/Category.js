@@ -19,10 +19,16 @@ ul {
     list-style: none;
 }
 .category {
-    color : yellow;
+    color : #FFD369;
     padding-left: 240px;
     font-size: 2rem;
 }
+.carousel-indicators {
+    visibility: hidden;
+}
+@media (min-width: 768px) {
+        width: 100% / 640px * 90vw;
+    }
 `;
 
 const Category = () =>{

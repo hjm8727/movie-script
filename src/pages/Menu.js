@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    width : 100%;
+    width : 1400px;
     background-color: black;
     color: white;
     a{
@@ -11,15 +11,17 @@ const Container = styled.div`
     }
     ul li{
         list-style: none;
+        // 보류
         margin: 0;
         padding: 0;
     }
     .logo img{
-        margin-right: -100px;
-        margin-left :40px;
+        margin-left :15px;
+        margin-top: 10px;
+        size: initial; // 로고 원본크기 유지만 수정했습니다.
     }      
-    img{
-        width: 100px;
+    img {
+        width: 95px;
         height:70px;
     } 
     // 카테고리 드롭다운 
@@ -29,7 +31,7 @@ const Container = styled.div`
         display : inline-block; 
         list-style:none; 
         margin:1px;
-        margin-left: -120px;
+        margin-left: -250px;
         margin-top: 20px;
         font-weight: 400;
         cursor : pointer;
@@ -42,11 +44,10 @@ const Container = styled.div`
         font-weight: 400;
         background-color: black;
         color: white;
-        width: 230px;
+        width: 150px;
         padding: 15px;
         margin:0;
-        margin-left: -17px;
-
+        margin-left: -20px;
     }
 
     .dropdown-content li{
@@ -55,11 +56,10 @@ const Container = styled.div`
         color : white;
         font-size: 18px;
         padding : 12px 5px;
-        
     }
 
     .dropdown-content :hover{
-        color: yellow;
+        color: #FFD369;
     }
 
     .dropdown:hover .dropdown-content {
@@ -67,61 +67,64 @@ const Container = styled.div`
         z-index: 5;
     }
     //검색창
-    .serch{
+    .search{
         margin: 0;
         padding: 0;
     }
     .search-box{
         margin-top: 5px;
-        margin-left: -100px;
+        /* margin-left: -100px; */
         padding: 10px;
         border-radius: 15px;
-        border:1px solid yellow;
-        width: 500px;
+        border:1px solid #FFD369;
+        width: 450px;
         float: left;
         font-size: 13px;
         line-height: 10px;
-        margin-right: 15px;
+        margin-right: 5px;
+
     }
     // 검색 버튼
     .submit {
         box-sizing: border-box;
         background-color: black;
-        border: 2px solid #f1c40f;
+        border: 2px solid #FFD369;
         border-radius: 0.6em;
-        color: #f1c40f;
+        color: #FFD369;
         cursor: pointer;
         display: flex;
         font-size: 1rem;
         font-weight: 400;
         line-height: 0;
         margin-top: 5px;
+        /* margin-right: 10px; */
         padding: 1.2em 2.8em;
         text-align: center;
         text-transform: uppercase;
         font-weight: 700;
 
-        &:hover,
-        &:focus {
-            color: #fff;
+        &:active {
+            // 눌렀을때 색 변경
+            background-color: #FFD369;
+            color: black;
             outline: 0;
         }
+        &:hover {
+        box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+        position: relative;
+        }
     }
-    
+
     // 아이콘 드롭다운
     .dropdown-icon{
         position : relative;
         display : inline-block; 
         list-style:none; 
-        margin:1px;
-        margin-left: -120px;
         margin-top: 20px;
         font-weight: 400;
         cursor : pointer;
         font-size : 20px;
-    }
-    .dropbtn-icon{
-  
+        margin-right: -75px;
     }
     .dropdown-content-icon{
         display : none;
@@ -130,10 +133,8 @@ const Container = styled.div`
         font-weight: 400;
         background-color: black;
         color: white;
-        width: 230px;
+        width: 120px;
         padding: 15px;
-        margin:0;
-        margin-left: -17px;
 
     }
 
@@ -142,16 +143,19 @@ const Container = styled.div`
         text-decoration : none;
         color : white;
         font-size: 18px;
-        padding : 12px 5px;
-  
+        padding : 10px 5px;
     }
 
     .dropdown-content-icon :hover{
-        color: yellow;
+        color: #FFD369;
     }
 
     .dropdown-icon:hover .dropdown-content-icon {
         display: block;
+    }
+    .dropbtn-icon img {
+        height:40px;
+        width:35px;
     }
 `;
 
@@ -172,8 +176,7 @@ const Menu = () => {
                     </ul>
                 </li>
 
-
-                <li class="serch">
+                <li class="search">
                         <input class="search-box" type="text"></input>
                         <button class="submit">search</button>
                 </li>
@@ -187,9 +190,9 @@ const Menu = () => {
                     </ul>
                 </li> */}
                 <li class="dropdown-icon">
-                    <p class="dropbtn-icon"><img src="images/Bell3.png" alt="icon"/></p>
+                    <p class="dropbtn-icon"><img src="images/mem.png" alt="icon"/></p>
                     <ul class="dropdown-content-icon">
-                        <li><Link to ="/MyPage/Mypage">My page</Link></li>
+                        <li><Link to ="/MyPage/Mypage">My Page</Link></li>
                         <li><Link to ="/Login/LoginPage">로그인</Link></li>
                         <li><Link to ="/">고객센터</Link></li>
                     </ul>

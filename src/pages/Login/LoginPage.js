@@ -90,10 +90,11 @@ hr{
     margin-bottom: 40px;
 }
 
-.logo img{
-    margin-right: -100px;
-    margin-left :40px;
-}      
+.titleWrap img{
+    // 로고 위치만 수정했습니다.
+    size: initial;
+    margin-right :10px;
+}     
 img{
     width: 100px;
     height:70px;

@@ -96,7 +96,7 @@ const FindPwd=()=>{
         <div className="inputWrap"><input className="input" placeholder="이메일을 입력하세요*" type="email"/></div>
         <div className="item"><button type="submit" className="loginButton" onClick={openModal}>비밀번호 찾기</button></div>
         <hr/>
-        <div className="item"><button type="button" className="loginButton" onClick={()=>{navigate('/Login')}}>로그인하러 가기</button></div>
+        <div className="item"><button type="button" className="loginButton" onClick={()=>{navigate('/Login/LoginPage')}}>로그인하러 가기</button></div>
         <Modal open={modalOpen} close={closeModal} header="하린님의 비밀번호는">1234 입니다.</Modal>
         </div>
         </FindPwdBlock>

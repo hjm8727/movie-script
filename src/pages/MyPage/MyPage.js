@@ -27,7 +27,7 @@ const StyleMypage = styled.div`
 .nav .mypage {
     font-size: 1.5em;
     font-weight: bold;
-    color: yellow;
+    color: #FFD369;
 }
 .container {
     border: 1px solid white;

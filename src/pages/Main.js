@@ -11,6 +11,8 @@ const Main = () => {
         <Trailer/>
         <br/>
         <Category/>
+        <br/>
+        <Category/>
         </div>
     );
 };

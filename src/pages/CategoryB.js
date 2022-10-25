@@ -1,7 +1,32 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Modal from '../util/Modal';
-import poster from '../styles/Category.css';
+import styled from 'styled-components';
+
+const CategoryBody = styled.div`
+.th {
+    width: 140px;
+    height: 230px;
+}
+.thm {
+    padding: 6px;
+    float: left;
+}
+ul {
+    padding-left: 240px;
+    padding-right: 240px;
+    flex-wrap:nowrap;
+    list-style: none;
+}
+.category {
+    color : rgb(255, 211, 105);
+    padding-left: 240px;
+    font-size: 2rem;
+}
+.carousel-indicators {
+    visibility: hidden;
+}
+`;
 
 const CategoryB = () =>{
     
@@ -19,6 +44,7 @@ const CategoryB = () =>{
     
 
     return(
+        <CategoryBody>
         <div><b className='category'>인기 상영작</b>
     <Carousel>
     <Carousel.Item>
@@ -118,6 +144,7 @@ const CategoryB = () =>{
     </thumbGroup>
     </Carousel.Item>
     </Carousel></div>
+    </CategoryBody>
     )
 };
 

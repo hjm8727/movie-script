@@ -1,14 +1,12 @@
 import {useNavigate} from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import black from './SignUp.css';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
 
 const SignUpBlock=styled.div`
-background: black; //적용안됨
-    color: #EEEEEE;
 .page{
     position: absolute;
     top: 60px;
@@ -93,8 +91,10 @@ hr{
 }
 
 .logo img{
-    margin-right: -100px;
-    margin-left :40px;
+    // 로고 위치만 수정했습니다.
+    margin-top: 20px;
+    size: initial;
+    margin-left :5px;
 }      
 img{
     width: 100px;
@@ -140,13 +140,24 @@ const SignUp=()=>{
     const [submit, setSubmit] = useState(true);
 
     const onChangeId = (e) => {
-        setInputId(e.target.value);
+        // 입력시에만 정규식 체크
+        // setInputId(e.target.value);
+        // console.log(inputId);
+        // const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
+        // if(!regId.test(inputId)){
+        //     setIsId(false);
+        // } else {
+        //     setIsId(true);
+        // }};
+        
+        const IdCurrent = e.target.value;
+        setInputId(IdCurrent);
         console.log(inputId);
         const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
-        if(regId.test(inputId)){
-            setIsId(true);
-        } else{
+        if(!regId.test(IdCurrent)){
             setIsId(false);
+        } else {
+            setIsId(true);
         }};
 
     const onChangePwd = (e) => {
