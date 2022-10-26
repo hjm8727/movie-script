@@ -62,7 +62,7 @@ const StyleMypage = styled.div`
 .container .profil {
     text-decoration: none;
     display: inline;
-    color: #ffd369;
+    color: #ffd369; 
     font-size: 20px;
     margin-left: 35px;
 }
