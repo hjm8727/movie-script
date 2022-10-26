@@ -86,11 +86,11 @@ const StyleMypage = styled.div`
 // 영화 리스트./.
 const Test = () => {
     return (
-      <Card className='box'>
+    <Card className='box'>
         <Card.Img className='img-poster' variant="top" src='/' style={{backgroundColor: 'black'}} />
-      </Card>
+    </Card>
     );
-  }
+}
 
 const Mypage = () => {
     return (
