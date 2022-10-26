@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { BsFillPeopleFill } from "react-icons/bs";
-// import Card from "./Card";
 import styled from "styled-components";
 import Card from 'react-bootstrap/Card';
 
