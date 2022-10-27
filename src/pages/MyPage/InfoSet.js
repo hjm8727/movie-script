@@ -56,12 +56,12 @@ const StyleInfoSet = styled.div`
 }
 @media screen and (max-width: 768px) {
     .infoset-container {
-        width: 100%;
+        width: 90%;
         height: 100%;
     }
     .input-box {
         width: 50%;
-        height: auto;
+        height: 70px;
     }
     .input-submit {
         width: 20%;
