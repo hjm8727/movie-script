@@ -33,6 +33,7 @@ const StyleInquire = styled.div`
     border: 1px solid #eeeeee;
 }
 .inquire {
+    margin: 1rem 0;
     width: 40vw;
 }
 .content {
@@ -49,6 +50,11 @@ const StyleInquire = styled.div`
     margin-bottom: 3rem;
     font-weight: bold;
     color: #ffd369;
+    text-align: center;
+}
+.inquire-text {
+    font-size: 20px;
+    color: #ffd369;
 }
 `;
 
@@ -60,9 +66,9 @@ const Inquire = () => {
                 <Link className="nav-link" to="/MyPage/mypage">마이페이지</Link>
                 <Link className="nav-link" to="/MyPage/infoset">회원정보수정</Link>
             </nav>
-            <form className="inquire-container">
                 <h1 className='inquire-head'>1:1 문의하기</h1>
-                    <label for='why' className="inquire">문의 이유를 선택해주세요.</label>
+            <form className="inquire-container">
+                    <label for='why' className="inquire-text">문의 이유를 선택해주세요.</label>
                     <select name='why' id='why' className="inquire">
                       <option value="">단순 변심</option>
                       <option value="">시작할 때 문제가 있음</option>
