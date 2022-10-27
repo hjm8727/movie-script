@@ -54,6 +54,10 @@ const StyleInfoSet = styled.div`
     background-color: #eeeeee;
     color: black;
 }
+.pwd-find {
+    color: #ffd369;
+    font-weight: 700;
+}
 @media screen and (max-width: 768px) {
     .infoset-container {
         width: 90%;
@@ -73,7 +77,7 @@ const StyleInfoSet = styled.div`
 const InfoSet = () => {
     return (
         <StyleInfoSet>
-         <form action="/">  
+         <form action="/">
             <nav className="nav nav-pills nav-justified">
                 <Link className="nav-link" to="/Mypage/mypage">마이페이지</Link>
                 {/* <Link className="nav-link mypage" aria-current="page" to="/infoset" aria-disabled>회원정보수정</Link> */}
@@ -81,6 +85,7 @@ const InfoSet = () => {
             </nav>
                 <h1 className="infoset-title">회원정보수정</h1>
             <div className="infoset-container">
+                <h3 className="pwd-find">비밀번호 찾기</h3>
                 <input className="input-box" type='text' placeholder="현재 비밀번호 입력" />
                 <p />
                 <input className="input-box" type='text' placeholder="새로운 비밀번호 입력" />
