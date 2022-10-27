@@ -25,12 +25,15 @@ const StyleInquire = styled.div`
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 50vw;
     height: 100vh;
     color: white;
+    margin: 0 auto;
+    padding: 3rem 0;
+    border: 1px solid #eeeeee;
 }
 .inquire {
-    width: 30vw;
+    width: 40vw;
 }
 .content {
     width: 40vw;
@@ -40,7 +43,7 @@ const StyleInquire = styled.div`
 .inquire-submit {
     width: 15vw;
     height: 10vh;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 .inquire-head {
     margin-bottom: 3rem;
@@ -59,19 +62,19 @@ const Inquire = () => {
             </nav>
             <form className="inquire-container">
                 <h1 className='inquire-head'>1:1 문의하기</h1>
-                <label for='why' className="inquire">문의 이유를 선택해주세요.</label>
-                <select name='why' id='why' className="inquire">
-                    <option value="">단순 변심</option>
-                    <option value="">시작할 때 문제가 있음</option>
-                    <option value="">사이트가 맘에 들지가 않음</option>
-                    <option value="">개인정보 보호 문제</option>
-                    <option value="">광고가 너무 많음</option>
-                    <option value="">기타</option>
-                </select>
-                <p />
-                <textarea className="content" placeholder="문의 내용" rows={50} cols={50}/>
-                <p />
-                <input type='submit' value="제출" className="inquire-submit"/>
+                    <label for='why' className="inquire">문의 이유를 선택해주세요.</label>
+                    <select name='why' id='why' className="inquire">
+                      <option value="">단순 변심</option>
+                      <option value="">시작할 때 문제가 있음</option>
+                      <option value="">사이트가 맘에 들지가 않음</option>
+                      <option value="">개인정보 보호 문제</option>
+                      <option value="">광고가 너무 많음</option>
+                      <option value="">기타</option>
+                    </select>
+                    <p />
+                    <textarea className="content" placeholder="문의 내용" rows={50} cols={50}/>
+                    <p />
+                    <input type='submit' value="제출" className="inquire-submit"/>
             </form>
         </div>
     </StyleInquire>

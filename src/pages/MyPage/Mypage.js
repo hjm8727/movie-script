@@ -23,7 +23,7 @@ const StyleMypage = styled.div`
 .nav .mypage {
     font-size: 1.5em;
     font-weight: bold;
-    color: #ffd369;
+    color: #ffd369; 
 }
 .container {
     border: 1px solid white;
@@ -92,9 +92,9 @@ const Test = () => {
 }
 
 const Mypage = () => {
-    return (
-        <StyleMypage>
-        <div>
+  return (
+    <StyleMypage>
+      <div>
         <nav className="nav nav-pills nav-justified">
             <Link className="nav-link" to="/">홈</Link>
             <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>마이페이지</Link>
@@ -116,11 +116,9 @@ const Mypage = () => {
             <Test />
         </div>
     </div>
-    </StyleMypage>
+  </StyleMypage>
     );
 }
 
 
 export default Mypage;
-
-

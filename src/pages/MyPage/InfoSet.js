@@ -31,8 +31,8 @@ const StyleInfoSet = styled.div`
     box-sizing: border-box;
     margin: 0 auto;
     margin-top: 5rem;
-    width: 80vw;
-    height: 100vh;
+    width: 50vw;
+    height: 80vh;
 }
 .input-box {
     margin-top: 2rem;
@@ -44,7 +44,8 @@ const StyleInfoSet = styled.div`
 .infoset-title {
     color: #ffd369;
     font-weight: bold;
-    margin-bottom: 3rem;
+    margin-top: 3rem;
+    text-align: center;
 }
 .input-submit {
     margin-top: 3rem;
@@ -58,14 +59,14 @@ const StyleInfoSet = styled.div`
 const InfoSet = () => {
     return (
         <StyleInfoSet>
-         <form action="./">  
+         <form action="/">  
             <nav className="nav nav-pills nav-justified">
                 <Link className="nav-link" to="/Mypage/mypage">마이페이지</Link>
                 {/* <Link className="nav-link mypage" aria-current="page" to="/infoset" aria-disabled>회원정보수정</Link> */}
                 <Link className="nav-link" to="/Mypage/inquire">1:1 문의하기</Link>
             </nav>
-            <div className="infoset-container">
                 <h1 className="infoset-title">회원정보수정</h1>
+            <div className="infoset-container">
                 <input className="input-box" type='text' placeholder="현재 비밀번호 입력" />
                 <p />
                 <input className="input-box" type='text' placeholder="새로운 비밀번호 입력" />
