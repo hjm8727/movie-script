@@ -54,6 +54,20 @@ const StyleInfoSet = styled.div`
     background-color: #eeeeee;
     color: black;
 }
+@media screen and (max-width: 768px) {
+    .infoset-container {
+        width: 100%;
+        height: 100%;
+    }
+    .input-box {
+        width: 50%;
+        height: auto;
+    }
+    .input-submit {
+        width: 20%;
+        height: auto;
+    }
+}
 `;
 
 const InfoSet = () => {

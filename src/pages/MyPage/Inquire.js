@@ -56,6 +56,16 @@ const StyleInquire = styled.div`
     font-size: 20px;
     color: #ffd369;
 }
+@media screen and (max-width: 768px){
+    .inquire-container {
+        width: 100%;
+        height: 100%;
+    }
+    .content {
+        width: 80%;
+        height: 250px;
+    }
+}
 `;
 
 const Inquire = () => {
