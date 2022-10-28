@@ -4,7 +4,7 @@ import React from 'react';
 function DetailImage(props) {
     return (
         <div style={{
-            background: `url('${props.image}'), #1c1c1c`,
+            background: `url('${props.image}'), black`,
             height: '500px',
             backgroundSize: '100%, cover',
             backgroundPosition: 'center center',
