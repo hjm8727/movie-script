@@ -1,20 +1,14 @@
-import Category from "./Category";
-import Menu from "./Menu";
-import Trailer from "./Trailer";
+import Menu from "./Menu/Menu";
+import MainPage from "./MainPage/MainPage";
 
 
 const Main = () => {
     return (
-        <div style={{backgroundColor: 'black'}}>
+        <div>
         <Menu/>
         
-        <Trailer/>
+        <MainPage/>
         <br/>
-        <Category name="추천작"/>
-        <br/>
-        <Category name="인기 상영작"/>
-        <br/>
-        <Category name="나의 시청 목록"/>
         </div>
     );
 };

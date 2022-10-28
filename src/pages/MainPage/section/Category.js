@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import Modal from '../util/Modal';
+
 import styled from 'styled-components';
+import Modal from '../../../util/Modal';
 
 const CategoryBody = styled.div`
 .th {

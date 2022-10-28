@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -24,48 +25,6 @@ const Container = styled.div`
         width: 95px;
         height:70px;
     } 
-    // 카테고리 드롭다운 
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-    .dropdown{
-        position : relative;
-        display : inline-block; 
-        list-style:none; 
-        margin:1px;
-        /* margin-left: -250px; */
-        margin-top: 20px;
-        font-weight: 400;
-        cursor : pointer;
-        font-size : 20px;
-    }
-    .dropdown-content{
-        display : none;
-        position : absolute;
-        z-index : 1; /*다른 요소들보다 앞에 배치*/
-        font-weight: 400;
-        background-color: black;
-        color: white;
-        width: 150px;
-        padding: 15px;
-        margin:0;
-        margin-left: -20px;
-    }
-
-    .dropdown-content li{
-        display : block;
-        text-decoration : none;
-        color : white;
-        font-size: 18px;
-        padding : 12px 5px;
-    }
-
-    .dropdown-content :hover{
-        color: #FFD369;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-        z-index: 5;
-    }
     //검색창
     .search{
         margin: 0;
@@ -183,58 +142,59 @@ const Container = styled.div`
     
 `;
 
-
 const Menu = () => {
+    
+    const [isLogin,setIsLogin] = useState(false);
+    const [inputTxt,setInputTxt] = useState('');
+
+    // 로그인 상태일떄, icon 화면에 조건부 랜더링 로직
+    const isLoginStorage = window.localStorage.getItem("isLogin"); 
+        if(isLoginStorage === "TRUE"){
+            setIsLogin(true);
+    }
+
+    // 검색창에 입력값이 들어올때 value 에 값을 담음
+    const onChangeTxt = (e) =>{
+        const txt = e.target.value;
+        setInputTxt(txt);
+        console.log(txt);
+    }
+    
+   // 검색버튼 클릭시 검색한 값을 localstorage 에 저장
+    const onClickSearch = () =>{
+        window.localStorage.setItem("inputTxt", inputTxt);
+    }
+    
+
+    
     return (
         <Container>
             <ul class="navbar">
                 <li class="logo"><Link to ="/"><img src="images/Logo.png" alt="Logo"/></Link></li>
             
-                
-                <li class="dropdown">카테고리
-                    <p class="dropbtn"></p>
-                    <ul class="dropdown-content">
-                        <li><Link to ="/">카테고리1</Link></li>
-                        <li><Link to ="/">카테고리2</Link> </li>
-                        <li><Link to ="/">카테고리3</Link></li>
-                    </ul>
+                <li class="search">
+                        <input class="search-box" type="text" value={inputTxt} onChange={onChangeTxt} placeholder="영화 제목 입력"/>
+                        <Link to ="/SearchResult/SearchResult"><button class="submit" onClick={onClickSearch} >search</button></Link>
                 </li>
 
-                <li class="search">
-                    <select class="category" required>선택
-                        <option class="optionItem" value="" disabled selected>선택</option>
-                        <option class="optionItem" value="title">제목</option>
-                        <option class="optionItem" value="acter">배우</option>
-                        <option class="optionItem" value="master">감독</option>
-                        <option class="optionItem" value="">??</option>
-                    </select>   
-                        <input class="search-box" type="text"></input>
-                        <button class="submit">search</button>
-                </li>
-                
-                {/* <li class="dropdown-icon">
-                    <p class="dropbtn-icon"><img src="images/Bell3.png" alt="icon"/></p>
-                    <ul class="dropdown-content-icon">
-                        <li><Link to ="/MyPage/Mypage">My page</Link></li>
-                        <li><Link to ="/">고객센터</Link></li>
-                        <li><Link to ="/">로그아웃</Link></li>
-                    </ul>
-                </li> */}
+                {isLogin ?
                 <li class="dropdown-icon">
                     <p class="dropbtn-icon"><img src="images/mem.png" alt="icon"/></p>
                     <ul class="dropdown-content-icon">
                         <li><Link to ="/MyPage/Mypage">My Page</Link></li>
-                        <li><Link to ="/Login/LoginPage">로그인</Link></li>
+                        <li><Link to ="/Login/LoginPage">로그아웃</Link></li>
                         <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
                     </ul>
                 </li>
-                
-                {/* <li class="icon-guest">
-                    <ul class="icon-dropbox">
-                        <li><Link to ="/">로그인</Link></li>
-                        <li><Link to ="/">고객센터</Link></li>
+                :
+                <li class="dropdown-icon">
+                    <p class="dropbtn-icon"><img src="images/mem.png" alt="icon"/></p>
+                    <ul class="dropdown-content-icon">
+                        <li><Link to  ="/Login/LoginPage">로그인</Link></li>
+                        <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
                     </ul>
-                </li> */}
+                </li>
+        }
             </ul>
         </Container>
     );
