@@ -1,10 +1,9 @@
 import {useNavigate} from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
-import black from './SignUp.css';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
-
+import './SignUp.css';
 
 const SignUpBlock=styled.div`
 .page{

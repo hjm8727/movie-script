@@ -90,6 +90,8 @@ const Test = () => {
     </Card>
     );
 }
+const userId = window.localStorage.getItem("userId");
+const userPwd = window.localStorage.getItem("userPwd");
 
 const Mypage = () => {
   return (
@@ -104,8 +106,8 @@ const Mypage = () => {
             <BsFillPeopleFill icon={BsFillPeopleFill} size='160px' style={{border:'1px solid #eeeeee', margin:'30px 10px', backgroundColor: 'black'}}/>
             <br />
             <Link className="profil" to="/MyPage/Infoset">회원정보수정</Link>
-            <h3 className="info">이름 : 지민</h3>
-            <h3 className="info">가입일 : 2022.10.19</h3>
+            <h3 className="info">이름 : 지민 {userId}</h3>
+            <h3 className="info">가입일 : 2022.10.19{userPwd}</h3>
             <br />
             <h2>찜 리스트</h2>
             <Test />

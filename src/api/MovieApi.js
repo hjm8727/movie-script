@@ -8,7 +8,7 @@ const MovieApi={
             id : inputId,
             pwd : inputPwd
         }
-        return await axios.post(MOVIE_DOMAIN + "login", loginObj, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "LoginServlet", loginObj, HEADER)
     },
     // 현재 비밀번호가 존재하는지 확인하기 위한 API
     nowPwdCheck : async function(regPwd) {

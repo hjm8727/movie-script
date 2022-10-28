@@ -141,24 +141,22 @@ const InfoSet = () => {
             setIsCheckPwd(true);
         }
     }
-    // 비밀번호 체크
-    const onClickCheck = async() => {
-        console.log('비밀번호 확인');
-        // DB에 있는 비밀번호랑 현재 비밀번호 입력이랑 같은지 확인 
-        // 입력한 비밀번호를 API를 통해 현재 존재하는 회원인지 체크 그리고 ok면 그대로 else면 경고창
-        const pwdCheck = await MovieApi.nowPwdCheck(inputPwd);
-        console.log(pwdCheck.data.result); // 체크하고 OK라고 뜨면 다음 단계
-        if (pwdCheck.data.result === "OK") {
-            console.log("현재 비밀번호 확인 결과 DB에 존재하는 회원입니다.");
+
+    // 현재 비밀번호가 로그인 계정이랑 일치 하는지 확인.
+    const onCheckPwd = () => {
+        const pwd = window.localStorage.getItem("userPwd");
+        if(inputPwd === pwd) {
+            console.log("현재 비밀번호랑 로그인 계정이랑 일치함");
         } else {
-            alert("존재하지 않는 비밀번호입니다. . .");
+            alert("현재 비밀번호가 일치하지 않음");
         }
     }
 
+    // 다 트루면 비밀번호 확인 함수를 거쳐 수정 진행
     const onClickSet = async () => {
         if(isPwd && isNewPwd && isCheckPwd) {
             console.log("성공 다음 단계로 진행");
-            onClickCheck();
+            onCheckPwd();
             const newPassword = await MovieApi.newPwd(inputPwd, newInputPwd);
             console.log(newPassword.data.result);
             if(newPassword.data.result === "OK") {

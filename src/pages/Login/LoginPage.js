@@ -117,7 +117,7 @@ const LoginPage=()=>{
     const onChangeId = (e) => {
         const idCurrent = e.target.value; // 변수 하나 만들어서 실시간 적용되게
         setInputId(idCurrent)
-        const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
+        const regId = /^[A-Za-z]+[A-Za-z0-9]{5,19}$/g;
         if(regId.test(idCurrent)){
             setIsId(true);
         }else{
@@ -174,8 +174,9 @@ const LoginPage=()=>{
             
             if(res.data.result === "OK"){
                 window.localStorage.setItem("userId", inputId);
-                window.localStorage.setItem("userpwd",inputPwd);
+                window.localStorage.setItem("userPwd",inputPwd);
                 window.location.replace("/");
+                console.log("로그인 성공");
             } else {
                 setModalOpen(true);
             }
