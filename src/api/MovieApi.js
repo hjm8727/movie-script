@@ -3,12 +3,31 @@ const HEADER = 'application/json';
 const MOVIE_DOMAIN="http://localhost:8090/kh_movie_project/";
 
 const MovieApi={
+
+    // 로그인 api
     userLogin : async function(inputId, inputPwd){
         const loginObj = {
             id : inputId,
-            pwd : inputPwd
+            password : inputPwd
         }
-        return await axios.post(MOVIE_DOMAIN + "LoginServlet", loginObj, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "/member/signin", loginObj, HEADER)
+    },
+    // 회원가입 api
+    memberReg : async function(inputId, inputPwd, inputName,inputEmail){
+        const memberObj = {
+            id : inputId,
+            password : inputPwd,
+            name : inputName,
+            email : inputEmail
+        }
+        return await axios.post(MOVIE_DOMAIN + "/member/signup", memberObj, HEADER)
+    },
+    // 회원가입 여부 api
+    memberRegCheck : async function(inputId){
+        const regCheck = {
+            id : inputId,
+        }
+        return await axios.post(MOVIE_DOMAIN + "/member/signup", regCheck, HEADER)
     },
     // 현재 비밀번호가 존재하는지 확인하기 위한 API
     nowPwdCheck : async function(regPwd) {
