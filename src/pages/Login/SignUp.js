@@ -188,7 +188,6 @@ const SignUp=()=>{
         } 
     }
 
-
     return(
         <SignUpBlock>
         <div className="page">

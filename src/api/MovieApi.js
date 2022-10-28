@@ -1,9 +1,8 @@
 import axios from "axios";
 const HEADER = 'application/json';
-const MOVIE_DOMAIN="http://localhost:8090/kh_movie_project/";
+const MOVIE_DOMAIN="http://localhost:8090/Movie_login/";
 
 const MovieApi={
-
     // 로그인 api
     userLogin : async function(inputId, inputPwd){
         const loginObj = {
@@ -28,6 +27,14 @@ const MovieApi={
             id : inputId,
         }
         return await axios.post(MOVIE_DOMAIN + "IdRegCheck", regCheck, HEADER)
+    },
+    // 비밀번호 찾기 api
+    findPassword : async function(inputId, inputEmail){
+        const finding ={
+            id : inputId,
+            email : inputEmail
+        }
+        return await axios.post(MOVIE_DOMAIN + "Find", finding, HEADER)
     },
     // 현재 비밀번호가 존재하는지 확인하기 위한 API
     nowPwdCheck : async function(regPwd) {

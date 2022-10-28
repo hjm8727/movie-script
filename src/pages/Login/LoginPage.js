@@ -103,8 +103,6 @@ img{
     height:70px;
 } 
 `;
-
-
 const LoginPage=()=>{
     let navigate = useNavigate(); 
     const [inputId, setInputId] = useState("");
