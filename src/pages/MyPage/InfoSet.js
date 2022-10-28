@@ -84,8 +84,6 @@ const StyleInfoSet = styled.div`
 `;
 const InfoSet = () => {
 
-    // 체크
-    let isPwdCheckOk;
     // 비밀번호 찾기
     // 키보드 입력
     const [inputPwd, setInputPwd] = useState("");
@@ -98,7 +96,7 @@ const InfoSet = () => {
     const [pwdCheckMessage, setPwdCheckMessage] = useState("");
 
     // 유효성 검사
-    const [isPwd, setIsPwd] = useState(false);
+    let [isPwd, setIsPwd] = useState(false);
     const [isNewPwd, setIsNewPwd] = useState(false);
     const [isCheckPwd, setIsCheckPwd] = useState(false);
 
@@ -143,8 +141,7 @@ const InfoSet = () => {
             setIsCheckPwd(true);
         }
     }
-
-    // 현재 비밀번호는 비밀번호 확인 누를시 존재하는 비밀번호면 TRUE 아니면 FALSE
+    // 비밀번호 체크
     const onClickCheck = async() => {
         console.log('비밀번호 확인');
         // DB에 있는 비밀번호랑 현재 비밀번호 입력이랑 같은지 확인 
@@ -153,18 +150,15 @@ const InfoSet = () => {
         console.log(pwdCheck.data.result); // 체크하고 OK라고 뜨면 다음 단계
         if (pwdCheck.data.result === "OK") {
             console.log("현재 비밀번호 확인 결과 DB에 존재하는 회원입니다.");
-            alert("확인 완료");
-            isPwdCheckOk = true;
         } else {
-            isPwdCheckOk = false;
-            alert("존재하지 않는 회원입니다.");
-            console.log(isPwdCheckOk);
+            alert("존재하지 않는 비밀번호입니다. . .");
         }
     }
 
     const onClickSet = async () => {
-        if(isPwdCheckOk && isNewPwd && isCheckPwd) {
+        if(isPwd && isNewPwd && isCheckPwd) {
             console.log("성공 다음 단계로 진행");
+            onClickCheck();
             const newPassword = await MovieApi.newPwd(inputPwd, newInputPwd);
             console.log(newPassword.data.result);
             if(newPassword.data.result === "OK") {
@@ -174,9 +168,7 @@ const InfoSet = () => {
             }
         }
         else {
-            console.log(`패스워드 체크 : ${isPwdCheckOk}`);
-            console.log(`새로운 비밀번호 : ${isNewPwd}`);
-            console.log(`비밀번호 확인 :  ${isCheckPwd}`);
+            console.log(isPwd);
             alert("다시 확인 부탁드립니다.");
         }
     }
@@ -195,7 +187,6 @@ const InfoSet = () => {
                 <div className="hint">
                     {inputPwd.length > 0 && <span className={`message ${isPwd ? 'success' : 'error'}`}>{pwdMessage}</span>}
                 </div>
-                <button className="pwd-exist" onClick={onClickCheck}>확인하기</button> 
                 <p />
                 <input className="input-box" type='text' placeholder="새로운 비밀번호 입력" value={newInputPwd} onChange={onChangeNewPwd} />
                 <div className="hint">
