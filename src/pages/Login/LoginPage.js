@@ -7,8 +7,6 @@ import Modal from "../../util/Modal";
 import MovieApi from "../../api/MovieApi";
 
 const LoginBlock=styled.div`
-    background-color: black; //적용안됨 ㅡㅡ
-    color: #EEEEEE;
 .page{
     position: absolute;
     top: 60px;
@@ -25,16 +23,21 @@ const LoginBlock=styled.div`
     height : 800px; // 높이 만 추가했습니다.
 }
 .titleWrap{
-    margin-top: 87px;
+    color: #EEEEEE;
+    margin-top: 80px;
     font-size: 30px;
     font-weight: bold;
     text-align: center;
 }
+.titleWrap img{
+    size: initial;
+    margin-right :10px;
+} 
 .loginWrap{
-    margin-top: 20px;
     flex: 1;
 }
 .inputTitle{
+    margin-top: 17px;
     font-size: 12px;
     font-weight: 500px;
     color: #EEEEEE;
@@ -44,7 +47,6 @@ const LoginBlock=styled.div`
     border-radius: 8px;
     padding: 16px;
     margin-top: 8px;
-    /* background-color: white; */
     border: 2px solid #EEEEEE;
 }
 .inputWrap:focus-within{border: 2px solid #FFD369;}
@@ -56,14 +58,17 @@ const LoginBlock=styled.div`
     font-size: 14px;
     font-weight: 400px;
     background-color: inherit;
-    color : white;
-
+    color: #EEEEEE;
 }
 .input::placeholder{color : #dadada}
 .error{
     margin-top: 8px;
     font-size: 12px;
     color: #FFD369;
+}
+.auto{
+    color:#EEEEEE;
+    margin-left: 10px;
 }
 .loginButton, .goButton{
     width: 100%;
@@ -73,31 +78,34 @@ const LoginBlock=styled.div`
     cursor: pointer;
     border-radius: 60px;
     background-color: #FFD369;
-    color : white;
+    color:#EEEEEE;
     margin: 20px 0 ;
     font-weight: bold;
 }
 .find{
     text-align: center;
     margin-top: 20px;
+    color: #EEEEEE;
     cursor: pointer;
+    span{
+        margin: 0 15px;
+    }
 }
+.findId:hover,.findPwd:hover{color: #FFD369;}
 .loginButton:disabled {background-color: #222831}
 hr{
-    border: 2px solid #dadada;
-    /* color: #dadada; */
+    border: 2px solid #EEEEEE;
     height: 4px;
-    margin: 40px 0;
+    margin: 35px 0;
 }
 .goButton{
     margin-bottom: 40px;
 }
-
-.titleWrap img{
-    // 로고 위치만 수정했습니다.
+.logo img{
+    margin-top: 20px;
     size: initial;
-    margin-right :10px;
-}     
+    margin-left :5px;
+}      
 img{
     width: 100px;
     height:70px;
@@ -130,24 +138,6 @@ const LoginPage=()=>{
         }else{
             setIsPwd(false)
         }};
-
-    // const onChangeId = (e) => {
-    //     console.log(inputId);
-    //     setInputId(e.target.value);
-    //     const regId = /^[a-z]+[a-z0-9]{5,19}$/g;
-    //     if(regId.test(inputId)){
-    //         setIsId(true);
-    //     } else{
-    //         setIsId(false);
-    //     }};
-    // const onChangePwd = (e) => {
-    //     setInputPwd(e.target.value);
-    //     const regPwd = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-    //     if(regPwd.test(inputPwd)){
-    //         setIsPwd(true);
-    //     }else{
-    //         setIsPwd(false)
-    //     }};
 
     // 유효값 충족되는지 데이터 추가될때마다 확인
     useEffect(()=>{
@@ -204,7 +194,10 @@ const LoginPage=()=>{
                 <div className="auto"><input type="checkbox" value="remember"/><span>자동로그인</span></div>
                 <div className="item"><button type="submit" className="loginButton" disabled={submit} onClick={onClickLogin} >확인</button></div>
                 <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
-                <div className="find" onClick={()=>{navigate('/Login/FindPwd')}}>😥패스워드를 잊으셨나요?</div>
+                <div className="find">
+                    <span className="findId" onClick={()=>{navigate('/Login/FindId')}}>아이디 찾기</span>
+                    <span className="findPwd" onClick={()=>{navigate('/Login/FindPwd')}}>비밀번호 찾기</span>
+                </div>
                 <hr/>
                 <div className="item"><button type="submit" className="goButton" onClick={()=>{navigate('/Login/SignUp')}}>회원가입</button></div>
                 </div>

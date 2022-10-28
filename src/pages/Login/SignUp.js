@@ -58,7 +58,7 @@ const SignUpBlock=styled.div`
     font-size: 14px;
     font-weight: 400px;
     background-color: inherit;
-    color : white;
+    color: #EEEEEE;
 }
 .input::placeholder{color : #EEEEEE}
 .error{

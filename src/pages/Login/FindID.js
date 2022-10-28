@@ -38,6 +38,7 @@ const FindPwdBlock=styled.div`
     font-weight: 400px;
     background-color: inherit;
     color: #EEEEEE;
+
 }
 .input::placeholder{color : #dadada}
 .loginButton, .findButton{
@@ -73,12 +74,12 @@ div{
 `;
 const FindPwd=()=>{
     let navigate = useNavigate();
-    const [inputId, setInputId] = useState("");
+    const [inputName, setInputName] = useState("");
     const [inputEmail, setInputEmail] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
     const [modalText, setModalText] = useState(false);
     const onChangeId=(e)=>{
-        setInputId(e.target.value);
+        setInputName(e.target.value);
     }
     const onchangeEmail=(e)=>{
         setInputEmail(e.target.value);
@@ -91,31 +92,31 @@ const FindPwd=()=>{
     };
     const onClickFind=async()=>{
         // 가입된 값이 있는지 확인 
-        const findPassword = await MovieApi.findPassword(inputId, inputEmail);
+        const findPassword = await MovieApi.findPassword(inputName, inputEmail);
         console.log(findPassword); //무슨값인지 확인 
         // 서버에 있는 값 읽어오기
-        const pwd = window.localStorage.getItem('pwd');
+        const id = window.localStorage.getItem('id');
         // 서버 불러온 데이터랑 입력창에 입력한거랑 같은지 확인
-        if(findPassword.data.result !== "OK"){
-            console.log("아이디와 이메일을 다시 확인해주세요.");
+        if(findPassword.data.result !== setInputName&&setInputEmail){
+            console.log("이름과 이메일을 다시 확인해주세요.");
             setModalOpen(true);
             setModalText("오류메세지");
         }else{
-            console.log("가입된 아이디 있음");
-            setModalText("비밀번호는"+pwd+"입니다.");
+            console.log("가입한 이름, 이메일 일치합니다.");
+            setModalText("아이디는"+id+"입니다.");
         } 
     }
     return(
         <FindPwdBlock>
         <div className='find-container'>
-        <h2>비밀번호 찾기</h2>
-        <div className='findDesc'>가입시 입력하신 이메일을 통해 찾을 수 있습니다. </div>
-        <div className="inputWrap"><input className="input" placeholder="아이디를 입력하세요*" type="text" value={inputId} onChange={onChangeId}/></div>
+        <h2>아이디 찾기</h2>
+        <div className='findDesc'>가입 시 입력하신 이름과 이메일을 통해 찾을 수 있습니다. </div>
+        <div className="inputWrap"><input className="input" placeholder="이름을 입력하세요*" type="text" value={inputName} onChange={onChangeId}/></div>
         <div className="inputWrap"><input className="input" placeholder="이메일을 입력하세요*" type="email" value={inputEmail} onChange={onchangeEmail}/></div>
-        <div className="item"><button type="submit" className="findButton" onClick={onClickFind}>비밀번호 찾기</button></div>
+        <div className="item"><button type="submit" className="findButton" onClick={onClickFind}>아이디 찾기</button></div>
         <hr/>
         <div className="item"><button type="button" className="loginButton" onClick={()=>{navigate('/Login/LoginPage')}}>로그인하러 가기</button></div>
-        <Modal open={modalOpen} close={closeModal} header="하린님의 비밀번호는">{setModalText}</Modal>
+        <Modal open={modalOpen} close={closeModal} header="하린님의 아이디는">{setModalText}</Modal>
         </div>
         </FindPwdBlock>
     );

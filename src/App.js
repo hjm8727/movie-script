@@ -6,6 +6,8 @@ import Mypage from './pages/MyPage/Mypage';
 import LoginPage from './pages/Login/LoginPage';
 import SignUp from './pages/Login/SignUp';
 import FindPwd from './pages/Login/FindPwd';
+import FindID from './pages/Login/FindID';
+
 import InfoSet from './pages/MyPage/InfoSet';
 import Inquire from './pages/MyPage/Inquire';
 
@@ -20,6 +22,7 @@ function App() {
         <Route path='/Login/LoginPage' element={<LoginPage/>}/>
         <Route path='/Login/SignUp' element={<SignUp/>}/>
         <Route path='/Login/FindPwd' element={<FindPwd/>}/>
+        <Route path='/Login/FindID' element={<FindID/>}/>
       </Routes>
     </Router>
   );
