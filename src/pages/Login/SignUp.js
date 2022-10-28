@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import './SignUp.css';
+import MovieApi from '../../api/MovieApi';
 
 const SignUpBlock=styled.div`
 .page{
@@ -58,7 +59,6 @@ const SignUpBlock=styled.div`
     font-weight: 400px;
     background-color: inherit;
     color : white;
-
 }
 .input::placeholder{color : #EEEEEE}
 .error{
@@ -99,42 +99,21 @@ img{
 } 
 `;
 
-const memberObj={
-    id : "",
-    pwd : "",
-    confirmPwd : "",
-    email : "",
-};
-
 const SignUp=()=>{
-    const [resData, setResData] = useState('');
-    const onSubmit =async ()=>{
-        memberObj.id = inputId; //useState를 통해서 만들어진 값을 객체에 넣음
-        memberObj.pwd = inputPwd; 
-        memberObj.confirmPwd = confirmPwd; 
-        memberObj.email = inputEmail; 
-        // 데이터 날리기
-        try{
-            const res = await axios.post("http://localhost:3000/posts", memberObj,'application/json');
-            setResData(res.data); //값이 들어오면 나타남
 
-        }catch(e){
-            console.log(e);
-        }
-    }
-    
-    let navigate = useNavigate(); 
+    // 키보드 입력
     const [inputId, setInputId] = useState("");
     const [inputPwd, setInputPwd] = useState("");
     const [confirmPwd, setConfirmPwd] = useState(""); 
     const [inputName, setInputName] = useState("");
     const [inputEmail, setInputEmail] = useState("");
+    
+    // 유효성 검사
     const [isId, setIsId] = useState(false);
     const [isPwd, setIsPwd] = useState(false);
     const [isConfirmPwd, setIsConfirmPwd] = useState(false);
     const [isName, setIsName] = useState(false);
     const [isEmail, setIsEmail] = useState(false);
-    const [submit, setSubmit] = useState(true);
 
     const onChangeId = (e) => {
         // 회원 가입도 변수 만드신걸로 바꿔놨습니다.
@@ -158,14 +137,14 @@ const SignUp=()=>{
             setIsPwd(false)
         }};
     
-        const onChangeConfirmPwd = (e) => {
-            const passwordCurrent = e.target.value;
-            setConfirmPwd(passwordCurrent)
-            if(passwordCurrent !==inputPwd){
-                setIsConfirmPwd(false);
-            }else{
-                setIsConfirmPwd(true);
-            }};
+    const onChangeConfirmPwd = (e) => {
+        const passwordCurrent = e.target.value;
+        setConfirmPwd(passwordCurrent)
+        if(passwordCurrent !== inputPwd){
+            setIsConfirmPwd(false);
+        }else{
+            setIsConfirmPwd(true);
+        }};
 
     const onChangeEmail = (e) => {
         setInputEmail(e.target.value);
@@ -184,12 +163,31 @@ const SignUp=()=>{
             setIsName(false)
         }};
         
-    useEffect(()=>{
-        if(isId&&isPwd&&isConfirmPwd&&isName&&isEmail){
-            setSubmit(false);
-            return;
-        }setSubmit(true);
-    }, [isId, isPwd, isConfirmPwd,isName,isEmail]);  
+    const OnClickSignUp = () => {
+        if(isId && isPwd && isConfirmPwd && isName && isEmail) {
+            window.localStorage.setItem("userName", isName);
+            window.localStorage.setItem("userEmail", isEmail);
+            window.location.replace('/Login/LoginPage');
+        } else {
+            alert("회원가입 실패");
+        }
+    }
+    // 가입 버튼 누르면 가입되어 있는지 체크 후 다음 단게로 memberReg Api 통해서 OK 뜨면 위에 onClickSignUp 함수를 가져와서 로그인 화면으로 넘어가게
+    const onSubmit = async () => {
+        const memberCheck = await MovieApi.memberRegCheck(inputId);
+        console.log(memberCheck.data.result);
+        if(memberCheck.data.result === "OK"){
+            console.log("가입된 아이디가 없음. 다음 단계 진행");
+            const memberRegister = await MovieApi.memberReg(inputId, inputPwd, inputName, inputEmail);
+            console.log(memberRegister.data.result);
+            if(memberRegister.data.result === "OK") {
+                OnClickSignUp();
+            } else {
+                alert("이미 존재한 회원이거나, 잘못 입력하셨습니다.");
+            }
+        } 
+    }
+
 
     return(
         <SignUpBlock>
@@ -224,7 +222,7 @@ const SignUp=()=>{
                 </div>
                 <div className="error">{!isEmail && inputEmail.length >0 &&('올바른 이메일형식이 아닙니다.')}</div>
                 <hr/>
-                <div className="item"><button type="submit" className="signUpButton" disabled={submit}>확인</button></div>
+                <div className="item"><button type="submit" className="signUpButton" onClick={onSubmit}>확인</button></div>
                 </div>
                 </div>
                 </SignUpBlock>

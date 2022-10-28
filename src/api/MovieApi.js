@@ -8,26 +8,26 @@ const MovieApi={
     userLogin : async function(inputId, inputPwd){
         const loginObj = {
             id : inputId,
-            password : inputPwd
+            pwd : inputPwd
         }
-        return await axios.post(MOVIE_DOMAIN + "/member/signin", loginObj, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "LoginServlet", loginObj, HEADER)
     },
     // 회원가입 api
     memberReg : async function(inputId, inputPwd, inputName,inputEmail){
         const memberObj = {
             id : inputId,
-            password : inputPwd,
+            pwd : inputPwd,
             name : inputName,
             email : inputEmail
         }
-        return await axios.post(MOVIE_DOMAIN + "/member/signup", memberObj, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "MemberRegServlet", memberObj, HEADER)
     },
     // 회원가입 여부 api
     memberRegCheck : async function(inputId){
         const regCheck = {
             id : inputId,
         }
-        return await axios.post(MOVIE_DOMAIN + "/member/signup", regCheck, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "IdRegCheck", regCheck, HEADER)
     },
     // 현재 비밀번호가 존재하는지 확인하기 위한 API
     nowPwdCheck : async function(regPwd) {
