@@ -97,6 +97,7 @@ img{
 } 
 `;
 
+/** 회원가입 성공 */
 const SignUp=()=>{
 
     // 키보드 입력
@@ -161,32 +162,16 @@ const SignUp=()=>{
             setIsName(false)
         }};
         
-    const OnClickSignUp = () => {
-        if(isId && isPwd && isConfirmPwd && isName && isEmail) {
-            // 이름 이메일 가져오는 것이 안댐
-            window.localStorage.setItem("userName", inputName);
-            window.localStorage.setItem("userEmail", inputEmail);
-            window.location.replace('/Login/LoginPage');
-        } else {
-            alert("회원가입 실패");
-        }
-    }
     // 가입 버튼 누르면 가입되어 있는지 체크 후 다음 단게로 memberReg Api 통해서 OK 뜨면 위에 onClickSignUp 함수를 가져와서 로그인 화면으로 넘어가게
     const onSubmit = async () => {
-        // const memberCheck = await MovieApi.memberRegCheck(inputId);
-        // console.log(memberCheck.data.result);
-        // if(memberCheck.data.result === "OK"){
-        //     console.log("가입된 아이디가 없음. 다음 단계 진행");
-            const memberRegister = await MovieApi.memberReg(inputId, inputPwd, inputEmail);
-            console.log(memberRegister.data.result);
-            if(memberRegister.data.statusCode === 200) {
-                window.location.replace('/Login/LoginPage');
-            } else {
-                alert("이미 존재한 회원이거나, 잘못 입력하셨습니다.");
-            }
-        // } 
+        const memberRegister = await MovieApi.memberReg(inputId, inputPwd,inputName, inputEmail);
+        console.log(memberRegister.data.result);
+        if(memberRegister.data.statusCode === 200) {
+            window.location.replace('/Login/LoginPage');
+        } else {
+            alert("이미 존재한 회원이거나, 잘못 입력하셨습니다.");
+        }
     }
-
 
     return(
         <SignUpBlock>
