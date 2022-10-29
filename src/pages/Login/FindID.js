@@ -1,33 +1,33 @@
 import {useNavigate} from 'react-router-dom';
 import styled from "styled-components";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../../util/Modal';
 import MovieApi from '../../api/MovieApi';
 
-
-const FindPwdBlock=styled.div`
-    .find-container{
-        position: absolute;
-        top: 60px;
-        bottom: 60px;
-        width : 100%;
-        padding: 0 20px;
-        max-width: 600px;
-        left: 50%;
-        transform: translate(-50%, 0);
-        background-color: #393E46;
-        color: #EEEEEE;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
-    .inputWrap{
+const FindIDBlock=styled.div`
+.find-container{
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    width : 100%;
+    padding: 0 20px;
+    max-width: 600px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #393E46;
+    color: #EEEEEE;
+    overflow: hidden;
     display: flex;
-    border-radius: 8px;
-    padding: 16px;
-    margin-top: 8px;
-    border: 2px solid #EEEEEE;
+    flex-direction: column;
 }
+.inputWrap{
+display: flex;
+border-radius: 8px;
+padding: 16px;
+margin-top: 8px;
+border: 2px solid #EEEEEE;
+}
+
 .inputWrap:focus-within{border: 2px solid #FFD369;}
 .input{
     width: 100%;
@@ -72,16 +72,18 @@ div{
     margin-bottom: 20px;
 }
 `;
-const FindPwd=()=>{
+const FindID=()=>{
     let navigate = useNavigate();
     const [inputName, setInputName] = useState("");
     const [inputEmail, setInputEmail] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
+    const [modalHeader, setModalHeader] = useState(false);
     const [modalText, setModalText] = useState(false);
-    const onChangeId=(e)=>{
+
+    const onChangeName=(e)=>{
         setInputName(e.target.value);
     }
-    const onchangeEmail=(e)=>{
+    const onChangeEmail=(e)=>{
         setInputEmail(e.target.value);
     }
     const openModal = () => {
@@ -90,35 +92,36 @@ const FindPwd=()=>{
     const closeModal = () => {
         setModalOpen(false);
     };
+//   서버 전송되는데 콘솔출력값 화면 구현 아직 안됨 
     const onClickFind=async()=>{
-        // 가입된 값이 있는지 확인 
-        const findPassword = await MovieApi.findPassword(inputName, inputEmail);
-        console.log(findPassword); //무슨값인지 확인 
-        // 서버에 있는 값 읽어오기
-        const id = window.localStorage.getItem('id');
-        // 서버 불러온 데이터랑 입력창에 입력한거랑 같은지 확인
-        if(findPassword.data.result !== setInputName&&setInputEmail){
-            console.log("이름과 이메일을 다시 확인해주세요.");
+        const findUser = await MovieApi.findUser(inputName, inputEmail);
+        if(findUser.data.result === "OK") {
+            // console.log(findUser.data.id);
+            console.log(findUser.data.result);
             setModalOpen(true);
-            setModalText("오류메세지");
-        }else{
-            console.log("가입한 이름, 이메일 일치합니다.");
-            setModalText("아이디는"+id+"입니다.");
-        } 
+            setModalHeader(inputName+" 님의 아이디는");
+            setModalText("입니다.");
+            
+        } else {
+            setModalOpen(true);
+            setModalHeader("오류");
+             setModalText("이름과 이메일이 일치하지 않습니다.");
+        }
     }
+
     return(
-        <FindPwdBlock>
+        <FindIDBlock>
         <div className='find-container'>
         <h2>아이디 찾기</h2>
-        <div className='findDesc'>가입 시 입력하신 이름과 이메일을 통해 찾을 수 있습니다. </div>
-        <div className="inputWrap"><input className="input" placeholder="이름을 입력하세요*" type="text" value={inputName} onChange={onChangeId}/></div>
-        <div className="inputWrap"><input className="input" placeholder="이메일을 입력하세요*" type="email" value={inputEmail} onChange={onchangeEmail}/></div>
+        <div className='findDesc'>가입 된 이름과 이메일을 통해 찾을 수 있습니다. </div>
+        <div className="inputWrap"><input className="input" placeholder="이름을 입력하세요*" type="text" value={inputName} onChange={onChangeName}/></div>
+        <div className="inputWrap"><input className="input" placeholder="이메일을 입력하세요*" type="email" value={inputEmail} onChange={onChangeEmail}/></div>
         <div className="item"><button type="submit" className="findButton" onClick={onClickFind}>아이디 찾기</button></div>
         <hr/>
         <div className="item"><button type="button" className="loginButton" onClick={()=>{navigate('/Login/LoginPage')}}>로그인하러 가기</button></div>
-        <Modal open={modalOpen} close={closeModal} header="하린님의 아이디는">{setModalText}</Modal>
+        <Modal open={modalOpen} close={closeModal} header={modalHeader}>{modalText}</Modal>
         </div>
-        </FindPwdBlock>
+        </FindIDBlock>
     );
 }
-export default FindPwd;
+export default FindID;

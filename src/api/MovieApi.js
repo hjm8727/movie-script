@@ -1,14 +1,13 @@
 import axios from "axios";
 const HEADER = 'application/json';
-const MOVIE_DOMAIN="http://cokebear756.synology.me:62322/api/client/";
+const MOVIE_DOMAIN="http://localhost:8090/miniProject/";
 
 const MovieApi={
-
     // 로그인 api
     userLogin : async function(inputId, inputPwd){
         const loginObj = {
             id : inputId,
-            pwd : inputPwd
+            password : inputPwd
         }
         return await axios.post(MOVIE_DOMAIN + "LoginServlet", loginObj, HEADER)
     },
@@ -29,6 +28,22 @@ const MovieApi={
         }
         return await axios.post(MOVIE_DOMAIN + "IdRegCheck", regCheck, HEADER)
     },
+     // 아이디 찾기 api
+     findUser : async function(inputName,inputEmail){
+        const finding ={
+            name : inputName,
+            email : inputEmail
+        }
+        return await axios.post(MOVIE_DOMAIN + "FindIDServlet", finding, HEADER)
+    },
+    // 비밀번호 찾기 api
+    findPassword : async function(inputId, inputEmail){
+        const finding ={
+            id : inputId,
+            email : inputEmail
+        }
+        return await axios.post(MOVIE_DOMAIN + "Find", finding, HEADER)
+    },
     // 현재 비밀번호가 존재하는지 확인하기 위한 API
     nowPwdCheck : async function(regPwd) {
         const regPwdCheck = {
@@ -42,13 +57,6 @@ const MovieApi={
             newPwd : newPwd
         }
         return await axios.post(MOVIE_DOMAIN + "SetPwdServlet", setPwd, HEADER);
-    },
-    findPwd : async function(id, email) {
-        const findPwd = {
-            id : id,
-            email : email
-        }
-        return await axios.post(MOVIE_DOMAIN + "PwdFineServlet", findPwd, HEADER);
     }
 }
 export default MovieApi;

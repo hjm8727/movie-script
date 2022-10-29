@@ -119,7 +119,6 @@ const LoginPage=()=>{
     const [isPwd, setIsPwd] = useState(false);
     const [submit, setSubmit] = useState(true);
 
-// 입력창 한칸씩 삭제했을시 유효성검사 되는거 다시 구현 
     const onChangeId = (e) => {
         const idCurrent = e.target.value; // 변수 하나 만들어서 실시간 적용되게
         setInputId(idCurrent)
