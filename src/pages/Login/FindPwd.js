@@ -1,6 +1,6 @@
 import {useNavigate} from 'react-router-dom';
 import styled from "styled-components";
-import { useState } from 'react';
+import { useEffect,useState } from 'react';
 import Modal from '../../util/Modal';
 import MovieApi from '../../api/MovieApi';
 
@@ -50,6 +50,7 @@ const FindPwdBlock=styled.div`
     color:#222831;
     font-weight: bold;
 }
+.findButton:disabled{background-color: #222831;color: #EEEEEE;}
 hr{
     border: 2px solid #EEEEEE;
     height: 4px;
@@ -77,6 +78,8 @@ const FindPwd=()=>{
     const [modalOpen, setModalOpen] = useState(false);
     const [modalHeader, setModalHeader] = useState(false);
     const [modalText, setModalText] = useState(false);
+    const [submit, setSubmit] = useState(true);
+
 
     const onChangeId=(e)=>{
         setInputId(e.target.value);
@@ -105,6 +108,13 @@ const FindPwd=()=>{
             setModalText("아이디와 이메일이 일치하지 않습니다.");
         }
     }
+    useEffect(()=>{
+        if(inputId&&inputEmail){
+            setSubmit(false);
+            return;
+        }setSubmit(true);
+    }, [inputId, inputEmail]);
+
     return(
         <FindPwdBlock>
         <div className='find-container'>
@@ -112,7 +122,7 @@ const FindPwd=()=>{
         <div className='findDesc'>가입 된 아이디와 이메일을 통해 찾을 수 있습니다. </div>
         <div className="inputWrap"><input className="input" placeholder="아이디를 입력하세요*" type="text" value={inputId} onChange={onChangeId}/></div>
         <div className="inputWrap"><input className="input" placeholder="이메일을 입력하세요*" type="email" value={inputEmail} onChange={onchangeEmail}/></div>
-        <div className="item"><button type="submit" className="findButton" onClick={onClickFind}>비밀번호 찾기</button></div>
+        <div className="item"><button type="submit" className="findButton" onClick={onClickFind} disabled={submit}>비밀번호 찾기</button></div>
         <hr/>
         <div className="item"><button type="button" className="loginButton" onClick={()=>{navigate('/Login/LoginPage')}}>로그인하러 가기</button></div>
         <Modal open={modalOpen} close={closeModal} header={modalHeader}>{modalText}</Modal>

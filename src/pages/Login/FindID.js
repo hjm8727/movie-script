@@ -52,6 +52,7 @@ border: 2px solid #EEEEEE;
     color:#222831;
     font-weight: bold;
 }
+.findButton:disabled{background-color: #222831;color: #EEEEEE;}
 hr{
     border: 2px solid #EEEEEE;
     height: 4px;
@@ -79,6 +80,8 @@ const FindID=()=>{
     const [modalOpen, setModalOpen] = useState(false);
     const [modalHeader, setModalHeader] = useState(false);
     const [modalText, setModalText] = useState(false);
+    const [submit, setSubmit] = useState(true);
+
 
     const onChangeName=(e)=>{
         setInputName(e.target.value);
@@ -107,6 +110,12 @@ const FindID=()=>{
             setModalText("이름과 이메일이 일치하지 않습니다.");
         }
     }
+    useEffect(()=>{
+        if(inputName&&inputEmail){
+            setSubmit(false);
+            return;
+        }setSubmit(true);
+    }, [inputName, inputEmail]);
 
     return(
         <FindIDBlock>
@@ -115,7 +124,7 @@ const FindID=()=>{
         <div className='findDesc'>가입 된 이름과 이메일을 통해 찾을 수 있습니다. </div>
         <div className="inputWrap"><input className="input" placeholder="이름을 입력하세요*" type="text" value={inputName} onChange={onChangeName}/></div>
         <div className="inputWrap"><input className="input" placeholder="이메일을 입력하세요*" type="email" value={inputEmail} onChange={onChangeEmail}/></div>
-        <div className="item"><button type="submit" className="findButton" onClick={onClickFind}>아이디 찾기</button></div>
+        <div className="item"><button type="submit" className="findButton" onClick={onClickFind} disabled={submit}>아이디 찾기</button></div>
         <hr/>
         <div className="item"><button type="button" className="loginButton" onClick={()=>{navigate('/Login/LoginPage')}}>로그인하러 가기</button></div>
         <Modal open={modalOpen} close={closeModal} header={modalHeader}>{modalText}</Modal>

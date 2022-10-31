@@ -168,7 +168,6 @@ const LoginPage=()=>{
             } else {
                 setModalOpen(true);
                 window.localStorage.setItem("isLogin", false);
-
             }
         } catch(e) {
             setModalOpen(true);
