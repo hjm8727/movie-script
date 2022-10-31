@@ -38,10 +38,11 @@ const StyleInfoSet = styled.div`
 }
 .input-box {
     margin-top: 2rem;
-    width: 25vw;
-    height: 10vh;
+    width: 35vw;
+    height: 8vh;
     background-color: #eeeeee;
-    color: black; 
+    color: black;
+    border-radius: 8px;
 }
 .infoset-title {
     color: #ffd369;
@@ -53,8 +54,9 @@ const StyleInfoSet = styled.div`
     margin-top: 3rem;
     width: 15vw;
     height: 10vh;
-    background-color: #eeeeee;
-    color: black;
+    background-color: #ffd369;
+    color: #232323;
+    border-radius: 8px;
 }
 .pwd-find {
     color: #ffd369;
@@ -67,17 +69,20 @@ const StyleInfoSet = styled.div`
 .hint {
     color: #ffd369;
 }
+span {
+    color: #ffd369;
+}
 @media screen and (max-width: 768px) {
     .infoset-container {
         width: 90%;
         height: 100%;
     }
     .input-box {
-        width: 50%;
+        width: 70%;
         height: 70px;
     }
     .button-submit {
-        width: 20%;
+        width: 100%;
         height: auto;
     }
 }
@@ -91,32 +96,32 @@ const InfoSet = () => {
 
     // 비밀번호 찾기
     // 키보드 입력
-    const [inputPwd, setInputPwd] = useState("");
+    const [inputId, setInputId] = useState("");
     const [newInputPwd, setNewInputPwd] = useState("");
     const [newPwdCheck, setNewPwdCheck] = useState("");
 
     // 오류 메시지
-    const [pwdMessage, setPwdMessage] = useState("");
+    const [idMessage, setIdMessage] = useState("");
     const [newPwdMessage, setNewPwdMessage] = useState("");
     const [pwdCheckMessage, setPwdCheckMessage] = useState("");
 
     // 유효성 검사
-    let [isPwd, setIsPwd] = useState(false);
+    let [isId, setIsId] = useState(false);
     const [isNewPwd, setIsNewPwd] = useState(false);
     const [isCheckPwd, setIsCheckPwd] = useState(false);
 
 
-    // 현재 비밀번호
+    // 현재 아이디
     const onChangePwd = e => {
         const regPwd = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/
         const pwdCurrent = e.target.value;
-        setInputPwd(pwdCurrent);
+        setInputId(pwdCurrent);
         if(!regPwd.test(pwdCurrent)) {
-            setPwdMessage('숫자 + 영문자 조합으로 8 ~ 16 자리 입력해주세요.');
-            setIsPwd(false);
+            setIdMessage('숫자 + 영문자 조합으로 8 ~ 16 자리 입력해주세요.');
+            setIsId(false);
         } else {
-            setPwdMessage('입력 후 확인 버튼 클릭 부탁드립니다.');
-            setIsPwd(true);
+            setIdMessage('입력 후 확인 버튼 클릭 부탁드립니다.');
+            setIsId(true);
         }
     }
 
@@ -147,22 +152,22 @@ const InfoSet = () => {
         }
     }
 
-    // 현재 비밀번호가 로그인 계정이랑 일치 하는지 확인.
+    // 현재 아이디 로그인 계정이랑 일치 하는지 확인.
     const onCheckPwd = () => {
-        const pwd = window.localStorage.getItem("userPwd");
-        if(inputPwd === pwd) {
-            console.log("현재 비밀번호랑 로그인 계정이랑 일치함");
+        const id = window.localStorage.getItem("userId");
+        if(inputId === id) {
+            console.log("현재 아이디랑 로그인 계정이랑 일치함");
         } else {
-            alert("현재 비밀번호가 일치하지 않음");
+            alert("현재 아이디가 일치하지 않음");
         }
     }
 
     // 다 트루면 비밀번호 확인 함수를 거쳐 수정 진행
     const onClickSet = async () => {
-        if(isPwd && isNewPwd && isCheckPwd) {
+        if(isId && isNewPwd && isCheckPwd) {
             console.log("성공 다음 단계로 진행");
             onCheckPwd();
-            const newPassword = await MovieApi.newPwd(inputPwd, newInputPwd);
+            const newPassword = await MovieApi.newPwd(inputId, newInputPwd);
             console.log(newPassword.data.result);
             if(newPassword.data.result === "OK") {
                 window.location.replace('/');
@@ -171,7 +176,7 @@ const InfoSet = () => {
             }
         }
         else {
-            console.log(isPwd);
+            console.log(isId);
             alert("다시 확인 부탁드립니다.");
         }
     }
@@ -186,17 +191,17 @@ const InfoSet = () => {
                 <h1 className="infoset-title">회원정보수정</h1>
             <div className="infoset-container">
                 <h3 className="pwd-find">비밀번호 찾기</h3>
-                <input className="input-box" type='text' placeholder="현재 비밀번호 입력" value={inputPwd} onChange={onChangePwd} />
+                <input className="input-box" type='text' placeholder="현재 아이디 입력*" value={inputId} onChange={onChangePwd} />
                 <div className="hint">
-                    {inputPwd.length > 0 && <span className={`message ${isPwd ? 'success' : 'error'}`}>{pwdMessage}</span>}
+                    {inputId.length > 0 && <span className={`message ${isId ? 'success' : 'error'}`}>{idMessage}</span>}
                 </div>
                 <p />
-                <input className="input-box" type='text' placeholder="새로운 비밀번호 입력" value={newInputPwd} onChange={onChangeNewPwd} />
+                <input className="input-box" type='text' placeholder="새로운 비밀번호 입력*" value={newInputPwd} onChange={onChangeNewPwd} />
                 <div className="hint">
                     {newInputPwd.length > 0 && <span className={`message ${isNewPwd ? 'success' : 'error'}`}>{newPwdMessage}</span>}
                 </div>
                 <p />
-                <input className="input-box" type='text' placeholder="비밀번호 확인" value={newPwdCheck} onChange={onChangeNewPwdCheck} />
+                <input className="input-box" type='text' placeholder="비밀번호 확인*" value={newPwdCheck} onChange={onChangeNewPwdCheck} />
                 <div className="hint">
                     {newPwdCheck.length > 0 && <span className={`message ${isCheckPwd ? 'success' : 'error'}`}>{pwdCheckMessage}</span>}
                 </div>

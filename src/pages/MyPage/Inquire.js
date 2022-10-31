@@ -47,6 +47,9 @@ const StyleInquire = styled.div`
     width: 15vw;
     height: 10vh;
     margin: 1rem 0;
+    border-radius: 8px;
+    background-color: #ffd369;
+    color: #232323;
 }
 .inquire-head {
     margin-bottom: 3rem;
@@ -82,8 +85,7 @@ const Inquire = () => {
 
     const onClickSubmit = async () => {
         const inquire = await MovieApi.inquireSubmit(inputSelect, inputText);
-        console.log(inquire.data.result);
-        if(inquire.data.result === "OK") {
+        if(inquire.data.statusCode === 200) {
             console.log('성공');
             alert("문의 완료")
             window.location.replace("/MyPage/Mypage");
