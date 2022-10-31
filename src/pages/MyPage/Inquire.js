@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import MovieApi from "../../api/MovieApi";
 
 const StyleInquire = styled.div`
 /* 1:1 문의하기 페이지 css */
@@ -69,7 +71,25 @@ const StyleInquire = styled.div`
 `;
 
 const Inquire = () => {
-    return (
+
+    // 문의 내용 입력받기
+    const [inputText, setInputText] = useState("");
+    const [inputSelect, setInputSelect] = useState("");
+
+    const onChangeText = e => setInputText(e.target.value);
+    const onChangeSelect = e => setInputSelect(e.target.value);
+
+    const onClickSubmit = async () => {
+        const inquire = await MovieApi.inquireSubmit(inputSelect, inputText);
+        console.log(inquire.data.result);
+        if(inquire.data.result === "OK") {
+            console.log('성공');
+            alert("문의 완료")
+            window.location.replace("/MyPage/Mypage");
+        } 
+    }
+
+    return ( 
     <StyleInquire>
         <div>  
             <nav className="nav nav-pills nav-justified">
@@ -79,18 +99,19 @@ const Inquire = () => {
                 <h1 className='inquire-head'>1:1 문의하기</h1>
             <form className="inquire-container">
                     <label for='why' className="inquire-text">문의 이유를 선택해주세요.</label>
-                    <select name='why' id='why' className="inquire">
-                      <option value="">단순 변심</option>
-                      <option value="">시작할 때 문제가 있음</option>
-                      <option value="">사이트가 맘에 들지가 않음</option>
-                      <option value="">개인정보 보호 문제</option>
-                      <option value="">광고가 너무 많음</option>
-                      <option value="">기타</option>
+                    <select name='why' id='why' className="inquire" value={inputSelect} onChange={onChangeSelect}>
+                        {/* 이거 선택 하면 상관 없는데 처음 선택할 떄 NULL 값이 들어와서..문제네 회원번호도 받아야하고.ㄷ*/}
+                      <option>단순 변심</option>
+                      <option>시작할 때 문제가 있음</option>
+                      <option>사이트가 맘에 들지가 않음</option>
+                      <option>개인정보 보호 문제</option>
+                      <option>광고가 너무 많음</option>
+                      <option>기타</option>
                     </select>
                     <p />
-                    <textarea className="content" placeholder="문의 내용" rows={50} cols={50}/>
+                    <textarea className="content" placeholder="문의 내용" rows={50} cols={50} value={inputText} onChange={onChangeText} minLength={30} maxLength={1000}/>
                     <p />
-                    <input type='submit' value="제출" className="inquire-submit"/>
+                    <button className="inquire-submit" onClick={onClickSubmit}>제출</button>
             </form>
         </div>
     </StyleInquire>
