@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -31,7 +31,10 @@ const Container = styled.div`
         padding: 0;
         display: inline-block;
         float: left;
-        width: 900px;   
+        width: 900px; 
+        /* 수정사항   */
+        margin-left: 200px;
+        margin-top: 5px;
     }
     .search option{
         position : absolute;
@@ -57,7 +60,7 @@ const Container = styled.div`
         padding: 10px;
         border-radius: 15px;
         border:1px solid #FFD369;
-        width: 450px;
+        width: 600px;
         font-size: 13px;
         line-height: 10px;
         margin-right: 10px;
@@ -81,7 +84,6 @@ const Container = styled.div`
         text-align: center;
         text-transform: uppercase;
         font-weight: 700;
-
         &:active {
             // 눌렀을때 색 변경
             background-color: #FFD369;
@@ -143,16 +145,17 @@ const Container = styled.div`
 `;
 
 const Menu = () => {
-    
     const [isLogin,setIsLogin] = useState(false);
     const [inputTxt,setInputTxt] = useState('');
 
     // 로그인 상태일떄, icon 화면에 조건부 랜더링 로직
     const isLoginStorage = window.localStorage.getItem("isLogin"); 
-        if(isLoginStorage === "TRUE"){
+    useEffect(() => {
+        if(isLoginStorage === "true"){
             setIsLogin(true);
-    }
-
+        }
+    }, []);    
+    
     // 검색창에 입력값이 들어올때 value 에 값을 담음
     const onChangeTxt = (e) =>{
         const txt = e.target.value;
@@ -160,35 +163,49 @@ const Menu = () => {
         console.log(txt);
     }
     
-   // 검색버튼 클릭시 검색한 값을 localstorage 에 저장
+    // 검색버튼 클릭시 검색한 값을 localstorage 에 저장
     const onClickSearch = () =>{
         window.localStorage.setItem("inputTxt", inputTxt);
+        window.location.replace("/Menu/SearchResult/SearchResult");
     }
-    
+    // 엔터버튼으로 검색 기능
+    const onKeyPress = e => {
+        if(e.key === "Enter") {
+            onClickSearch();
+        }
+    };
 
+    // 로그아웃
+    const onClickLogout = () =>{
+        window.localStorage.setItem("userId", "");
+        window.localStorage.setItem("userPwd","");
+        window.localStorage.setItem("isLogin", "false")
+        window.location.replace("/");
+    }
     
     return (
         <Container>
             <ul class="navbar">
-                <li class="logo"><Link to ="/"><img src="images/Logo.png" alt="Logo"/></Link></li>
+                <li class="logo"><Link to ="/"><img src="/images/Logo.png" alt="Logo"/></Link></li>
             
-                <li class="search">
-                        <input class="search-box" type="text" value={inputTxt} onChange={onChangeTxt} placeholder="영화 제목 입력"/>
-                        <Link to ="/SearchResult/SearchResult"><button class="submit" onClick={onClickSearch} >search</button></Link>
+                <li class="search" >
+                        <input class="search-box" type="text" value={inputTxt} onKeyPress={onKeyPress} onChange={onChangeTxt} placeholder="영화 제목 입력(영어작품명만 가능합니다.)"/>
+                        <button class="submit" onClick={onClickSearch}>search</button>
+                        {/* <Link to ="/Menu/SearchResult/SearchResult"  onClick={onClickSearch}><button class="submit">search</button></Link> */}
                 </li>
 
                 {isLogin ?
                 <li class="dropdown-icon">
-                    <p class="dropbtn-icon"><img src="images/mem.png" alt="icon"/></p>
+                    <p class="dropbtn-icon"><img src="/images/mem.png" alt="icon"/></p>
                     <ul class="dropdown-content-icon">
                         <li><Link to ="/MyPage/Mypage">My Page</Link></li>
-                        <li><Link to ="/Login/LoginPage">로그아웃</Link></li>
+                        <li onClick={onClickLogout}>로그아웃</li>
                         <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
                     </ul>
                 </li>
                 :
-                <li class="dropdown-icon">
-                    <p class="dropbtn-icon"><img src="images/mem.png" alt="icon"/></p>
+                <li class="dropdown-icon">``
+                    <p class="dropbtn-icon"><img src="/images/mem.png" alt="icon"/></p>
                     <ul class="dropdown-content-icon">
                         <li><Link to  ="/Login/LoginPage">로그인</Link></li>
                         <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
