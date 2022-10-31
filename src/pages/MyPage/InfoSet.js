@@ -84,6 +84,11 @@ const StyleInfoSet = styled.div`
 `;
 const InfoSet = () => {
 
+    if(window.localStorage.getItem("isLogin") === "false") {
+        alert("로그인이 필요한 페이지.");
+        window.location.replace("/Login/LoginPage");
+    }
+
     // 비밀번호 찾기
     // 키보드 입력
     const [inputPwd, setInputPwd] = useState("");

@@ -94,6 +94,11 @@ const userId = window.localStorage.getItem("userId");
 const userPwd = window.localStorage.getItem("userPwd");
 
 const Mypage = () => {
+    console.log(window.localStorage.getItem("isLogin"));
+    if(window.localStorage.getItem("isLogin") === "false") {
+        alert("로그인이 필요한 페이지.");
+        window.location.replace("/Login/LoginPage");
+    }
   return (
     <StyleMypage>
       <div>
