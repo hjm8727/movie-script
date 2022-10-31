@@ -78,7 +78,7 @@ const LoginBlock=styled.div`
     cursor: pointer;
     border-radius: 60px;
     background-color: #FFD369;
-    color:#EEEEEE;
+    color:#222831;
     margin: 20px 0 ;
     font-weight: bold;
 }
@@ -92,7 +92,7 @@ const LoginBlock=styled.div`
     }
 }
 .findId:hover,.findPwd:hover{color: #FFD369;}
-.loginButton:disabled {background-color: #222831}
+.loginButton:disabled {background-color: #222831;color: #EEEEEE;}
 hr{
     border: 2px solid #EEEEEE;
     height: 4px;
@@ -167,6 +167,8 @@ const LoginPage=()=>{
                 console.log("로그인 성공");
             } else {
                 setModalOpen(true);
+                window.localStorage.setItem("isLogin", false);
+
             }
         } catch(e) {
             setModalOpen(true);

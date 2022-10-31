@@ -92,20 +92,19 @@ const FindID=()=>{
     const closeModal = () => {
         setModalOpen(false);
     };
-//   서버 전송되는데 콘솔출력값 화면 구현 아직 안됨 
     const onClickFind=async()=>{
         const findUser = await MovieApi.findUser(inputName, inputEmail);
-        if(findUser.data.result === "OK") {
-            // console.log(findUser.data.id);
-            console.log(findUser.data.result);
+        if(findUser.data.statusCode === 200) {
+            console.log(findUser);
+            const id = findUser.data.results.id;
             setModalOpen(true);
             setModalHeader(inputName+" 님의 아이디는");
-            setModalText("입니다.");
+            setModalText(id+" 입니다.");
             
         } else {
             setModalOpen(true);
             setModalHeader("오류");
-             setModalText("이름과 이메일이 일치하지 않습니다.");
+            setModalText("이름과 이메일이 일치하지 않습니다.");
         }
     }
 

@@ -92,13 +92,13 @@ const FindPwd=()=>{
     };
     const onClickFind=async()=>{
         const findPassword = await MovieApi.findPassword(inputId, inputEmail);
-        console.log(findPassword.data.result); //무슨값인지 확인 
-        if(findPassword.data.result === "OK") {
-            console.log(findPassword.data.result);
+        console.log(findPassword.status);
+        if(findPassword.data.statusCode === 200) {
+            console.log(findPassword);
+            const pwd = findPassword.data.results.password;
             setModalOpen(true);
             setModalHeader(inputId+" 님의 비밀번호는");
-            setModalText("입니다.");
-            
+            setModalText(pwd+" 입니다.");
         } else {
             setModalOpen(true);
             setModalHeader("오류");

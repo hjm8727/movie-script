@@ -34,7 +34,7 @@ const MovieApi={
             name : inputName,
             email : inputEmail
         }
-        return await axios.post(MOVIE_DOMAIN + "FindIDServlet", finding, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "member/searchId", finding, HEADER)
     },
     // 비밀번호 찾기 api
     findPassword : async function(inputId, inputEmail){
@@ -42,7 +42,7 @@ const MovieApi={
             id : inputId,
             email : inputEmail
         }
-        return await axios.post(MOVIE_DOMAIN + "Find", finding, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "member/searchPassword", finding, HEADER)
     },
     // 현재 비밀번호가 존재하는지 확인하기 위한 API
     nowPwdCheck : async function(regPwd) {

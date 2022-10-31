@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import './SignUp.css';
@@ -72,7 +72,7 @@ const SignUpBlock=styled.div`
     cursor: pointer;
     border-radius: 60px;
     background-color: #FFD369;
-    color : white;
+    color:#222831;
     font-weight: bold;
 }
 .find{
@@ -80,7 +80,7 @@ const SignUpBlock=styled.div`
     margin-top: 20px;
     cursor: pointer;
 }
-.signUpButton:disabled {background-color: #222831}
+.signUpButton:disabled {background-color: #222831;color: #EEEEEE;}
 hr{
     border: 2px solid #EEEEEE;
     height: 4px;
@@ -113,6 +113,7 @@ const SignUp=()=>{
     const [isConfirmPwd, setIsConfirmPwd] = useState(false);
     const [isName, setIsName] = useState(false);
     const [isEmail, setIsEmail] = useState(false);
+    const [submit, setSubmit] = useState(true);
 
     const onChangeId = (e) => {
         // 회원 가입도 변수 만드신걸로 바꿔놨습니다.
@@ -161,6 +162,14 @@ const SignUp=()=>{
         }else{
             setIsName(false)
         }};
+    
+//  모든 유효성 검사 충족해야 가입버튼 누를 수 있도록 
+    useEffect(()=>{
+        if(isId&&isPwd&&isConfirmPwd&&isName&&isEmail){
+            setSubmit(false);
+            return;
+        }setSubmit(true);
+    }, [isId, isPwd,isConfirmPwd,isName,isEmail]);
         
     // 가입 버튼 누르면 가입되어 있는지 체크 후 다음 단게로 memberReg Api 통해서 OK 뜨면 위에 onClickSignUp 함수를 가져와서 로그인 화면으로 넘어가게
     const onSubmit = async () => {
@@ -206,7 +215,7 @@ const SignUp=()=>{
                 </div>
                 <div className="error">{!isEmail && inputEmail.length >0 &&('올바른 이메일형식이 아닙니다.')}</div>
                 <hr/>
-                <div className="item"><button type="submit" className="signUpButton" onClick={onSubmit}>확인</button></div>
+                <div className="item"><button type="submit" disabled={submit} className="signUpButton" onClick={onSubmit}>확인</button></div>
                 </div>
                 </div>
                 </SignUpBlock>
