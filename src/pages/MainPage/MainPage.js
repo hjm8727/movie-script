@@ -12,7 +12,7 @@ function MainPage() {
 
     // TMDB API 사용중 추후 DB API로 수정 예정
     useEffect(() => {
-        const content = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko-KR&page=1`;
+        const content = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko-KR&page=1&size=10`;
         FetchMovies(content)        
     }, [])
 
