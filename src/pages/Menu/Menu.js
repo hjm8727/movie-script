@@ -30,7 +30,6 @@ const Container = styled.div`
         margin: 0;
         padding: 0;
         display: inline-block;
-        float: left;
         width: 900px; 
         /* 수정사항   */
         margin-left: 200px;
@@ -139,7 +138,7 @@ const Container = styled.div`
         width:35px;
     }
     .category .optionItem:hover {
-  background: rgb(175, 93, 93);
+    background: rgb(175, 93, 93);
 }
     
 `;
@@ -204,7 +203,7 @@ const Menu = () => {
                     </ul>
                 </li>
                 :
-                <li class="dropdown-icon">``
+                <li class="dropdown-icon">
                     <p class="dropbtn-icon"><img src="/images/mem.png" alt="icon"/></p>
                     <ul class="dropdown-content-icon">
                         <li><Link to  ="/Login/LoginPage">로그인</Link></li>
