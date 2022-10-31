@@ -79,6 +79,8 @@ const Inquire = () => {
     const onChangeText = e => setInputText(e.target.value);
     const onChangeSelect = e => setInputSelect(e.target.value);
 
+    const isLogin = window.localStorage.getItem("isLogin");
+
     const onClickSubmit = async () => {
         const inquire = await MovieApi.inquireSubmit(inputSelect, inputText);
         console.log(inquire.data.result);
@@ -88,14 +90,23 @@ const Inquire = () => {
             window.location.replace("/MyPage/Mypage");
         } 
     }
-
+    const onClick = () => {
+        alert("로그인을 필요로 하는 페이지입니다. 로그인 바로가기.");
+    }
     return ( 
     <StyleInquire>
-        <div>  
+        <div>
+            {isLogin ?
             <nav className="nav nav-pills nav-justified">
                 <Link className="nav-link" to="/MyPage/mypage">마이페이지</Link>
                 <Link className="nav-link" to="/MyPage/infoset">회원정보수정</Link>
             </nav>
+            :
+            <nav className="nav nav-pills nav-justified">
+                <Link className="nav-link" to="" onClick={onClick}>마이페이지</Link>
+                <Link className="nav-link" to="" onClick={onClick}>회원정보수정</Link>
+            </nav>
+            }
                 <h1 className='inquire-head'>1:1 문의하기</h1>
             <form className="inquire-container">
                     <label for='why' className="inquire-text">문의 이유를 선택해주세요.</label>

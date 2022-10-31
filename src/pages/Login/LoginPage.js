@@ -159,9 +159,10 @@ const LoginPage=()=>{
             const res = await MovieApi.userLogin(inputId,inputPwd);
             console.log(res.data.result);
             
-            if(res.data.result === "OK"){
+            if(res.data.statusCode === 200){
                 window.localStorage.setItem("userId", inputId);
                 window.localStorage.setItem("userPwd",inputPwd);
+                window.localStorage.setItem("isLogin", true);
                 window.location.replace("/");
                 console.log("로그인 성공");
             } else {

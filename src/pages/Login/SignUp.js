@@ -165,7 +165,7 @@ const SignUp=()=>{
     // 가입 버튼 누르면 가입되어 있는지 체크 후 다음 단게로 memberReg Api 통해서 OK 뜨면 위에 onClickSignUp 함수를 가져와서 로그인 화면으로 넘어가게
     const onSubmit = async () => {
         const memberRegister = await MovieApi.memberReg(inputId, inputPwd,inputName, inputEmail);
-        console.log(memberRegister.data.result);
+        console.log(memberRegister.data.statusCode);
         if(memberRegister.data.statusCode === 200) {
             window.location.replace('/Login/LoginPage');
         } else {

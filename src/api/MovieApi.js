@@ -1,6 +1,6 @@
 import axios from "axios";
 const HEADER = 'application/json';
-const MOVIE_DOMAIN="http://localhost:8090/miniProject/";
+const MOVIE_DOMAIN="http://cokebear756.synology.me:62322/api/";
 
 const MovieApi={
     // 로그인 api
@@ -9,7 +9,7 @@ const MovieApi={
             id : inputId,
             password : inputPwd
         }
-        return await axios.post(MOVIE_DOMAIN + "LoginServlet", loginObj, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "member/signin", loginObj, HEADER)
     },
     // 회원가입 api
     memberReg : async function(inputId, inputPwd, inputName ,inputEmail){
