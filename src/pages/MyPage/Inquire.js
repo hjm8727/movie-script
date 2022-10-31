@@ -82,14 +82,13 @@ const Inquire = () => {
     const onChangeText = e => setInputText(e.target.value);
     const onChangeSelect = e => setInputSelect(e.target.value);
 
-
     const onClickSubmit = async () => {
         const inquire = await MovieApi.inquireSubmit(inputSelect, inputText);
         if(inquire.data.statusCode === 200) {
             console.log('성공');
             alert("문의 완료")
             window.location.replace("/MyPage/Mypage");
-        } 
+        }
     }
     return ( 
     <StyleInquire>

@@ -44,16 +44,10 @@ const MovieApi={
         }
         return await axios.post(MOVIE_DOMAIN + "member/searchPassword", finding, HEADER)
     },
-    // 현재 비밀번호가 존재하는지 확인하기 위한 API
-    nowPwdCheck : async function(regPwd) {
-        const regPwdCheck = {
-            regPwd : regPwd
-        }
-        return await axios.post(MOVIE_DOMAIN + "RegPwdCheckServlet", regPwdCheck, HEADER);
-    },
-    newPwd : async function(pwd ,newPwd) {
+    // 비밀번호 수정 API
+    setPwd : async function(id ,newPwd) {
         const setPwd = {
-            pwd : pwd,
+            id : id,
             newPwd : newPwd
         }
         return await axios.post(MOVIE_DOMAIN + "SetPwdServlet", setPwd, HEADER);
