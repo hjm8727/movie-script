@@ -32,7 +32,7 @@ const StyleInquire = styled.div`
     color: white;
     margin: 0 auto;
     padding: 3rem 0;
-    border: 1px solid #eeeeee;
+    border: 5px solid #ffd369;
 }
 .inquire {
     margin: 1rem 0;
@@ -86,7 +86,7 @@ const Inquire = () => {
         const inquire = await MovieApi.inquireSubmit(inputSelect, inputText);
         if(inquire.data.statusCode === 200) {
             console.log('성공');
-            alert("문의 완료")
+            alert("문의 완료");
             window.location.replace("/MyPage/Mypage");
         }
     }
@@ -94,6 +94,7 @@ const Inquire = () => {
     <StyleInquire>
         <div>
             <nav className="nav nav-pills nav-justified">
+                <Link className="nav-link" to="/">홈</Link>
                 <Link className="nav-link" to="/MyPage/mypage">마이페이지</Link>
                 <Link className="nav-link" to="/MyPage/infoset">회원정보수정</Link>
             </nav>

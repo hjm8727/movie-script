@@ -29,7 +29,7 @@ const StyleInfoSet = styled.div`
     /* flex-wrap: nowrap; */
     align-items: center;
     justify-content: center;
-    border: 1px solid #eeeeee;
+    border: 5px solid #ffd369;
     box-sizing: border-box;
     margin: 0 auto;
     margin-top: 5rem;
@@ -88,11 +88,6 @@ span {
 }
 `;
 const InfoSet = () => {
-
-    if(window.localStorage.getItem("isLogin") === "false") {
-        alert("로그인이 필요한 페이지.");
-        window.location.replace("/Login/LoginPage");
-    }
 
     // 비밀번호 찾기
     // 키보드 입력

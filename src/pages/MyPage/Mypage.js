@@ -26,7 +26,7 @@ const StyleMypage = styled.div`
     color: #ffd369; 
 }
 .container {
-    border: 1px solid white;
+    border: 5px solid #ffd369;
     margin: 0 auto;
     width: 60vw;
     height: 80vh;
@@ -40,20 +40,33 @@ const StyleMypage = styled.div`
 .container .profil {
     text-decoration: none;
     display: inline;
-    color: #ffd369; 
-    font-size: 20px;
-    margin-left: 35px;
+    background-color: #ffd369; 
+    color: #232323;
+    font-size: 1.5em;
+    margin-left: 10px;
+    padding: 9px;
+}
+.logout {
+  float: right;
+  font-size: 1.4em;
+  background-color: #ffd369;
+  color: #232323;
+  margin-top: 1rem;
+  margin-right: 0.25rem;
+  padding: 7px;
 }
 `;
 const userId = window.localStorage.getItem("userId");
 const userPwd = window.localStorage.getItem("userPwd");
 
 const Mypage = () => {
-    console.log(window.localStorage.getItem("isLogin"));
-    if(window.localStorage.getItem("isLogin") === "false") {
-        alert("로그인이 필요한 페이지.");
-        window.location.replace("/Login/LoginPage");
-    }
+    const onClickLogout = () =>{
+      window.localStorage.setItem("userId", "");
+      window.localStorage.setItem("userPwd","");
+      window.localStorage.setItem("isLogin", "false")
+      window.location.replace("/");
+  }
+
   return (
     <StyleMypage>
       <div>
@@ -64,8 +77,9 @@ const Mypage = () => {
         </nav>
         <div className="container">
             <BsFillPeopleFill icon={BsFillPeopleFill} size='160px' style={{border:'1px solid #eeeeee', margin:'30px 10px', backgroundColor: 'black'}}/>
+            <button className="logout" onClick={onClickLogout}>로그아웃</button>
             <br />
-            <Link className="profil" to="/MyPage/Infoset">회원정보수정</Link>
+            <Link className="profil" to="/MyPage/Infoset">회원정보수정</Link> 
             <h3 className="info">이름 : 지민 </h3>
             <h3 className="info">가입일 : 2022.10.19</h3>
             <h3 className="info">이메일 : jimin600155@naver.com</h3>
