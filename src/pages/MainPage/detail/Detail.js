@@ -5,7 +5,6 @@ import {API_URL, API_KEY, IMAGE_BASE_URL} from '../../../api/Config';
 import GridCards from '../../Cards/GridCards';
 import DetInfo from './DetInfo';
 import DetailImage from './DetailImage';
-import Favorite from './Favorite';
 
 // 포스터 클릭시 보이는 영화 상세 페이지
 function Detail(props) {
@@ -41,9 +40,6 @@ function Detail(props) {
         {/* 상세페이지 헤더영역 - 가로포스터 */}
         <div style={{width: '1280px', margin: '1rem auto'}}>
             <DetailImage image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`} title={Movie.title}/>
-            <div style={{display: 'flex', position: 'absolute', top: '485px', right: '120px'}}>
-                <Favorite/>
-            </div>
             </div>
         {/* 줄거리 삽입 가능 현재 상세 정보 테이블로 내림 text={Movie.overview} */}
 
