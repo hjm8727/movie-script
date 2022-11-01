@@ -28,8 +28,8 @@ const StyleMypage = styled.div`
 .container {
     border: 5px solid #ffd369;
     margin: 0 auto;
-    width: 60vw;
-    height: 80vh;
+    width: 60%;
+    height: 90%;
 }
 
 .info {
@@ -43,8 +43,8 @@ const StyleMypage = styled.div`
     background-color: #ffd369; 
     color: #232323;
     font-size: 1.5em;
-    margin-left: 10px;
-    padding: 9px;
+    padding: 8px;
+    border-radius: 15px;
 }
 .logout {
   float: right;
@@ -54,10 +54,39 @@ const StyleMypage = styled.div`
   margin-top: 1rem;
   margin-right: 0.25rem;
   padding: 7px;
+  border-radius: 15px;
+}
+.delete-member {
+    float: right;
+    text-decoration: none;
+    font-size: 1.4em;
+    color: #232323;
+    border: 3px solid #ffd369;
+    border-radius: 15px;
+    background-color: #ffd369;
+    text-align: center;
+    margin-right: -0.25rem;
+}
+@media screen and (max-width: 768px){
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+    .profil {
+        width: 30%;
+        height: auto;
+    }
+    .logout {
+        width: 25%;
+        height: auto;
+    }
+    .delete-member {
+        width: auto;
+        height: auto;
+    }
 }
 `;
 const userId = window.localStorage.getItem("userId");
-const userPwd = window.localStorage.getItem("userPwd");
 
 const Mypage = () => {
     const onClickLogout = () =>{
@@ -79,12 +108,14 @@ const Mypage = () => {
             <BsFillPeopleFill icon={BsFillPeopleFill} size='160px' style={{border:'1px solid #eeeeee', margin:'30px 10px', backgroundColor: 'black'}}/>
             <button className="logout" onClick={onClickLogout}>로그아웃</button>
             <br />
-            <Link className="profil" to="/MyPage/Infoset">회원정보수정</Link> 
+            <Link className="profil" to="/MyPage/Infoset">회원 정보 수정</Link> 
             <h3 className="info">이름 : 지민 </h3>
-            <h3 className="info">가입일 : 2022.10.19</h3>
-            <h3 className="info">이메일 : jimin600155@naver.com</h3>
             <h3 className="info">아이디 : {userId}</h3>
-            <br />
+            <h3 className="info">이메일 : jimin600155@naver.com</h3>
+            <h3 className="info">가입일 : 2022.10.19</h3>
+            <br /> <br /><br />
+            <Link className="delete-member" to="/MyPage/Delete">회원 탈퇴</Link>
+            <br /><br />
         </div>
     </div>
   </StyleMypage>
