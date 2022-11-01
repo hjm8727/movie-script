@@ -14,6 +14,7 @@ import FindID from './pages/Login/FindID';
 import Mypage from './pages/MyPage/Mypage';
 import InfoSet from './pages/MyPage/InfoSet';
 import Inquire from './pages/MyPage/Inquire';
+import InquireList from './pages/MyPage/InquireList';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/MyPage/Mypage' element={<Mypage />} />
         <Route path='/MyPage/InfoSet' element={<InfoSet />} />
         <Route path='/MyPage/Inquire' element={<Inquire />} />
+        <Route path='/MyPage/InquireList' element={<InquireList />} />
       </Routes>
     </Router>
   );
