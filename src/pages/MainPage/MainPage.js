@@ -3,8 +3,13 @@ import {API_URL, IMAGE_BASE_URL} from '../../api/Config';
 import MainImage from './section/MainImage';
 import GridCards from '../Cards/GridCards';
 import {Row} from 'antd';
+import NowLoading from './section/Loading';
+import NoImage from './section/NoImage';
 
 function MainPage() {
+    const [Loading, setLoading] = useState(true)
+    useEffect(() => setLoading(false))
+
 
     const [Movies, setMovies] = useState([])
     const [Movies2, setMovies2] = useState([])
@@ -17,8 +22,12 @@ function MainPage() {
     useEffect(() => {
         const nowPlaying = `${API_URL}/movie/nowPlaying?page=0&size=10`;
         FetchMovies(nowPlaying)
+    }, [])
+    useEffect(() => {
         const topRated = `${API_URL}/movie/topRated?page=0&size=10`;
         FetchMovies2(topRated)
+    }, [])
+    useEffect(() => {
         const upcoming = `${API_URL}/movie/upcoming?page=0&size=10`;
         FetchMovies3(upcoming)
     }, [])
@@ -67,15 +76,17 @@ function MainPage() {
 
 
     const loadMore = () => {
-        let nowPlaying = '';
-        nowPlaying = `${API_URL}/movie/nowPlaying?page=${CurrentPage +1}&size=10`;
+        // let nowPlaying = '';
+        const nowPlaying = `${API_URL}/movie/nowPlaying?page=${CurrentPage +1}&size=10`;
         FetchMovies(nowPlaying)
     }
     const loadMore2 = () => {
+        // let topRated = '';
         const topRated = `${API_URL}/movie/topRated?page=${CurrentPage +1}&size=10`;
         FetchMovies2(topRated)
     }
     const loadMore3 = () => {
+        // let upcoming = '';
         const upcoming = `${API_URL}/movie/upcoming?page=${CurrentPage +1}&size=10`;
         FetchMovies3(upcoming)
     }
@@ -93,10 +104,11 @@ function MainPage() {
         <div style={{width: '85%', margin: '1rem auto'}}>
             <h2 style={{color: '#FFD369'}}>최신 영화</h2>
             <hr/>
+            {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
             <Row gutter={[16, 16]}>
             {Movies && Movies.map((movie, index) => (
                 <React.Fragment key={index}>
-                <GridCards MainPage image={movie.file_path ? `${IMAGE_BASE_URL}w500${movie.file_path}` : null} movieId={movie.id} movieName={movie.title}/>
+                <GridCards MainPage image={movie.file_path ? `${IMAGE_BASE_URL}w500${movie.file_path}` : NoImage} movieId={movie.id} movieName={movie.title}/>
                 </React.Fragment>
             ))}
             </Row>
