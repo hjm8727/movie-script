@@ -15,6 +15,7 @@ import Mypage from './pages/MyPage/Mypage';
 import InfoSet from './pages/MyPage/InfoSet';
 import Inquire from './pages/MyPage/Inquire';
 import InquireList from './pages/MyPage/InquireList';
+import DeleteAccount from './pages/MyPage/DeleteAccount';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path='/MyPage/InfoSet' element={<InfoSet />} />
         <Route path='/MyPage/Inquire' element={<Inquire />} />
         <Route path='/MyPage/InquireList' element={<InquireList />} />
+        <Route path='/MyPage/DeleteAccount' element={<DeleteAccount/>}/>
       </Routes>
     </Router>
   );

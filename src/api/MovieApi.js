@@ -51,6 +51,15 @@ const MovieApi={
             newPwd : newPwd
         }
         return await axios.post(MOVIE_DOMAIN + "SetPwdServlet", setPwd, HEADER);
+    },
+    // 회원탈퇴 API
+    deleteUser : async function(inputId, inputEmail, inputPwd){
+        const deleteUser = {
+            id : inputId,
+            email : inputEmail,
+            password : inputPwd
+        }
+        return await axios.post(MOVIE_DOMAIN + "member/delete", deleteUser,HEADER);
     }
 }
 export default MovieApi;

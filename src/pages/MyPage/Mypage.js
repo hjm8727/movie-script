@@ -120,7 +120,7 @@ return (
             <h3 className="info">이메일 : jimin600155@naver.com</h3>
             <h3 className="info">가입일 : 2022.10.19</h3>
             <br /> <br /><br />
-            <Link className="delete-member" to="/MyPage/Delete">회원 탈퇴</Link>
+            <Link className="delete-member" to="/MyPage/DeleteAccount">회원 탈퇴</Link>
             <br /><br />
         </div>
     </div>
