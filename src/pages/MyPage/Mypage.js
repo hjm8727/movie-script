@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { BsFillPeopleFill } from "react-icons/bs";
 import styled from "styled-components";
-import Card from 'react-bootstrap/Card';
 
 const StyleMypage = styled.div`
     box-sizing: border-box;
@@ -23,7 +22,8 @@ const StyleMypage = styled.div`
 .nav .mypage {
     font-size: 1.5em;
     font-weight: bold;
-    color: #ffd369; 
+    color: #ffd369;
+    pointer-events: none;
 }
 .container {
     border: 5px solid #ffd369;
@@ -51,7 +51,6 @@ const StyleMypage = styled.div`
   font-size: 1.4em;
   background-color: #ffd369;
   color: #232323;
-  margin-top: 1rem;
   margin-right: 0.25rem;
   padding: 7px;
   border-radius: 15px;
@@ -86,19 +85,26 @@ const StyleMypage = styled.div`
     }
 }
 `;
+// 관리자 계정인지 확인
 const userId = window.localStorage.getItem("userId");
+    let userAdmin = false;
+    if(userId === 'admin123') {
+        // alert("관리자");
+        userAdmin = true;
+    }
+// 로그아웃
+const onClickLogout = () =>{
+    window.localStorage.setItem("userId", "");
+    window.localStorage.setItem("userPwd","");
+    window.localStorage.setItem("isLogin", "false")
+    window.location.replace("/");
+}
 
-const Mypage = () => {
-    const onClickLogout = () =>{
-      window.localStorage.setItem("userId", "");
-      window.localStorage.setItem("userPwd","");
-      window.localStorage.setItem("isLogin", "false")
-      window.location.replace("/");
-  }
-
-  return (
+/** 유저 계정 페이지 */
+function UserMypage() {
+return (
     <StyleMypage>
-      <div>
+        <div>
         <nav className="nav nav-pills nav-justified">
             <Link className="nav-link" to="/">홈</Link>
             <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>마이페이지</Link>
@@ -118,7 +124,39 @@ const Mypage = () => {
             <br /><br />
         </div>
     </div>
+    </StyleMypage>
+    );
+}
+
+/** 관리자 계정 페이지 */
+function AdminPage() {
+
+  return (
+    <StyleMypage>
+      <div>
+        <nav className="nav nav-pills nav-justified">
+            <Link className="nav-link" to="/">홈</Link>
+            <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>관리자 페이지</Link>
+            <Link className="nav-link" to="/MyPage/InquireList">문의 내역 확인</Link>
+            <button className="logout" onClick={onClickLogout}>로그아웃</button>
+        </nav>
+        <div className="container">
+            <br />
+        </div>
+    </div>
   </StyleMypage>
+    );
+}
+
+const Mypage = () => {
+
+  return (
+    <div>
+        {userAdmin ?
+            <AdminPage /> :
+            <UserMypage />
+        }
+    </div>
     );
 }
 
