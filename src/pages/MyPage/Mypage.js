@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BsFillPeopleFill } from "react-icons/bs";
+import { BsFillPersonFill } from "react-icons/bs";
 import styled from "styled-components";
 import MovieApi from "../../api/MovieApi";
 import { useEffect, useState } from "react";
@@ -70,6 +70,24 @@ const StyleMypage = styled.div`
     text-align: center;
     margin-right: -0.25rem;
 }
+.container-system {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 70%;
+    height: 100%;
+    text-align: center;
+}
+table, th, tr, td {
+    border: 1px solid #ffd369;
+}
+h1 {
+    text-align: center;
+    margin: 3rem 0;
+    color: #ffd369;
+    font-weight: bold;
+}
 @media screen and (max-width: 768px){
     .container {
         width: 100%;
@@ -116,6 +134,7 @@ useEffect(() => {
         const memberInfo = async () => {
         try {
             const response = await MovieApi.memberSelect(userId); // 현재 회원만 조회
+            // console.log(response.data.results.id);
             console.log(response.data.results.id);
             setMemberSelect(response.data.results);
         } catch(e) {
@@ -134,7 +153,7 @@ return (
             <Link className="nav-link" to="/MyPage/Inquire">1:1 문의하기</Link>
         </nav>
         <div className="container">
-            <BsFillPeopleFill icon={BsFillPeopleFill} size='160px' style={{border:'1px solid #eeeeee', margin:'30px 10px', backgroundColor: 'black'}}/>
+            <BsFillPersonFill size='160px' style={{border:'1px solid silver', margin:'30px 10px', backgroundColor: '#232323', color: '#ffd369'}}/>
             <button className="logout" onClick={onClickLogout}>로그아웃</button>
             <br />
             <Link className="profil" to="/MyPage/Infoset">회원 정보 수정</Link> 
@@ -165,8 +184,34 @@ function AdminPage() {
             <Link className="nav-link" to="/MyPage/InquireList">문의 내역 확인</Link>
             <button className="logout" onClick={onClickLogout}>로그아웃</button>
         </nav>
-        <div className="container">
-            <br />
+            <h1>회원 목록 조회</h1>
+        <div className="container-system">
+            <table>
+                <tr>
+                    <th>회원 번호</th>
+                    <th>회원 이름</th>
+                    <th>회원 아이디</th>
+                    <th>회원 패스워드</th>
+                    <th>회원 이메일</th>
+                    <th>회원 가입일</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>지민</td>
+                    <td>test1234</td>
+                    <td>test1234</td>
+                    <td>test123@gmail.com</td>
+                    <td>2022/11/02</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>관리자</td>
+                    <td>SYSTEM</td>
+                    <td>1234</td>
+                    <td>sys@gmail.com</td>
+                    <td>2022/06/01</td>
+                </tr>
+            </table>
         </div>
     </div>
   </StyleMypage>
