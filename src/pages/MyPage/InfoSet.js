@@ -115,7 +115,7 @@ const InfoSet = () => {
             setIdMessage('숫자 + 영문자 조합으로 8 ~ 16 자리 입력해주세요.');
             setIsId(false);
         } else {
-            setIdMessage('입력 후 확인 버튼 클릭 부탁드립니다.');
+            setIdMessage('아이디 입력 완료.');
             setIsId(true);
         }
     }
@@ -148,7 +148,7 @@ const InfoSet = () => {
     }
 
     // 현재 아이디 로그인 계정이랑 일치 하는지 확인.
-    const onCheckPwd = () => {
+    const onCheckId = () => {
         const id = window.localStorage.getItem("userId");
         if(inputId === id) {
             console.log("현재 아이디랑 로그인 계정이랑 일치함");
@@ -161,10 +161,10 @@ const InfoSet = () => {
     const onClickSet = async () => {
         if(isId && isNewPwd && isCheckPwd) {
             console.log("성공 다음 단계로 진행");
-            onCheckPwd();
-            const newPassword = await MovieApi.newPwd(inputId, newInputPwd);
-            console.log(newPassword.data.result);
-            if(newPassword.data.result === "OK") {
+            onCheckId();
+            const newPassword = await MovieApi.setPwd(inputId, newInputPwd);
+            console.log(newPassword.data);
+            if(newPassword.data.statusCode === 200) {
                 window.location.replace('/');
             } else {
                 console.log("수정 실패..");
