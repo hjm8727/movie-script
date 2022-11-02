@@ -88,6 +88,18 @@ h1 {
     color: #ffd369;
     font-weight: bold;
 }
+.select-member {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+button {
+  border: 2px solid silver;
+  background-color: #232323;
+  color: #ffd369;
+  height: 50px;
+}
 @media screen and (max-width: 768px){
     .container {
         width: 100%;
@@ -104,6 +116,14 @@ h1 {
     .delete-member {
         width: auto;
         height: auto;
+    }
+    .container-system {
+      width: 100vw;
+      height: auto;
+    }
+    table, tr, td {
+      width: 100%;
+      height: auto;
     }
 }
 `;
@@ -180,7 +200,7 @@ function AdminPage() {
     useEffect(() => {
         const memberSelect = async () => {
             try {
-                const response = await MovieApi.memberInfo();
+                const response = await MovieApi.memberInfo()
                 console.log(response.data.results);
                 setMemberInfo(response.data.results);
             } catch(e) {
@@ -189,6 +209,54 @@ function AdminPage() {
         }
         memberSelect();
     }, []);
+
+    const Tbody1 = () => (
+        memberInfo && memberInfo.map((member, index) => (
+            <tbody key={member.id}>
+                {index < 10 ?
+                    <tr>
+                        <td>{member.id}</td>
+                        <td>{member.name}</td>
+                        <td>{member.member_id}</td>
+                        <td>{member.password}</td>
+                        <td>{member.email}</td>
+                        <td>{member.create_time}</td>
+                    </tr> :
+                    <></>}
+            </tbody>
+        )));
+
+    const Tbody2 = () => (
+      memberInfo && memberInfo.map((member, index) => (
+        <tbody key={member.id}>
+          {index < 20 && index >= 10?
+            <tr>
+              <td>{member.id}</td>
+              <td>{member.name}</td>
+              <td>{member.member_id}</td>
+              <td>{member.password}</td>
+              <td>{member.email}</td>
+              <td>{member.create_time}</td>
+            </tr> :
+            <></>}
+        </tbody>
+      )));
+      const Tbody3 = () => (
+        memberInfo && memberInfo.map((member, index) => (
+          <tbody key={member.id}>
+            {index < 30 && index >= 20?
+              <tr>
+                <td>{member.id}</td>
+                <td>{member.name}</td>
+                <td>{member.member_id}</td>
+                <td>{member.password}</td>
+                <td>{member.email}</td>
+                <td>{member.create_time}</td>
+              </tr> :
+              <></>}
+          </tbody>
+        )));
+      const [visible, setVisible] = useState(false);
 
   return (
     <StyleMypage>
@@ -212,20 +280,14 @@ function AdminPage() {
                         <th>회원 가입일</th>
                     </tr>
                 </thead>
-                {memberInfo && memberInfo.map(member => (
-                <tbody key={member.id}>
-                    <tr>
-                        <td>{member.id}</td>
-                        <td>{member.name}</td>
-                        <td>{member.member_id}</td>
-                        <td>{member.password}</td>
-                        <td>{member.email}</td>
-                        <td>{member.create_time}</td>
-                    </tr>
-                </tbody>
-                ))}
+                <Tbody1 />
+                {visible && <Tbody2 />}
+                {/* {visible && <Tbody3 />} */}
             </table>
         </div>
+        <div className="select-member"><button onClick={() => {
+          setVisible(!visible);
+        }}>회원 더 보기</button></div>
     </div>
   </StyleMypage>
     );

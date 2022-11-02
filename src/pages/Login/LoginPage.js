@@ -69,6 +69,10 @@ const LoginBlock=styled.div`
 .auto{
     color:#EEEEEE;
     margin-left: 10px;
+    margin-top: 15px;
+}
+label{
+    margin-left: 10px;
 }
 .loginButton, .goButton{
     width: 100%;
@@ -79,7 +83,7 @@ const LoginBlock=styled.div`
     border-radius: 60px;
     background-color: #FFD369;
     color:#222831;
-    margin: 20px 0 ;
+    margin: 15px 0 ;
     font-weight: bold;
 }
 .find{
@@ -191,8 +195,7 @@ const LoginPage=()=>{
                         <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd}/>
                 </div>
                 <div className="error">{!isPwd && inputPwd.length >0 &&('영문자 포함 숫자 8~16자')}</div>
-
-                <div className="auto"><input type="checkbox" value="remember"/><span>자동로그인</span></div>
+                <div className="auto"><input type="checkbox" id="remember"/><label for="remember">자동로그인</label></div>
                 <div className="item"><button type="submit" className="loginButton" disabled={submit} onClick={onClickLogin} >확인</button></div>
                 <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
                 <div className="find">
