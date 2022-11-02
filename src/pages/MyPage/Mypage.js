@@ -175,6 +175,21 @@ return (
 /** 관리자 계정 페이지 */
 function AdminPage() {
 
+    const [memberInfo, setMemberInfo] = useState('');
+
+    useEffect(() => {
+        const memberSelect = async () => {
+            try {
+                const response = await MovieApi.memberInfo();
+                console.log(response.data.results);
+                setMemberInfo(response.data.results);
+            } catch(e) {
+                console.log(e);
+            }
+        }
+        memberSelect();
+    }, []);
+
   return (
     <StyleMypage>
       <div>
@@ -187,30 +202,28 @@ function AdminPage() {
             <h1>회원 목록 조회</h1>
         <div className="container-system">
             <table>
-                <tr>
-                    <th>회원 번호</th>
-                    <th>회원 이름</th>
-                    <th>회원 아이디</th>
-                    <th>회원 패스워드</th>
-                    <th>회원 이메일</th>
-                    <th>회원 가입일</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>지민</td>
-                    <td>test1234</td>
-                    <td>test1234</td>
-                    <td>test123@gmail.com</td>
-                    <td>2022/11/02</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>관리자</td>
-                    <td>SYSTEM</td>
-                    <td>1234</td>
-                    <td>sys@gmail.com</td>
-                    <td>2022/06/01</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>회원 번호</th>
+                        <th>회원 이름</th>
+                        <th>회원 아이디</th>
+                        <th>회원 패스워드</th>
+                        <th>회원 이메일</th>
+                        <th>회원 가입일</th>
+                    </tr>
+                </thead>
+                {memberInfo && memberInfo.map(member => (
+                <tbody key={member.id}>
+                    <tr>
+                        <td>{member.id}</td>
+                        <td>{member.name}</td>
+                        <td>{member.member_id}</td>
+                        <td>{member.password}</td>
+                        <td>{member.email}</td>
+                        <td>{member.create_time}</td>
+                    </tr>
+                </tbody>
+                ))}
             </table>
         </div>
     </div>
