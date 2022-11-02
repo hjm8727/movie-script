@@ -11,7 +11,6 @@ function MainPage() {
     const [Movies, setMovies] = useState([])
     const [Movies2, setMovies2] = useState([])
     const [Movies3, setMovies3] = useState([])
-    const [MainTrailer, setMainTrailer] = useState('')
     const [CurrentPage, setCurrentPage] = useState(0)
 
 
@@ -34,9 +33,7 @@ function MainPage() {
         })
         .then(response => response.json())
         .then(response => {
-        console.log(response.results.contents[0].movie.backdrop_path)
         setMovies([...Movies,...response.results.contents])
-        setMainTrailer(response.results.contents[0].movie)
         setCurrentPage(response.results.page)
         }, setLoading(false))
         
@@ -51,7 +48,6 @@ function MainPage() {
         .then(response => {
         console.log(response)
         setMovies2([...Movies2,...response.results.contents])
-        // setMainTrailer(response.results[0])
         setCurrentPage(response.results.page)
         }, setLoading(false))
 
@@ -66,7 +62,6 @@ function MainPage() {
         .then(response => {
         console.log(response)
         setMovies3([...Movies3,...response.results.contents])
-        // setMainTrailer(response.results[0])
         setCurrentPage(response.results.page)
         }, setLoading(false))
     }
@@ -91,10 +86,8 @@ function MainPage() {
     return (
         <div style={{width: '100%', margin: '0',  backgroundColor: 'black'}}>
 
-        {MainTrailer &&
-        <Trailer scr={`${MainTrailer.youtube_url}`}/>
-        }
-
+        <Trailer/>
+        
         {/* 카테고리 부분 */}
         <div style={{width: '85%', margin: '1rem auto'}}>
             <h2 style={{color: '#FFD369'}}>최신 영화</h2>

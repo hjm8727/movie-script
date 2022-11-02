@@ -30,7 +30,7 @@ const MovieApi={
         return await axios.post(MOVIE_DOMAIN + "IdRegCheck", regCheck, HEADER)
     },
      // 아이디 찾기 api
-     findUser : async function(inputName,inputEmail){
+    findUser : async function(inputName,inputEmail){
         const finding ={
             name : inputName,
             email : inputEmail

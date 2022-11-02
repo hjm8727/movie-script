@@ -13,9 +13,9 @@ function Detail(props) {
 
     useEffect(() => {
         // 영화 정보
-        let contentInfo = `http://cokebear756.synology.me:62322/api/movie/nowPlaying?page=0&size=1`
+        let contentInfo = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
         // 영화 배우/제작진
-        let contentCrew = `http://cokebear756.synology.me:62322/api/movie/nowPlaying`
+        let contentCrew = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
 
         fetch(contentInfo, {
             method : "POST",
@@ -24,8 +24,7 @@ function Detail(props) {
             .then(response => response.json())
             .then(response => {
                 console.log(response)
-                setMovie(response.results.contents.movie)
-                // setMovie(response.results.contents)
+                setMovie(response.results)
         })
         
         // 배우/제작진 API 받아오기
@@ -33,7 +32,7 @@ function Detail(props) {
             .then(response => response.json())
             .then(response => {
                 console.log(response)
-                setCast(response.cast)
+                setCast(response.results.cast)
         })
 }, [])
     
@@ -41,7 +40,7 @@ function Detail(props) {
     <div style={{width: '100%', backgroundColor: 'black'}}>
         {/* 상세페이지 헤더영역 - 가로포스터 */}
         <div style={{width: '1280px', margin: '1rem auto'}}>
-            <DetailImage image={`http://image.tmdb.org/t/p/w1280${Movie.backdrop_path}`} title={Movie.title}/>
+            <DetailImage image={`${Movie.backdrop_path}`} title={Movie.title}/>
             </div>
         {/* 줄거리 삽입 가능 현재 상세 정보 테이블로 내림 text={Movie.overview} */}
 
@@ -55,7 +54,7 @@ function Detail(props) {
                 {Cast && Cast.map((cast, index) =>(
                     <React.Fragment key={index}>
                         <GridCards image={cast.profile_path ? 
-                        `http://image.tmdb.org/t/p/w500${cast.profile_path}` : null}
+                        `${cast.profile_path}` : null}
                         characterName={cast.name}/>
                         {/* null 값 대신 빈X 박스 추가 예정 */}
                     </React.Fragment>
