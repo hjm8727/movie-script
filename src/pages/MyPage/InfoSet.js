@@ -19,6 +19,7 @@ const StyleInfoSet = styled.div`
     font-size: 1.5em;
     font-weight: bold;
     color: #ffd369;
+    pointer-events: none;
 }
 * {
     color: white;
@@ -40,8 +41,7 @@ const StyleInfoSet = styled.div`
     margin-top: 2rem;
     width: 35vw;
     height: 8vh;
-    background-color: #eeeeee;
-    color: black;
+    background-color: #232323;
     border-radius: 8px;
 }
 .infoset-title {
@@ -180,12 +180,13 @@ const InfoSet = () => {
         <StyleInfoSet>
          <div>
             <nav className="nav nav-pills nav-justified">
-                <Link className="nav-link" to="/Mypage/mypage">마이페이지</Link>
+                <Link className="nav-link" to="/">홈</Link>
+                <Link className="nav-link mypage" to="/Mypage/mypage">마이페이지</Link>
                 <Link className="nav-link" to="/Mypage/inquire">1:1 문의하기</Link>
             </nav>
                 <h1 className="infoset-title">회원정보수정</h1>
             <div className="infoset-container">
-                <h3 className="pwd-find">비밀번호 찾기</h3>
+                <h3 className="pwd-find">비밀번호 변경</h3>
                 <input className="input-box" type='text' placeholder="현재 아이디 입력*" value={inputId} onChange={onChangePwd} />
                 <div className="hint">
                     {inputId.length > 0 && <span className={`message ${isId ? 'success' : 'error'}`}>{idMessage}</span>}
