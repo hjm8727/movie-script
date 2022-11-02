@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { BsFillPeopleFill } from "react-icons/bs";
 import styled from "styled-components";
+import MovieApi from "../../api/MovieApi";
+import { useEffect, useState } from "react";
 
 const StyleMypage = styled.div`
     box-sizing: border-box;
@@ -36,6 +38,8 @@ const StyleMypage = styled.div`
     margin-top:2rem;
     margin-left: 1rem;
     font-weight: 200;
+    color: #ffd369;
+    font-size: 2rem;
 }
 .container .profil {
     text-decoration: none;
@@ -85,13 +89,15 @@ const StyleMypage = styled.div`
     }
 }
 `;
+
+
 // 관리자 계정인지 확인
 const userId = window.localStorage.getItem("userId");
-    let userAdmin = false;
-    if(userId === 'admin123') {
-        // alert("관리자");
-        userAdmin = true;
-    }
+let userAdmin = false;
+if(userId === 'admin123') {
+    // alert("관리자");
+    userAdmin = true;
+}
 // 로그아웃
 const onClickLogout = () =>{
     window.localStorage.setItem("userId", "");
@@ -100,8 +106,25 @@ const onClickLogout = () =>{
     window.location.replace("/");
 }
 
+
 /** 유저 계정 페이지 */
 function UserMypage() {
+
+const [memberSelect, setMemberSelect] = useState('');
+useEffect(() => {
+
+        const memberInfo = async () => {
+        try {
+            const response = await MovieApi.memberSelect(userId); // 현재 회원만 조회
+            console.log(response.data.results.id);
+            setMemberSelect(response.data.results);
+        } catch(e) {
+            console.log(e);
+        }
+    };
+    memberInfo();
+}, []);
+
 return (
     <StyleMypage>
         <div>
@@ -115,10 +138,12 @@ return (
             <button className="logout" onClick={onClickLogout}>로그아웃</button>
             <br />
             <Link className="profil" to="/MyPage/Infoset">회원 정보 수정</Link> 
-            <h3 className="info">이름 : 지민 </h3>
-            <h3 className="info">아이디 : {userId}</h3>
-            <h3 className="info">이메일 : jimin600155@naver.com</h3>
-            <h3 className="info">가입일 : 2022.10.19</h3>
+                <div key={memberSelect.id}>
+                    <h3 className="info">이름  : {memberSelect.name}</h3>
+                    <h3 className="info">아이디 : {memberSelect.id}</h3>
+                    <h3 className="info">이메일 : {memberSelect.email}</h3>
+                    <h3 className="info">가입일 : {memberSelect.create_time}</h3>
+                </div>
             <br /> <br /><br />
             <Link className="delete-member" to="/MyPage/DeleteAccount">회원 탈퇴</Link>
             <br /><br />
