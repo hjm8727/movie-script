@@ -1,6 +1,7 @@
 import axios from "axios";
 const HEADER = 'application/json';
 const MOVIE_DOMAIN="http://cokebear756.synology.me:62322/api/";
+const MY_DOMAIN = "http://localhost:8090/kh_movie_project/";
 
 const MovieApi={
     // 로그인 api
@@ -60,6 +61,20 @@ const MovieApi={
             password : inputPwd
         }
         return await axios.post(MOVIE_DOMAIN + "member/delete", deleteUser,HEADER);
+    },
+    // 마이페이지 정보 조회 API
+    memberSelect : async function(id) {
+        const member = {
+            id : id
+        }
+        return await axios.post(MOVIE_DOMAIN + "/member/mypage", member, HEADER);
+    },
+    // 지민 테스트 문의 내역 API
+    inquireInfo : async function() {
+        const info = {
+            cmd : "InquireInfo"
+        }
+        return await axios.post(MY_DOMAIN + "InquireSelectServlet", info, HEADER);
     }
 }
 export default MovieApi;
