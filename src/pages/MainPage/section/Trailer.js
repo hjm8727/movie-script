@@ -1,69 +1,23 @@
-import Carousel from 'react-bootstrap/Carousel';
-import styled from 'styled-components';
+import React from 'react';
 
-const Trail = styled.div`
-.carousel-indicators {
-    visibility: hidden;
-}
-`;
-
-function Trailer() {
-  return (
-    <Trail>
-    <Carousel style={{width: '85%', margin: '5px auto', borderRadius: '10px', backgroundColor: '#FFD369', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
-      <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed
-          className="d-block w-100"
-          width="800px" height="685px" 
-          src="https://www.youtube.com/embed/Dlfp3K11C_o"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>토르 : 러브 앤 썬더</h3>
-          <p>Thor</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed
-          className="d-block w-100"
-          width="800px" height="685px" 
-          src="https://www.youtube.com/embed/aGhqI3d6toc"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>크리드3</h3>
-          <p>크리드 3</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed
-          className="d-block w-100"
-          width="800px" height="685px" 
-          src="https://www.youtube.com/embed/7Q70_m-59O8"
-          alt="Second slide"
-        />
-
-        <Carousel.Caption>
-          <h3>아바타 2</h3>
-          <p>아바타 2</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed
-          className="d-block w-100"
-          width="800px" height="685px" 
-          src="https://www.youtube.com/embed/FuPLLwH4lp4"
-          alt="Third slide"
-        />
-
-        <Carousel.Caption>
-          <h3>블랙 아담</h3>
-          <p>블랙 아담</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-    </Trail>
-  );
+// 메인페이지용
+function Trailer(props) {
+    return (
+        <div style={{
+            background: `url('${props.src}'), black`,
+            height: '500px',
+            backgroundSize: '100%, cover',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            width: '100%',
+            position: 'relative',
+        }}>
+            <div style={{position: 'absolute', maxWidth: '500px', bottom: '2rem', marginLeft: '2rem'}}>
+                <h2 style={{color: '#FFD669'}}>{props.title}</h2>
+                <p style={{color:'#FFD669', fontSize: '1rem'}}>{props.text}</p>
+            </div>
+        </div>
+    )
 }
 
 export default Trailer;
