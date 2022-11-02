@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import GridCards2 from '../../Cards/GridCards2';
 import DetInfo from './DetInfo';
 import DetailImage from './DetailImage';
-import NoImage from '../section/NoImage';
+import NoImage from '../../../util/NoImage';
+
 
 // 포스터 클릭시 보이는 영화 상세 페이지
 function Detail(props) {
@@ -43,7 +44,7 @@ function Detail(props) {
     return (
     <div style={{width: '100%', backgroundColor: 'black'}}>
         {/* 상세페이지 헤더영역 - 가로포스터 */}
-        <div style={{width: '1280px', margin: '1rem auto'}}>
+        <div style={{width: '1280px', margin: '0.1rem auto'}}>
             <DetailImage image={`${Movie.backdrop_path}`} title={Movie.title}/>
             </div>
 

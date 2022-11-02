@@ -16,7 +16,7 @@ import InfoSet from './pages/MyPage/InfoSet';
 import Inquire from './pages/MyPage/Inquire';
 import InquireList from './pages/MyPage/InquireList';
 import DeleteAccount from './pages/MyPage/DeleteAccount';
-
+import SearchResult from './pages/Menu/SearchResult/SearchResult';
 
 function App() {
   return (
@@ -36,6 +36,8 @@ function App() {
         <Route path='/MyPage/Inquire' element={<Inquire />} />
         <Route path='/MyPage/InquireList' element={<InquireList />} />
         <Route path='/MyPage/DeleteAccount' element={<DeleteAccount/>}/>
+        <Route path='/Menu/SearchResult/SearchResult' element={<SearchResult/>}/>
+
       </Routes>
     </Router>
   );

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import GridCards from '../Cards/GridCards';
 import {Row} from 'antd';
-import NowLoading from './section/Loading';
-import NoImage from './section/NoImage';
+import NowLoading from '../../util/Loading';
 import Trailer from './section/Trailer';
+import NoImage from '../../util/NoImage';
 
 function MainPage() {
     const [Loading, setLoading] = useState(true)

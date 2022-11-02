@@ -1,5 +1,6 @@
 import Menu from "./Menu/Menu";
 import MainPage from "./MainPage/MainPage";
+import Footer from "./Menu/Footer";
 
 
 const Main = () => {
@@ -9,6 +10,7 @@ const Main = () => {
         
         <MainPage/>
         <br/>
+        <Footer/>
         </div>
     );
 };

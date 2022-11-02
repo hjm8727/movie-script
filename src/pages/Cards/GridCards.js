@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Col } from 'antd';
-import NowLoading from '../MainPage/section/Loading';
+import NowLoading from '../../util/Loading';
 
 
 function GridCards(props) {

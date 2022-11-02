@@ -6,7 +6,7 @@ function DetailImage(props) {
         <div style={{
             background: `url('${props.image}'), black`,
             height: '500px',
-            backgroundSize: '100%, cover',
+            backgroundSize: 'cover',
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',
             width: '1280px',
@@ -14,7 +14,7 @@ function DetailImage(props) {
         }}>
             <div style={{position: 'absolute', maxWidth: '500px', bottom: '2rem', marginLeft: '2rem'}}>
                 <h2 style={{color: '#FFD669', fontSize: '3rem'}}>{props.title}</h2>
-                <p style={{color:'#FFD669', fontSize: '1rem'}}>{props.text}</p>
+                {/* <p style={{color:'#FFD669', fontSize: '1rem'}}>{props.text}</p> */}
             </div>
         </div>
     )
