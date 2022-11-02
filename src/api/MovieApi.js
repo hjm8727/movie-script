@@ -75,6 +75,10 @@ const MovieApi={
             cmd : "InquireInfo"
         }
         return await axios.post(MY_DOMAIN + "InquireSelectServlet", info, HEADER);
+    },
+    // 관리자페이지 회원 리스트 API
+    memberInfo : async function() {
+        return await axios.post(MOVIE_DOMAIN + "/member/viewMembers", HEADER);
     }
 }
 export default MovieApi;
