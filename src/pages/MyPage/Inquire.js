@@ -20,6 +20,7 @@ const StyleInquire = styled.div`
     font-size: 1.5em;
     font-weight: bold;
     color: #ffd369;
+    pointer-events: none;
 }
 .inquire-container {
     display: flex;
@@ -52,7 +53,7 @@ const StyleInquire = styled.div`
     color: #232323;
 }
 .inquire-head {
-    margin-bottom: 3rem;
+    margin: 3rem 0;
     font-weight: bold;
     color: #ffd369;
     text-align: center;
@@ -74,7 +75,7 @@ const StyleInquire = styled.div`
 `;
 
 const Inquire = () => {
-
+    
     // 문의 내용 입력받기
     const [inputText, setInputText] = useState("");
     const [inputSelect, setInputSelect] = useState("");
@@ -84,10 +85,12 @@ const Inquire = () => {
 
     const onClickSubmit = async () => {
         const inquire = await MovieApi.inquireSubmit(inputSelect, inputText);
-        if(inquire.data.statusCode === 200) {
+        if(inquire.data.result === "OK") {
             console.log('성공');
             alert("문의 완료");
             window.location.replace("/MyPage/Mypage");
+        } else {
+            alert("1000글자 이하로 적어주세요.");
         }
     }
     return ( 
@@ -95,14 +98,13 @@ const Inquire = () => {
         <div>
             <nav className="nav nav-pills nav-justified">
                 <Link className="nav-link" to="/">홈</Link>
-                <Link className="nav-link" to="/MyPage/mypage">마이페이지</Link>
+                <Link className="nav-link mypage" to="/MyPage/mypage">마이페이지</Link>
                 <Link className="nav-link" to="/MyPage/infoset">회원정보수정</Link>
             </nav>
                 <h1 className='inquire-head'>1:1 문의하기</h1>
             <form className="inquire-container">
                     <label for='why' className="inquire-text">문의 이유를 선택해주세요.</label>
                     <select name='why' id='why' className="inquire" value={inputSelect} onChange={onChangeSelect}>
-                        {/* 이거 선택 하면 상관 없는데 처음 선택할 떄 NULL 값이 들어와서..문제네 회원번호도 받아야하고.ㄷ*/}
                       <option>단순 변심</option>
                       <option>시작할 때 문제가 있음</option>
                       <option>사이트가 맘에 들지가 않음</option>
