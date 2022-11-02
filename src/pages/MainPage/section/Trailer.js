@@ -31,50 +31,33 @@ function Trailer() {
     <Trail>
     <Carousel style={{width: '85%', margin: '5px auto', borderRadius: '10px', backgroundColor: '#FFD369', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
       <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed className="d-block w-100" width="800px" height="685px" src="https://www.youtube.com/embed/_Z3QKkl1WyM" alt="First slide"/>
+        <embed className="d-block w-100" width="800px" height="685px" src="https://www.youtube.com/embed/ku9l1fHo5XE" alt="xxx"/>
         <Carousel.Caption>
-          <h3>토르 : 러브 앤 썬더</h3>
-          <p>Thor</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      {/* <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed
-          className="d-block w-100"
-          width="800px" height="685px" 
-          src="https://www.youtube.com/embed/aGhqI3d6toc"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>크리드3</h3>
-          <p>크리드 3</p>
+          <h3>블랙 팬서: 와칸다 포에버</h3>
+          <p>Black Panther: Wakanda Forever</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed
-          className="d-block w-100"
-          width="800px" height="685px" 
-          src="https://www.youtube.com/embed/7Q70_m-59O8"
-          alt="Second slide"
-        />
-
+        <embed className="d-block w-100" width="800px" height="685px" src="https://www.youtube.com/embed/tgPuhRNoROs" alt="xxx"/>
         <Carousel.Caption>
-          <h3>아바타 2</h3>
-          <p>아바타 2</p>
+          <h3>원피스 필름 레드</h3>
+          <p>ONE PIECE FILM RED</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed
-          className="d-block w-100"
-          width="800px" height="685px" 
-          src="https://www.youtube.com/embed/FuPLLwH4lp4"
-          alt="Third slide"
-        />
-
+        <embed className="d-block w-100" width="800px" height="685px" src="https://www.youtube.com/embed/VRWhQSTayA0" alt="xxx"/>
         <Carousel.Caption>
-          <h3>블랙 아담</h3>
-          <p>블랙 아담</p>
+          <h3>블랙 사이트</h3>
+          <p>Black Site</p>
         </Carousel.Caption>
-      </Carousel.Item> */}
+      </Carousel.Item>
+      <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
+        <embed className="d-block w-100" width="800px" height="685px" src="https://www.youtube.com/embed/aGhqI3d6toc" alt="xxx"/>
+        <Carousel.Caption>
+          <h3>크리드 3</h3>
+          <p>Creed : 3</p>
+        </Carousel.Caption>
+      </Carousel.Item>
     </Carousel>
     </Trail>
   );

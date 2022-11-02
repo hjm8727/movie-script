@@ -46,7 +46,7 @@ function MainPage() {
         })
         .then(response => response.json())
         .then(response => {
-        console.log(response)
+
         setMovies2([...Movies2,...response.results.contents])
         setCurrentPage(response.results.page)
         }, setLoading(false))
@@ -60,7 +60,7 @@ function MainPage() {
         })
         .then(response => response.json())
         .then(response => {
-        console.log(response)
+        // console.log(response)
         setMovies3([...Movies3,...response.results.contents])
         setCurrentPage(response.results.page)
         }, setLoading(false))
@@ -85,7 +85,6 @@ function MainPage() {
 
     return (
         <div style={{width: '100%', margin: '0',  backgroundColor: 'black'}}>
-
         <Trailer/>
         
         {/* 카테고리 부분 */}
@@ -96,7 +95,7 @@ function MainPage() {
             <Row gutter={[16, 16]}>
             {Movies && Movies.map((movie, index) => (
                 <React.Fragment key={index}>
-                <GridCards MainPage image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
+                <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}
             </Row>
@@ -115,7 +114,7 @@ function MainPage() {
             <Row gutter={[16, 16]}>
             {Movies2 && Movies2.map((movie, index) => (
                 <React.Fragment key={index}>
-                <GridCards MainPage image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
+                <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}
             </Row>
@@ -135,11 +134,10 @@ function MainPage() {
             <Row gutter={[16, 16]}>
             {Movies3 && Movies3.map((movie, index) => (
                 <React.Fragment key={index}>
-                <GridCards MainPage image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
+                <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}
             </Row>
-
         
         {/* 더보기 */}
         <div style={{display: 'flex', justifyContent: 'center' }}>
