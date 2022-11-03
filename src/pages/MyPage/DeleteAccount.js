@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { useState } from "react";
+import {useState} from "react";
 import MovieApi from '../../api/MovieApi';
 import Modal from '../../util/Modal';
 import {useNavigate} from 'react-router-dom';
-
 
 const DeleteBlock=styled.div`
 .delete-container{
@@ -68,27 +67,19 @@ hr{
     margin: 35px 0;
 }
 `;
-// 로그인된 계정인지 확인 
-const userId = window.localStorage.getItem("userId");
-const userPwd = window.localStorage.getItem("userPwd");
-
 const DeleteAccount=()=>{
     const [inputId, setInputId] = useState("");
     const [inputPwd, setInputPwd] = useState("");
     const [inputEmail, setInputEmail] = useState("");
-    // 서버로 전송할 수 있는 조건 체크 
-    const [submit, setSubmit] = useState(false);
     // 모달창
     const [modalOpen, setModalOpen] = useState(false);
     const [modalHeader, setModalHeader] = useState(false);
     const [modalText, setModalText] = useState(false);
     let navigate = useNavigate();
 
-
     const closeModal = () => {
         setModalOpen(false);
     };
-
     const onChangeId=(e)=>{
         setInputId(e.target.value);
     }
@@ -97,27 +88,33 @@ const DeleteAccount=()=>{
     }
     const onChangeEmail=(e)=>{
         setInputEmail(e.target.value);
-        isSubmit();
     }
-    // 로그인된 회원이랑 입력된 아이디 같아야 서버로 전송 여부  
-    const isSubmit=()=>{
-        if(userId===inputId&&userPwd===inputPwd) setSubmit(true);
-        // if(inputId&&inputPwd&&inputEmail) setSubmit(true);
+    // 로그인된 값이랑 input 값 일치하는지 검사
+    const loginCheck=()=>{
+        const userId = window.localStorage.getItem("userId");
+        const userPwd = window.localStorage.getItem("userPwd");
+        if(inputId === userId && inputPwd === userPwd){
+            console.log("로그인 계정이랑 일치");
+        }else{
+            alert("로그인 계정이랑 일치하지 않음")
+        }
     }
-    const onSubmit=async()=> {
-        const deleteUser = await MovieApi.deleteUser(inputId,inputEmail,inputPwd);
-        if(submit&&deleteUser.data.statusCode === 200) {
-            alert("회원탈퇴 성공");
-            console.log("탈퇴 찐 성공");
-            // setModalOpen(true);
-            // setModalHeader("성공");
-            // setModalText("회원 정보가 탈퇴되었습니다.");
-            // 탈퇴되면 자동으로 로그인페이지 이동
-            window.location.replace('/Login/LoginPage');
-        } else {
-            setModalOpen(true);
-            setModalHeader("오류");
-            setModalText("일치하는 회원정보가 아닙니다.");
+    const onClickDelete = async()=> {
+        if(loginCheck) {
+            const deleteUser = await MovieApi.deleteUser(inputId,inputEmail,inputPwd);
+            if(deleteUser.data.statusCode === 200) {
+                console.log("회원 정보가 탈퇴되었습니다.");
+                alert("탈퇴되었습니다.");
+                // 탈퇴 성공시 모달창이 너무 빨리 사라져서 alert으로 대체ㅠㅠ
+                // setModalOpen(true);
+                // setModalHeader("성공");
+                // setModalText("회원 정보가 탈퇴되었습니다.");
+                window.location.replace('/Login/LoginPage');
+            } else {
+                setModalOpen(true);
+                setModalHeader("오류");
+                setModalText("일치하는 회원정보가 없습니다.");
+            }
         }
     }
     return(
@@ -130,7 +127,7 @@ const DeleteAccount=()=>{
             <div className="inputWrap"><input className="input" placeholder="아이디를 입력하세요*" type="text" value={inputId} onChange={onChangeId}/></div>
             <div className="inputWrap"><input className="input" placeholder="이메일을 입력하세요*" type="email" value={inputEmail} onChange={onChangeEmail}/></div>
             <div className="inputWrap"><input className="input" placeholder="비밀번호를 입력하세요*" type="password" value={inputPwd} onChange={onChangePwd}/></div>
-            <div className="delButton"><button className="out" onClick={onSubmit}>탈퇴하기</button>
+            <div className="delButton"><button className="out" onClick={onClickDelete}>탈퇴하기</button>
             <button className="revoke" onClick={()=>{navigate('/Mypage/Mypage')}} >취소하기</button></div>
             <Modal open={modalOpen} close={closeModal} header={modalHeader}>{modalText}</Modal>                                                       
             <hr/>
@@ -138,6 +135,5 @@ const DeleteAccount=()=>{
             </div>
         </DeleteBlock>
     );
-
 }
 export default DeleteAccount;
