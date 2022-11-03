@@ -154,11 +154,11 @@ const onClickLogout = () =>{
 /** 유저 계정 페이지 */
 function UserMypage() {
 
-let isLogin = window.localStorage.getItem('isLogin');
-if(isLogin !== true) {
-    alert('로그인 후 이용 부탁드립니다.');
-    window.location.replace('/Login/LoginPage');
-}
+    let isLogin = window.localStorage.getItem('isLogin');
+    if(isLogin !== 'true') {
+        alert('로그인 후 이용 부탁드립니다.');
+        window.location.replace('/Login/LoginPage');
+    }
 
 const [memberSelect, setMemberSelect] = useState('');
 useEffect(() => {
