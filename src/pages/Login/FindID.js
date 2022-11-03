@@ -27,7 +27,6 @@ padding: 16px;
 margin-top: 8px;
 border: 2px solid #EEEEEE;
 }
-
 .inputWrap:focus-within{border: 2px solid #FFD369;}
 .input{
     width: 100%;
@@ -38,7 +37,6 @@ border: 2px solid #EEEEEE;
     font-weight: 400px;
     background-color: inherit;
     color: #EEEEEE;
-
 }
 .input::placeholder{color : #dadada}
 .loginButton, .findButton{
@@ -82,7 +80,6 @@ const FindID=()=>{
     const [modalText, setModalText] = useState(false);
     const [submit, setSubmit] = useState(true);
 
-
     const onChangeName=(e)=>{
         setInputName(e.target.value);
     }
@@ -102,8 +99,7 @@ const FindID=()=>{
             const id = findUser.data.results.id;
             setModalOpen(true);
             setModalHeader(inputName+" 님의 아이디는");
-            setModalText(id+" 입니다.");
-            
+            setModalText(id+" 입니다.");    
         } else {
             setModalOpen(true);
             setModalHeader("오류");

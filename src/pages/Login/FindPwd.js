@@ -26,50 +26,50 @@ const FindPwdBlock=styled.div`
     padding: 16px;
     margin-top: 8px;
     border: 2px solid #EEEEEE;
-}
-.inputWrap:focus-within{border: 2px solid #FFD369;}
-.input{
-    width: 100%;
-    outline: none;
-    border: none;
-    height: 17px;
-    font-size: 14px;
-    font-weight: 400px;
-    background-color: inherit;
-    color: #EEEEEE;
-}
-.input::placeholder{color : #dadada}
-.loginButton, .findButton{
-    width: 100%;
-    height: 48px;
-    border: none;
-    font-weight: 18px;
-    cursor: pointer;
-    border-radius: 60px;
-    background-color: #FFD369;
-    color:#222831;
-    font-weight: bold;
-}
-.findButton:disabled{background-color: #222831;color: #EEEEEE;}
-hr{
-    border: 2px solid #EEEEEE;
-    height: 4px;
-    margin: 35px 0;
-}
-h2{
-    margin-top: 87px;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 30px;
-}
-.findDesc{
-    text-align: center;
-    font-size: 14px;
-}
-div{
-    margin-bottom: 20px;
-}
+    }
+    .inputWrap:focus-within{border: 2px solid #FFD369;}
+    .input{
+        width: 100%;
+        outline: none;
+        border: none;
+        height: 17px;
+        font-size: 14px;
+        font-weight: 400px;
+        background-color: inherit;
+        color: #EEEEEE;
+    }
+    .input::placeholder{color : #dadada}
+    .loginButton, .findButton{
+        width: 100%;
+        height: 48px;
+        border: none;
+        font-weight: 18px;
+        cursor: pointer;
+        border-radius: 60px;
+        background-color: #FFD369;
+        color:#222831;
+        font-weight: bold;
+    }
+    .findButton:disabled{background-color: #222831;color: #EEEEEE;}
+    hr{
+        border: 2px solid #EEEEEE;
+        height: 4px;
+        margin: 35px 0;
+    }
+    h2{
+        margin-top: 87px;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .findDesc{
+        text-align: center;
+        font-size: 14px;
+    }
+    div{
+        margin-bottom: 20px;
+    }
 `;
 const FindPwd=()=>{
     let navigate = useNavigate();
@@ -79,7 +79,6 @@ const FindPwd=()=>{
     const [modalHeader, setModalHeader] = useState(false);
     const [modalText, setModalText] = useState(false);
     const [submit, setSubmit] = useState(true);
-
 
     const onChangeId=(e)=>{
         setInputId(e.target.value);

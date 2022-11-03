@@ -170,7 +170,6 @@ const Menu = () => {
         } else {
             alert("2글자 이상 입력해 주세요.")
         }
-        
     }
     // 엔터버튼으로 검색 기능
     const onKeyPress = e => {

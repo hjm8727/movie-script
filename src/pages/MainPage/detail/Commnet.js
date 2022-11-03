@@ -16,13 +16,14 @@ function RComment(props) {
         setOpenReply(!OpenReply)
     }
 
+    // 로그인된 사용자 ID 받아오기
+    const idc = window.localStorage.getItem("userId");
+
     const onSubmit = (e) => {
         e.preventDefault();
-
-        // 사용자 정보 확인 
-
+    
         const rev = {
-            // id : user.id, // 아이디(?)
+            id : idc,
             movId : props.movid,
             review : ReviewVal
         }
@@ -39,7 +40,7 @@ function RComment(props) {
         })
     }
     const reply = [
-        <span onClick={openReply} key="comment-basic-reply-to">답글 </span>
+        <span onClick={openReply}>답글</span>
     ]
 
     return (
@@ -49,8 +50,8 @@ function RComment(props) {
             {OpenReply &&
                 <form style={{ display: 'flex' }} onSubmit={onSubmit}>
                     <TextArea style={{ width: '100%', borderRadius: '5px' }} onChange={handleChange} value={ReviewVal} placeholder="리뷰를 작성해 보세요."/>
-                    <br />
-                    <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>Submit</Button>
+                    <br/>
+                    <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>저장</Button>
                 </form>
             }
         </div>

@@ -17,20 +17,18 @@ img{
 h2{
     font-size: 25px;
     color :#FFD369;
-}
-    
+}   
 `
 const Footer = () => {
-
     return(
         <Foo>
             <img src="/images/Logo.png" alt="Logo"/>
             <h2>Contact MovieScript</h2>
-            <p>Master : <span>하정목 : Seoul GangNam Center</span></p>
-            <p>Engineer : <span>김성탁 : North Pole CokeBear</span></p>
-            <p>Manager : <span>김승렬 : KH Academy</span></p>
-            <p>Cute Voice : <span>지민 : Cave</span></p>
-            <p>Engineering College Yeosin : <span>박하린 : Engineer College</span></p>
+            <p>Main : <span>하정목</span></p>
+            <p>Menu : <span>김승렬</span></p>
+            <p>DB & Server : <span>김성탁</span></p>
+            <p>My Page : <span>지민</span></p>
+            <p>Log In & SingUp : <span>박하린</span></p>
         </Foo>
     )
 }

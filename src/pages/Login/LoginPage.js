@@ -162,7 +162,7 @@ const LoginPage=()=>{
         try {
             const res = await MovieApi.userLogin(inputId,inputPwd);
             console.log(res.data.result);
-            
+
             if(res.data.statusCode === 200){
                 window.localStorage.setItem("userId", inputId);
                 window.localStorage.setItem("userPwd",inputPwd);
@@ -191,18 +191,18 @@ const LoginPage=()=>{
             <div className="loginWrap">
                 <div className="inputTitle">아이디</div>
                 <div className="inputWrap">
-                        <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
+                    <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
                 </div>
                 <div className="error">{!isId && inputId.length >0 &&('영문자 또는 숫자 6~20자')}</div>
 
                 <div className="inputTitle">비밀번호</div>
                 <div className="inputWrap">
-                        <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd} onKeyPress={onKeyPress}/>
+                    <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd} onKeyPress={onKeyPress}/>
                 </div>
                 <div className="error">{!isPwd && inputPwd.length >0 &&('영문자 포함 숫자 8~16자')}</div>
                 <div className="auto"><input type="checkbox" id="remember"/><label for="remember">자동로그인</label></div>
                 <div className="item"><button type="submit" className="loginButton" disabled={submit} onClick={onClickLogin} >확인</button></div>
-                <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
+                    <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
                 <div className="find">
                     <span className="findId" onClick={()=>{navigate('/Login/FindId')}}>아이디 찾기</span>
                     <span className="findPwd" onClick={()=>{navigate('/Login/FindPwd')}}>비밀번호 찾기</span>
@@ -211,7 +211,7 @@ const LoginPage=()=>{
                 <div className="item"><button type="submit" className="goButton" onClick={()=>{navigate('/Login/SignUp')}}>회원가입</button></div>
                 </div>
             </div> 
-            </LoginBlock>
+        </LoginBlock>
     );
 }
 export default LoginPage;

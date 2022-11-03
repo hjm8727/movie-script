@@ -1,6 +1,6 @@
 import React from 'react';
 
-// 상세페이지 용
+// 상세페이지 상단 부분 가로이미지
 function DetailImage(props) {
     return (
         <div style={{ background: `black`, height: '600px', backgroundSize: 'cover', backgroundPosition: '100% 100%', 

@@ -8,13 +8,14 @@ const Trail = styled.div`
     visibility: hidden;
 }
 `;
-
+// 예고편
 function Trailer() {
     const [Trailer, setTrailer] = useState('')
     const [Trailer2, setTrailer2] = useState('')
     const [Trailer3, setTrailer3] = useState('')
     const [Trailer4, setTrailer4] = useState('')
 
+    // movie Id 값을 받아오려 했으니 렌더링 제한 관계로 직접 입력
     useEffect(() => {
         const nowTrailer = `http://cokebear756.synology.me:62322/api/movie/505642`;
         FetchTrailer(nowTrailer)
@@ -32,6 +33,7 @@ function Trailer() {
         FetchTrailer4(nowTrailer4)
     }, [])
 
+    // 받아온 정보 처리
     const FetchTrailer = (nowTrailer) => {
         fetch(nowTrailer, {
             method : "POST",
@@ -73,27 +75,20 @@ function Trailer() {
         })
     }
     return (
+    // youtube 정책에 따라 재생 되지 않는 동영상 존재
     <Trail>
     <Carousel style={{width: '85%', margin: '5px auto', borderRadius: '10px', backgroundColor: '#FFD369', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
     <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
         <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer.youtube_url} alt="xxx"/>
-        <Carousel.Caption>
-        </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
         <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer2.youtube_url} alt="xxx"/>
-        <Carousel.Caption>
-        </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
         <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer3.youtube_url} alt="xxx"/>
-        <Carousel.Caption>
-        </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
         <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer4.youtube_url} alt="xxx"/>
-        <Carousel.Caption>
-        </Carousel.Caption>
     </Carousel.Item>
     </Carousel>
     </Trail>

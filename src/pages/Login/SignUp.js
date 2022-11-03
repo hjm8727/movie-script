@@ -189,36 +189,36 @@ const SignUp=()=>{
             <div className="loginWrap">
                 <div className="inputTitle">아이디</div>
                 <div className="inputWrap">
-                        <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
+                    <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
                 </div>
                 <div className="error">{!isId && inputId.length >0 &&('6~20자 영소문자, 숫자를 사용하세요.')}</div>
                 <div className="inputTitle">비밀번호</div>
                 <div className="inputWrap">
-                        <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd}/>
+                    <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd}/>
                 </div>
                 <div className="error">{!isPwd && inputPwd.length >0 &&('8~16자 영소문자, 숫자를 사용하세요.')}</div>
                 <div className="inputTitle">비밀번호 재확인</div>
                 <div className="inputWrap">
-                <input className="input" placeholder="패스워드 재확인*" type="password" value={confirmPwd} onChange={onChangeConfirmPwd}/>
+                    <input className="input" placeholder="패스워드 재확인*" type="password" value={confirmPwd} onChange={onChangeConfirmPwd}/>
                 </div>
                 <div className="error">{!isConfirmPwd && confirmPwd.length >0 &&('패스워드가 일치하지 않습니다.')}</div>
 
                 <div className="inputTitle">이름</div>
                 <div className="inputWrap">
-                        <input className="input" placeholder="이름*" type="text" value={inputName} onChange={onChangeName} />
+                    <input className="input" placeholder="이름*" type="text" value={inputName} onChange={onChangeName} />
                 </div>
                 <div className="error">{!isName && inputName.length >0 &&('한글 2글자 이상 사용하세요.')}</div>
 
                 <div className="inputTitle">이메일</div>
                 <div className="inputWrap">
-                        <input className="input" placeholder="이메일*" type="email" value={inputEmail} onChange={onChangeEmail} />
+                    <input className="input" placeholder="이메일*" type="email" value={inputEmail} onChange={onChangeEmail} />
                 </div>
                 <div className="error">{!isEmail && inputEmail.length >0 &&('올바른 이메일형식이 아닙니다.')}</div>
                 <hr/>
                 <div className="item"><button type="submit" disabled={submit} className="signUpButton" onClick={onSubmit}>확인</button></div>
                 </div>
                 </div>
-                </SignUpBlock>
+            </SignUpBlock>
     );
 }
 export default SignUp;

@@ -18,13 +18,11 @@ function Reviews(props) {
     const handleChange = (e) => {
         setReview(e.target.value);
     }
-
+    // 로그인된 사용자 ID 받아오기
     const idc = window.localStorage.getItem("userId");
 
     const onSubmit = (e) => {
         e.preventDefault();
-
-        // 사용자 정보 확인 
     
         const rev = {
             id : idc,
@@ -57,15 +55,15 @@ function Reviews(props) {
         ))}
         {props.ReviewLists && props.ReviewLists.length === 0 &&
             <div style={{color: '#FFD369', display: 'flex', justifyContent:'center', alignItems:'center', height:'200px'}} >
-                    이 영화에 첫 리뷰를 남겨보세요.
-                </div>
+                첫 리뷰를 남겨보세요.
+            </div>
         }
         <div style={{marginLeft: '13rem', marginRight: '13rem'}}>
         <InputGroup>
-        <Form.Control as="textarea" aria-label="With textarea" style={{ width: '60%', borderRadius: '5px', marginLeft: '5px', marginRight: '5px' }} onChange={handleChange} value={Comment} placeholder="리뷰를 남겨 보세요." />
-        <Button style={{ backgroundColor: '#FFD369' ,width: '10%', fontWeight: 'bold'}} onClick={onSubmit}>저장</Button>
+        <Form.Control as="textarea" style={{ width: '60%', borderRadius: '5px', marginLeft: '5px', marginRight: '5px' }} onChange={handleChange} value={Comment} placeholder="리뷰를 남겨 보세요." />
+            <Button style={{ backgroundColor: '#FFD369' ,width: '10%', fontWeight: 'bold'}} onClick={onSubmit}>저장</Button>
         </InputGroup>
-        <br />      
+        <br/>      
         </div>
         </PostBlock>
     )
