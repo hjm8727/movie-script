@@ -11,7 +11,6 @@ function DetailImage(props) {
             backgroundRepeat: 'no-repeat',
             width: '1280px',
             position: 'relative',
-            backgroundImage:`url('${props.image}')`
         }}>
             <div style={{position: 'absolute', maxWidth: '500px', bottom: '1rem', marginLeft: '2rem'}}>
                 <h2 style={{color: '#FFD669', fontSize: '3rem'}}>{props.title}</h2>
