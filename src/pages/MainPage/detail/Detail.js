@@ -44,7 +44,7 @@ function Detail(props) {
     return (
     <div style={{width: '100%', backgroundColor: 'black'}}>
         {/* 상세페이지 헤더영역 - 가로포스터 */}
-        <div style={{width: '1280px', margin: '0.1rem auto'}}>
+        <div style={{width: '1280px', height: '500px', margin: '0.1rem auto'}}>
             <DetailImage image={`${Movie.backdrop_path}`} title={Movie.title}/>
             </div>
 

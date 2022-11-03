@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import ReactPlayer from 'react-player/youtube';
 import styled from 'styled-components';
 
 const Trail = styled.div`
@@ -10,10 +11,25 @@ const Trail = styled.div`
 
 function Trailer() {
     const [Trailer, setTrailer] = useState('')
+    const [Trailer2, setTrailer2] = useState('')
+    const [Trailer3, setTrailer3] = useState('')
+    const [Trailer4, setTrailer4] = useState('')
 
     useEffect(() => {
         const nowTrailer = `http://cokebear756.synology.me:62322/api/movie/505642`;
         FetchTrailer(nowTrailer)
+    }, [])
+    useEffect(() => {
+      const nowTrailer2 = `http://cokebear756.synology.me:62322/api/movie/900667`;
+      FetchTrailer2(nowTrailer2)
+    }, [])
+    useEffect(() => {
+      const nowTrailer3 = `http://cokebear756.synology.me:62322/api/movie/848123`;
+      FetchTrailer3(nowTrailer3)
+    }, [])
+    useEffect(() => {
+      const nowTrailer4 = `http://cokebear756.synology.me:62322/api/movie/758724`;
+      FetchTrailer4(nowTrailer4)
     }, [])
 
     const FetchTrailer = (nowTrailer) => {
@@ -23,39 +39,60 @@ function Trailer() {
         })
         .then(res => res.json())
         .then(res => {
-            setTrailer(Trailer,res.results) 
-            // console.log(res.results)
+            setTrailer(res.results) 
         })
+    }
+    const FetchTrailer2 = (nowTrailer2) => {
+      fetch(nowTrailer2, {
+          method : "POST",
+          body: JSON.stringify(Trailer2)
+      })
+      .then(res => res.json())
+      .then(res => {
+          setTrailer2(res.results) 
+      })
+    }
+    const FetchTrailer3 = (nowTrailer3) => {
+      fetch(nowTrailer3, {
+          method : "POST",
+          body: JSON.stringify(Trailer3)
+      })
+      .then(res => res.json())
+      .then(res => {
+          setTrailer3(res.results) 
+      })
+    }
+    const FetchTrailer4 = (nowTrailer4) => {
+      fetch(nowTrailer4, {
+          method : "POST",
+          body: JSON.stringify(Trailer4)
+      })
+      .then(res => res.json())
+      .then(res => {
+          setTrailer4(res.results) 
+      })
     }
   return (
     <Trail>
     <Carousel style={{width: '85%', margin: '5px auto', borderRadius: '10px', backgroundColor: '#FFD369', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
       <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed className="d-block w-100" width="800px" height="685px" src="https://www.youtube.com/embed/ku9l1fHo5XE" alt="xxx"/>
+        <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer.youtube_url} alt="xxx"/>
         <Carousel.Caption>
-          <h3>블랙 팬서: 와칸다 포에버</h3>
-          <p>Black Panther: Wakanda Forever</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed className="d-block w-100" width="800px" height="685px" src="https://www.youtube.com/embed/tgPuhRNoROs" alt="xxx"/>
+      <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer2.youtube_url} alt="xxx"/>
         <Carousel.Caption>
-          <h3>원피스 필름 레드</h3>
-          <p>ONE PIECE FILM RED</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed className="d-block w-100" width="800px" height="685px" src="https://www.youtube.com/embed/VRWhQSTayA0" alt="xxx"/>
+      <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer3.youtube_url} alt="xxx"/>
         <Carousel.Caption>
-          <h3>블랙 사이트</h3>
-          <p>Black Site</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <embed className="d-block w-100" width="800px" height="685px" src="https://www.youtube.com/embed/aGhqI3d6toc" alt="xxx"/>
+      <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer4.youtube_url} alt="xxx"/>
         <Carousel.Caption>
-          <h3>크리드 3</h3>
-          <p>Creed : 3</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

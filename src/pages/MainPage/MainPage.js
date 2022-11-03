@@ -21,7 +21,7 @@ function MainPage() {
         const topRated = `http://cokebear756.synology.me:62322/api/movie/topRated?page=0&size=10`;
         FetchMovies2(topRated)
 
-        const upcoming = `http://cokebear756.synology.me:62322/api/movie/upcoming?page=0&size=10`;
+        const upcoming = `http://cokebear756.synology.me:62322/api/movie/popular?page=0&size=10`;
         FetchMovies3(upcoming)
     }, [])
 
@@ -128,7 +128,7 @@ function MainPage() {
 
         {/* 카테고리 부분 */}
         <div style={{width: '85%', margin: '1rem auto'}}>
-            <h2 style={{color: '#FFD369'}}>개봉 예정작</h2>
+            <h2 style={{color: '#FFD369'}}>인기작</h2>
             <hr/>
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
             <Row gutter={[16, 16]}>

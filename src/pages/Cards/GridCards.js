@@ -7,7 +7,6 @@ function GridCards(props) {
     const [Loading, setLoading] = useState(true)
     useEffect(() => setLoading(false))
 
-        console.log(props)
         return (
     <div style={{display: 'inline-flex'}}>
     <Col lg={6} md={8} xs={24}  style={{paddingBottom: '10px'}}>
