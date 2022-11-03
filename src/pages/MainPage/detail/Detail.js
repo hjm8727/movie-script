@@ -1,4 +1,4 @@
-import { Row } from 'antd';
+import { Button, Row } from 'antd';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import GridCards2 from '../../Cards/GridCards2';
@@ -12,6 +12,7 @@ function Detail(props) {
     const {movieId} = useParams();
     const [Movie, setMovie] = useState([])
     const [Cast, setCast] = useState([])
+    const [CastToggle, setCastToggle] = useState(false)
 
     useEffect(() => {
         // 영화 정보
@@ -40,6 +41,9 @@ function Detail(props) {
                 setCast(response.results.cast)
         })
         }, [])
+        const toggleCastView = () => {
+            setCastToggle(!CastToggle)
+        }
     
     return (
     <div style={{width: '100%', backgroundColor: 'black'}}>
@@ -50,9 +54,12 @@ function Detail(props) {
 
         {/* 상세 페이지 바디 */}
         <div style={{ width: '85%', margin: '1rem auto'}}>
+        <DetInfo movie={Movie} />
 
-            <DetInfo movie={Movie} />
-            {/* 영화 배우 보이는 부분 */}
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem'}}>
+            <Button style={{backgroundColor: '#FFD669', color: 'black'}} onClick={toggleCastView}>출연 배우 보기</Button>
+        </div>
+        {CastToggle &&
             <Row gutter={[16, 16]}>
                 {Cast && Cast.map((cast, index) =>(
                     <React.Fragment key={index}>
@@ -61,6 +68,7 @@ function Detail(props) {
                     </React.Fragment>
                 ))}
             </Row>
+        }
         </div>
     </div>
 )
