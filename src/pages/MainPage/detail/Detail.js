@@ -5,6 +5,7 @@ import GridCards2 from '../../Cards/GridCards2';
 import DetInfo from './DetInfo';
 import DetailImage from './DetailImage';
 import NoImage from '../../../util/NoImage';
+import Reviews from './Review';
 
 
 // 포스터 클릭시 보이는 영화 상세 페이지
@@ -14,11 +15,17 @@ function Detail(props) {
     const [Cast, setCast] = useState([])
     const [CastToggle, setCastToggle] = useState(false)
 
+    const [Comment, setComment] = useState([])
+
+
     useEffect(() => {
         // 영화 정보
         let contentInfo = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
         // 영화 배우/제작진
         let contentCrew = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
+        // 리뷰 
+        let contentComment = `http://cokebear756.synology.me:62322/api/movie/review`
+
 
         fetch(contentInfo, {
             method: "POST",
@@ -40,6 +47,18 @@ function Detail(props) {
                 // console.log(response)
                 setCast(response.results.cast)
         })
+        // 리뷰 API 받아오기
+        fetch(contentComment,{
+            method : "POST",
+            body: JSON.stringify(Comment)
+        })
+            .then(response => response.json())
+            .then(response => {
+                // console.log(response)
+                setComment(response.results)
+        })
+
+        
         }, [])
         const toggleCastView = () => {
             setCastToggle(!CastToggle)
@@ -69,6 +88,11 @@ function Detail(props) {
                 ))}
             </Row>
         }
+        {/* 리뷰 칸 */}
+        <div>
+        <Reviews review={Comment}/>
+        </div>
+
         </div>
     </div>
 )

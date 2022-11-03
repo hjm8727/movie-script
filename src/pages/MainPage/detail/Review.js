@@ -1,5 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import styled from "styled-components";
+
+// 글자색이 안보여서 일단 styled components 씌움
+const PostBlock=styled.div`
+color: white;
+`;
 
 // 구현중입니다.
 function Reviews(props) {
@@ -41,6 +47,7 @@ function Reviews(props) {
     }
 
     return (
+        <PostBlock>
         <div>
             <div className='title'>{props.title}에 대한 리뷰를 남겨보세요.</div>
             <hr/>
@@ -53,6 +60,7 @@ function Reviews(props) {
             ))}
 
         </div>
+        </PostBlock>
     )
 }
 
