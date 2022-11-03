@@ -88,11 +88,14 @@ h1 {
     color: #ffd369;
     font-weight: bold;
 }
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
 .select-member {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 0;
+    margin: 0 1.4rem;
 }
 button {
   border: 2px solid silver;
@@ -118,12 +121,15 @@ button {
         height: auto;
     }
     .container-system {
-      width: 100vw;
-      height: auto;
+      width: 100%;
+      height: 100%;
     }
     table, tr, td {
       width: 100%;
-      height: auto;
+      height: 100%;
+    }
+    .num, .name, .id, .time, .email, .pwd {
+        width: 10%;
     }
 }
 `;
@@ -147,6 +153,12 @@ const onClickLogout = () =>{
 
 /** 유저 계정 페이지 */
 function UserMypage() {
+
+let isLogin = window.localStorage.getItem('isLogin');
+if(isLogin !== true) {
+    alert('로그인 후 이용 부탁드립니다.');
+    window.location.replace('/Login/LoginPage');
+}
 
 const [memberSelect, setMemberSelect] = useState('');
 useEffect(() => {
@@ -196,7 +208,25 @@ return (
 function AdminPage() {
 
     const [memberInfo, setMemberInfo] = useState('');
+    let [number, setNumber] = useState(10);
 
+    const onClickButton = () => {
+        setNumber(number + 10);
+        if(number >= 30) {
+            alert('더 이상 조회 가능한 회원이 없습니다.');
+            return number === 29;
+        }
+        console.log(number);
+    }
+    const onClickButton2 = () => {
+        setNumber(number - 10);
+    }
+    const onClickButtonAll = () => {
+        setNumber(number + 30);
+    }
+    const onClickButtonAll2 = () => {
+        setNumber(number === 0);
+    }
     useEffect(() => {
         const memberSelect = async () => {
             try {
@@ -209,54 +239,22 @@ function AdminPage() {
         }
         memberSelect();
     }, []);
-
-    const Tbody1 = () => (
+    
+    const Tbody = () => (
         memberInfo && memberInfo.map((member, index) => (
             <tbody key={member.id}>
-                {index < 10 ?
+                {index < number ?
                     <tr>
-                        <td>{member.id}</td>
-                        <td>{member.name}</td>
-                        <td>{member.member_id}</td>
-                        <td>{member.password}</td>
-                        <td>{member.email}</td>
-                        <td>{member.create_time}</td>
+                        <td className="num">{member.id}</td>
+                        <td className="name">{member.name}</td>
+                        <td className="id">{member.member_id}</td>
+                        <td className="pwd">{member.password}</td>
+                        <td className="email">{member.email}</td>
+                        <td className="time">{member.create_time}</td>
                     </tr> :
                     <></>}
             </tbody>
         )));
-
-    const Tbody2 = () => (
-      memberInfo && memberInfo.map((member, index) => (
-        <tbody key={member.id}>
-          {index < 20 && index >= 10?
-            <tr>
-              <td>{member.id}</td>
-              <td>{member.name}</td>
-              <td>{member.member_id}</td>
-              <td>{member.password}</td>
-              <td>{member.email}</td>
-              <td>{member.create_time}</td>
-            </tr> :
-            <></>}
-        </tbody>
-      )));
-      const Tbody3 = () => (
-        memberInfo && memberInfo.map((member, index) => (
-          <tbody key={member.id}>
-            {index < 30 && index >= 20?
-              <tr>
-                <td>{member.id}</td>
-                <td>{member.name}</td>
-                <td>{member.member_id}</td>
-                <td>{member.password}</td>
-                <td>{member.email}</td>
-                <td>{member.create_time}</td>
-              </tr> :
-              <></>}
-          </tbody>
-        )));
-      const [visible, setVisible] = useState(false);
 
   return (
     <StyleMypage>
@@ -280,14 +278,17 @@ function AdminPage() {
                         <th>회원 가입일</th>
                     </tr>
                 </thead>
-                <Tbody1 />
-                {visible && <Tbody2 />}
-                {/* {visible && <Tbody3 />} */}
+                <Tbody />
             </table>
         </div>
-        <div className="select-member"><button onClick={() => {
-          setVisible(!visible);
-        }}>회원 더 보기</button></div>
+        <div className="button">
+            <button className="select-member" onClick={onClickButton}>회원 더 보기</button>
+            {number === 10 ? <button className="select-member">회원 덜 보기</button>:
+            <button className="select-member" onClick={onClickButton2}>회원 덜 보기</button>
+            }
+            <button className="select-member" onClick={onClickButtonAll}>회원 전체 보기</button>
+            <button className="select-member" onClick={onClickButtonAll2}>회원 전체 닫기</button>
+        </div>
     </div>
   </StyleMypage>
     );
@@ -304,6 +305,5 @@ const Mypage = () => {
     </div>
     );
 }
-
 
 export default Mypage;

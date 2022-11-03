@@ -46,12 +46,12 @@ const MovieApi={
         return await axios.post(MOVIE_DOMAIN + "member/searchPassword", finding, HEADER)
     },
     // 비밀번호 수정 API
-    setPwd : async function(id ,newPwd) {
+    setPwd : async function(id ,password) {
         const setPwd = {
             id : id,
-            newPwd : newPwd
+            password : password
         }
-        return await axios.post(MOVIE_DOMAIN + "SetPwdServlet", setPwd, HEADER);
+        return await axios.post(MOVIE_DOMAIN + "/member/updatePassword", setPwd, HEADER);
     },
     // 회원탈퇴 API
     deleteUser : async function(inputId, inputEmail, inputPwd){

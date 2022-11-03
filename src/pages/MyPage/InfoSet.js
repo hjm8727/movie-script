@@ -108,11 +108,11 @@ const InfoSet = () => {
 
     // 현재 아이디
     const onChangePwd = e => {
-        const regPwd = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/
+        const regPwd = /^[A-Za-z]+[A-Za-z0-9]{5,19}$/g
         const pwdCurrent = e.target.value;
         setInputId(pwdCurrent);
         if(!regPwd.test(pwdCurrent)) {
-            setIdMessage('숫자 + 영문자 조합으로 8 ~ 16 자리 입력해주세요.');
+            setIdMessage('숫자 + 영문자 조합으로 5 ~ 19 자리 입력해주세요.');
             setIsId(false);
         } else {
             setIdMessage('아이디 입력 완료.');
