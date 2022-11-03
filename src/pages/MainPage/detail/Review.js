@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import styled from "styled-components";
 import { Button } from 'antd';
+import Comment from './Commnet';
 
 // 글자색이 안보여서 일단 styled components 씌움
 const PostBlock=styled.div`
@@ -19,14 +20,6 @@ function Reviews(props) {
     }
 
 
-    const [modalOpen, setModalOpen] = useState(false);
-
-    const openModal = () => {
-        setModalOpen(true);
-    };
-    const closeModal = () => {
-        setModalOpen(false);
-    };
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -45,24 +38,34 @@ function Reviews(props) {
             setReview("")
             props.refreshFunction(response.data.result)
         } else {
-            setModalOpen(true);
+            alert('리뷰 저장 실패')
         }
         })
     }
 
     return (
         <PostBlock>
+        <b>{props.movieTitle}에 대한 리뷰를 남겨 보세요</b>
+        <hr/>
+        {props.ReviewLists && props.ReviewLists.map((review, index) => (
+            (!review.responseTo &&
+                <React.Fragment>
+                    <Comment comment={review} movId={props.movId} refreshFunction={props.refreshFunction}/>
+                </React.Fragment>
+                )
+        ))}
+        {props.ReviewLists && props.ReviewLists.length === 0 &&
+            <div style={{ display: 'flex', justifyContent:'center', alignItems:'center', height:'200px'}} >
+                    이 영화에 첫 리뷰를 남겨보세요.
+                </div>
+        }
         <div>
         <InputGroup>
-        <InputGroup.Text>리뷰 작성</InputGroup.Text>
-        <Form.Control as="textarea" aria-label="With textarea" style={{ width: '100%', borderRadius: '5px' }}
-                    onChange={handleChange}
-                    value={Comment}
-                    placeholder="write some comments" />
-                    <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>Submit</Button>
+        <InputGroup.Text style={{backgroundColor: '#FFD669'}}>리뷰 작성</InputGroup.Text>
+        <Form.Control as="textarea" aria-label="With textarea" style={{ width: '83%', borderRadius: '5px' }} onChange={handleChange} value={Comment} placeholder="리뷰를 남겨 보세요." />
+        <Button style={{ width: '7%'}} onClick={onSubmit}>저장</Button>
         </InputGroup>
-                <br />
-                
+        <br />      
         </div>
         </PostBlock>
     )

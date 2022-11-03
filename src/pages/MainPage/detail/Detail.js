@@ -14,7 +14,7 @@ function Detail(props) {
     const [Movie, setMovie] = useState([])
     const [Cast, setCast] = useState([])
     const [CastToggle, setCastToggle] = useState(false)
-    // const [ReviewLists, setReviewLists] = useState([])
+    const [ReviewLists, setReviewLists] = useState([])
     const [Comment, setComment] = useState([])
 
 
@@ -63,6 +63,9 @@ function Detail(props) {
         const toggleCastView = () => {
             setCastToggle(!CastToggle)
         }
+        const updateReview = (newReview) => {
+            setReviewLists(ReviewLists.concat(newReview))
+        }
     
     return (
     <div style={{width: '100%', backgroundColor: 'black'}}>
@@ -90,7 +93,7 @@ function Detail(props) {
         }
         {/* 리뷰 칸 */}
         <div>
-        <Reviews movieTitle={Movie.title} movId={`${movieId}`}/>
+        <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId} refreshFunction={updateReview} />
         </div>
 
         </div>
