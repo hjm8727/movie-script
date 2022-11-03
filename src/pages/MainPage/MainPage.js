@@ -7,12 +7,10 @@ import NoImage from '../../util/NoImage';
 
 function MainPage() {
     const [Loading, setLoading] = useState(true)
-
     const [Movies, setMovies] = useState([])
     const [Movies2, setMovies2] = useState([])
     const [Movies3, setMovies3] = useState([])
     const [CurrentPage, setCurrentPage] = useState(0)
-
 
     useEffect(() => {
         const nowPlaying = `http://cokebear756.synology.me:62322/api/movie/nowPlaying?page=0&size=10`;

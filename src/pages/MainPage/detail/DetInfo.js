@@ -15,11 +15,11 @@ function DetInfo(props) {
     <tbody>
         <tr>
         <td style={{width: '25%'}}>제목</td>
-        <td>{movie.runtime}분</td>
+        <td>{movie.title}</td>
         </tr>
         <tr>
         <td>상영시간</td>
-        <td>{movie.title}</td>
+        <td>{movie.runtime}분</td>
         </tr>
         <tr>
         <td>개봉일</td>

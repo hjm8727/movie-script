@@ -7,7 +7,6 @@ import DetailImage from './DetailImage';
 import NoImage from '../../../util/NoImage';
 import Reviews from './Review';
 
-
 // 포스터 클릭시 보이는 영화 상세 페이지
 function Detail(props) {
     const {movieId} = useParams();
@@ -16,7 +15,6 @@ function Detail(props) {
     const [CastToggle, setCastToggle] = useState(false)
     const [ReviewLists, setReviewLists] = useState([])
     const [Comment, setComment] = useState([])
-
 
     useEffect(() => {
         // 영화 정보
@@ -70,7 +68,7 @@ function Detail(props) {
     return (
     <div style={{width: '100%', backgroundColor: 'black'}}>
         {/* 상세페이지 헤더영역 - 가로포스터 */}
-        <div style={{width: '1280px', height: '500px', margin: '0.1rem auto'}}>
+        <div style={{width: '1280px', height: '600px', margin: '0.1rem auto'}}>
             <DetailImage image={`${Movie.backdrop_path}`} title={Movie.title}/>
         </div>
 
