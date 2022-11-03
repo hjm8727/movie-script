@@ -7,9 +7,9 @@ function DetailImage(props) {
             background: `url('${props.image}'), black`,
             height: '500px',
             backgroundSize: 'cover',
-            backgroundPosition: 'center center',
+            backgroundPosition: '100% 100%',
             backgroundRepeat: 'no-repeat',
-            width: '1280px',
+            width: '1260px',
             position: 'relative',
         }}>
             <div style={{position: 'absolute', maxWidth: '500px', bottom: '2rem', marginLeft: '2rem'}}>
