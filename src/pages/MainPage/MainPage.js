@@ -85,8 +85,12 @@ function MainPage() {
 
     return (
         <div style={{width: '100%', margin: '0',  backgroundColor: 'black'}}>
-        <Trailer/>
-        
+        {/* {Movies && Movies.map((movie, index) => (
+                <React.Fragment key={index}>
+                <Trailer id={movie.movie_id}/>
+                </React.Fragment>
+            ))}
+         */}
         {/* 카테고리 부분 */}
         <div style={{width: '85%', margin: '1rem auto'}}>
             <h2 style={{color: '#FFD369'}}>최신 영화</h2>
