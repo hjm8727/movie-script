@@ -14,7 +14,7 @@ function Detail(props) {
     const [Movie, setMovie] = useState([])
     const [Cast, setCast] = useState([])
     const [CastToggle, setCastToggle] = useState(false)
-
+    // const [ReviewLists, setReviewLists] = useState([])
     const [Comment, setComment] = useState([])
 
 
@@ -90,7 +90,7 @@ function Detail(props) {
         }
         {/* 리뷰 칸 */}
         <div>
-        <Reviews review={Comment}/>
+        <Reviews movieTitle={Movie.title} movId={`${movieId}`}/>
         </div>
 
         </div>

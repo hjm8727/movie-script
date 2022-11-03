@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 import styled from "styled-components";
+import { Button } from 'antd';
 
 // 글자색이 안보여서 일단 styled components 씌움
 const PostBlock=styled.div`
@@ -11,9 +14,10 @@ color: white;
 function Reviews(props) {
     const [Review, setReview] = useState("");
 
-    const onChange = (e) => {
+    const handleChange = (e) => {
         setReview(e.target.value);
     }
+
 
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -28,14 +32,14 @@ function Reviews(props) {
 
         // 사용자 정보 확인 
 
-        const reviews = {
-            content: Review
-            // 작성자
-            // 작성자ID(?)
+        const rev = {
+            // id : user.id, // 아이디(?)
+            movId : props.movid,
+            review : Review
         }
-        console.log(reviews)
+        console.log(rev)
 
-        axios.post('comment', reviews)
+        axios.post('http://cokebear756.synology.me:62322/api/member/review', rev)
         .then(response => {
             if(response.data.statusCode === 200) {
             setReview("")
@@ -49,15 +53,16 @@ function Reviews(props) {
     return (
         <PostBlock>
         <div>
-            <div className='title'>{props.title}에 대한 리뷰를 남겨보세요.</div>
-            <hr/>
-            {props.UserReview && props.UserReview.map((review, index) => (
-                (!Comment.responseTo &&
-                    <React.Fragment key={index}>
-
-                    </React.Fragment>
-                )
-            ))}
+        <InputGroup>
+        <InputGroup.Text>리뷰 작성</InputGroup.Text>
+        <Form.Control as="textarea" aria-label="With textarea" style={{ width: '100%', borderRadius: '5px' }}
+                    onChange={handleChange}
+                    value={Comment}
+                    placeholder="write some comments" />
+                    <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>Submit</Button>
+        </InputGroup>
+                <br />
+                
         </div>
         </PostBlock>
     )
