@@ -39,7 +39,7 @@ function RComment(props) {
         })
     }
     const reply = [
-        <span onClick={openReply} key="comment-basic-reply-to">Reply to </span>
+        <span onClick={openReply} key="comment-basic-reply-to">답글 </span>
     ]
 
     return (

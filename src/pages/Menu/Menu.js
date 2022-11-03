@@ -165,7 +165,12 @@ const Menu = () => {
     // 검색버튼 클릭시 검색한 값을 localstorage 에 저장
     const onClickSearch = () =>{
         window.localStorage.setItem("inputTxt", inputTxt);
-        window.location.replace("/Menu/SearchResult/SearchResult");
+        if(inputTxt.length > 2){
+            window.location.replace("/Menu/SearchResult/SearchResult");
+        } else {
+            alert("2글자 이상 입력해 주세요.")
+        }
+        
     }
     // 엔터버튼으로 검색 기능
     const onKeyPress = e => {
@@ -188,7 +193,7 @@ const Menu = () => {
                 <li class="logo"><Link to ="/"><img src="/images/Logo.png" alt="Logo"/></Link></li>
             
                 <li class="search" >
-                        <input class="search-box" type="text" value={inputTxt} onKeyPress={onKeyPress} onChange={onChangeTxt} placeholder="영화 제목 입력(영어작품명만 가능합니다.)"/>
+                        <input class="search-box" type="text" value={inputTxt} onKeyPress={onKeyPress} onChange={onChangeTxt} placeholder="영화 제목을 입력하세요."/>
                         <button class="submit" onClick={onClickSearch}>search</button>
                         {/* <Link to ="/Menu/SearchResult/SearchResult"  onClick={onClickSearch}><button class="submit">search</button></Link> */}
                 </li>

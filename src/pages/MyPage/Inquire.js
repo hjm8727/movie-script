@@ -51,6 +51,8 @@ const StyleInquire = styled.div`
     border-radius: 8px;
     background-color: #ffd369;
     color: #232323;
+    font-weight: bold;
+    font-size: large;
 }
 .inquire-head {
     margin: 3rem 0;
@@ -110,12 +112,12 @@ const Inquire = () => {
             <form className="inquire-container">
                     <label for='why' className="inquire-text">문의 이유를 선택해주세요.</label>
                     <select name='why' id='why' className="inquire" value={inputSelect} onChange={onChangeSelect}>
-                      <option>단순 변심</option>
-                      <option>시작할 때 문제가 있음</option>
-                      <option>사이트가 맘에 들지가 않음</option>
-                      <option>개인정보 보호 문제</option>
-                      <option>광고가 너무 많음</option>
-                      <option>기타</option>
+                        <option>단순 변심</option>
+                        <option>시작할 때 문제가 있음</option>
+                        <option>사이트가 맘에 들지가 않음</option>
+                        <option>개인정보 보호 문제</option>
+                        <option>광고가 너무 많음</option>
+                        <option>기타</option>
                     </select>
                     <p />
                     <textarea className="content" placeholder="문의 내용" rows={50} cols={50} value={inputText} onChange={onChangeText} minLength={30} maxLength={1000}/>

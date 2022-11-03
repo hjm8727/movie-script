@@ -4,6 +4,7 @@ import styled from "styled-components";
 import MovieApi from "../../api/MovieApi";
 
 const StyleInfoSet = styled.div`
+margin-bottom: 6rem;
 .nav {
     text-decoration: none;
     display: flex;
@@ -33,7 +34,7 @@ const StyleInfoSet = styled.div`
     border: 5px solid #ffd369;
     box-sizing: border-box;
     margin: 0 auto;
-    margin-top: 5rem;
+    margin-top: 3rem;
     width: 50vw;
     height: 80vh;
 }
@@ -57,6 +58,8 @@ const StyleInfoSet = styled.div`
     background-color: #ffd369;
     color: #232323;
     border-radius: 8px;
+    font-weight: bold;
+    font-size: large;
 }
 .pwd-find {
     color: #ffd369;
@@ -184,7 +187,7 @@ const InfoSet = () => {
 
     return (
         <StyleInfoSet>
-         <div>
+        <div>
             <nav className="nav nav-pills nav-justified">
                 <Link className="nav-link" to="/">홈</Link>
                 <Link className="nav-link mypage" to="/Mypage/mypage">마이페이지</Link>

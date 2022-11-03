@@ -4,15 +4,16 @@ import React from 'react';
 function DetailImage(props) {
     return (
         <div style={{
-            background: `url('${props.image}'), black`,
-            height: '500px',
+            background: `black`,
+            height: '700px',
             backgroundSize: 'cover',
             backgroundPosition: '100% 100%',
             backgroundRepeat: 'no-repeat',
-            width: '1260px',
+            width: '1280px',
             position: 'relative',
+            backgroundImage:`url('${props.image}')`
         }}>
-            <div style={{position: 'absolute', maxWidth: '500px', bottom: '2rem', marginLeft: '2rem'}}>
+            <div style={{position: 'absolute', maxWidth: '500px', bottom: '1rem', marginLeft: '2rem'}}>
                 <h2 style={{color: '#FFD669', fontSize: '3rem'}}>{props.title}</h2>
                 {/* <p style={{color:'#FFD669', fontSize: '1rem'}}>{props.text}</p> */}
             </div>

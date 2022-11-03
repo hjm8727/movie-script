@@ -55,7 +55,7 @@ const StyleMypage = styled.div`
   font-size: 1.4em;
   background-color: #ffd369;
   color: #232323;
-  margin-right: 0.25rem;
+  margin-right: 0.5rem;
   padding: 7px;
   border-radius: 15px;
 }
@@ -186,7 +186,7 @@ return (
         </nav>
         <div className="container">
             <BsFillPersonFill size='160px' style={{border:'1px solid silver', margin:'30px 10px', backgroundColor: '#232323', color: '#ffd369'}}/>
-            <button className="logout" onClick={onClickLogout}>로그아웃</button>
+            <button className="logout" style={{marginTop: '1rem'}} onClick={onClickLogout}>로그아웃</button>
             <br />
             <Link className="profil" to="/MyPage/Infoset">회원 정보 수정</Link> 
                 <div key={memberSelect.id}>
@@ -271,11 +271,11 @@ function AdminPage() {
                 <thead>
                     <tr>
                         <th>회원 번호</th>
-                        <th>회원 이름</th>
-                        <th>회원 아이디</th>
-                        <th>회원 패스워드</th>
-                        <th>회원 이메일</th>
-                        <th>회원 가입일</th>
+                        <th>이름</th>
+                        <th>아이디</th>
+                        <th>패스워드</th>
+                        <th>이메일</th>
+                        <th>가입일</th>
                     </tr>
                 </thead>
                 <Tbody />

@@ -19,15 +19,16 @@ function Reviews(props) {
         setReview(e.target.value);
     }
 
+    const idc = window.localStorage.getItem("userId");
 
     const onSubmit = (e) => {
         e.preventDefault();
 
         // 사용자 정보 확인 
-
+    
         const rev = {
-            // id : user.id, // 아이디(?)
-            movId : props.movid,
+            id : idc,
+            movie_id : props.movid,
             review : Review
         }
         console.log(rev)
@@ -45,7 +46,7 @@ function Reviews(props) {
 
     return (
         <PostBlock>
-        <b>{props.movieTitle}에 대한 리뷰를 남겨 보세요</b>
+        <b style={{color: '#FFD369'}}>{props.movieTitle}에 대한 리뷰를 남겨 보세요</b>
         <hr/>
         {props.ReviewLists && props.ReviewLists.map((review, index) => (
             (!review.responseTo &&
@@ -55,15 +56,14 @@ function Reviews(props) {
                 )
         ))}
         {props.ReviewLists && props.ReviewLists.length === 0 &&
-            <div style={{ display: 'flex', justifyContent:'center', alignItems:'center', height:'200px'}} >
+            <div style={{color: '#FFD369', display: 'flex', justifyContent:'center', alignItems:'center', height:'200px'}} >
                     이 영화에 첫 리뷰를 남겨보세요.
                 </div>
         }
-        <div>
+        <div style={{marginLeft: '13rem', marginRight: '13rem'}}>
         <InputGroup>
-        <InputGroup.Text style={{backgroundColor: '#FFD669'}}>리뷰 작성</InputGroup.Text>
-        <Form.Control as="textarea" aria-label="With textarea" style={{ width: '83%', borderRadius: '5px' }} onChange={handleChange} value={Comment} placeholder="리뷰를 남겨 보세요." />
-        <Button style={{ width: '7%'}} onClick={onSubmit}>저장</Button>
+        <Form.Control as="textarea" aria-label="With textarea" style={{ width: '60%', borderRadius: '5px', marginLeft: '5px', marginRight: '5px' }} onChange={handleChange} value={Comment} placeholder="리뷰를 남겨 보세요." />
+        <Button style={{ backgroundColor: '#FFD369' ,width: '10%', fontWeight: 'bold'}} onClick={onSubmit}>저장</Button>
         </InputGroup>
         <br />      
         </div>

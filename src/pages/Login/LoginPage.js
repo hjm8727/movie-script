@@ -20,7 +20,7 @@ const LoginBlock=styled.div`
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height : 800px; // 높이 만 추가했습니다.
+    height : 700px; // 높이 만 추가했습니다.
 }
 .titleWrap{
     color: #EEEEEE;
@@ -178,6 +178,11 @@ const LoginPage=()=>{
             console.log("로그인 에러..");
         }
     }
+    const onKeyPress = e => {
+        if(e.key === "Enter") {
+            onClickLogin();
+        }
+    }
 
     return(
     <LoginBlock>
@@ -192,7 +197,7 @@ const LoginPage=()=>{
 
                 <div className="inputTitle">비밀번호</div>
                 <div className="inputWrap">
-                        <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd}/>
+                        <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd} onKeyPress={onKeyPress}/>
                 </div>
                 <div className="error">{!isPwd && inputPwd.length >0 &&('영문자 포함 숫자 8~16자')}</div>
                 <div className="auto"><input type="checkbox" id="remember"/><label for="remember">자동로그인</label></div>

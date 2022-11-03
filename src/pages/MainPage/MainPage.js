@@ -86,6 +86,7 @@ function MainPage() {
     return (
         <div style={{width: '100%', margin: '0',  backgroundColor: 'black'}}>
         <Trailer/>
+        <br/>
         
         {/* 카테고리 부분 */}
         <div style={{width: '85%', margin: '1rem auto'}}>
