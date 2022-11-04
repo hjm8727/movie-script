@@ -79,16 +79,16 @@ function Trailer() {
     <Trail>
     <Carousel style={{width: '85%', margin: '5px auto', borderRadius: '10px', backgroundColor: '#FFD369', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
     <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer.youtube_url} alt="xxx"/>
+        <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer.youtube_url} alt="xxx"/>
     </Carousel.Item>
     <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer2.youtube_url} alt="xxx"/>
+        <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer2.youtube_url} alt="xxx"/>
     </Carousel.Item>
     <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer3.youtube_url} alt="xxx"/>
+        <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer3.youtube_url} alt="xxx"/>
     </Carousel.Item>
     <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <ReactPlayer className="d-block w-100" width="800px" height="685px" url={Trailer4.youtube_url} alt="xxx"/>
+        <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer4.youtube_url} alt="xxx"/>
     </Carousel.Item>
     </Carousel>
     </Trail>

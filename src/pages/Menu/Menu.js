@@ -17,9 +17,10 @@ const Container = styled.div`
         padding: 0;
     }
     .logo img{
-        margin-left :15px;
+        margin-left :20px;
         margin-top: 10px;
-        size: initial; // 로고 원본크기 유지만 수정했습니다.
+        width: 80px;
+        height: 70px; // 로고 원본크기 유지만 수정했습니다.
     }      
     img {
         width: 95px;
@@ -188,28 +189,28 @@ const Menu = () => {
     
     return (
         <Container>
-            <ul class="navbar">
-                <li class="logo"><Link to ="/"><img src="/images/Logo.png" alt="Logo"/></Link></li>
+            <ul className="navbar">
+                <li className="logo"><Link to ="/"><img src="/images/Logo.png" alt="Logo"/></Link></li>
             
-                <li class="search" >
-                        <input class="search-box" type="text" value={inputTxt} onKeyPress={onKeyPress} onChange={onChangeTxt} placeholder="영화 제목을 입력하세요."/>
-                        <button class="submit" onClick={onClickSearch}>search</button>
+                <li className="search" >
+                        <input className="search-box" type="text" value={inputTxt} onKeyPress={onKeyPress} onChange={onChangeTxt} placeholder="영화 제목을 입력하세요."/>
+                        <button className="submit" onClick={onClickSearch}>search</button>
                         {/* <Link to ="/Menu/SearchResult/SearchResult"  onClick={onClickSearch}><button class="submit">search</button></Link> */}
                 </li>
 
                 {isLogin ?
-                <li class="dropdown-icon">
-                    <p class="dropbtn-icon"><img src="/images/mem.png" alt="icon"/></p>
-                    <ul class="dropdown-content-icon">
+                <li className="dropdown-icon">
+                    <p className="dropbtn-icon"><img src="/images/mem.png" alt="icon"/></p>
+                    <ul className="dropdown-content-icon">
                         <li><Link to ="/MyPage/Mypage">My Page</Link></li>
                         <li onClick={onClickLogout}>로그아웃</li>
                         <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
                     </ul>
                 </li>
                 :
-                <li class="dropdown-icon">
-                    <p class="dropbtn-icon"><img src="/images/mem.png" alt="icon"/></p>
-                    <ul class="dropdown-content-icon">
+                <li className="dropdown-icon">
+                    <p className="dropbtn-icon"><img src="/images/mem.png" alt="icon"/></p>
+                    <ul className="dropdown-content-icon">
                         <li><Link to  ="/Login/LoginPage">로그인</Link></li>
                         <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
                     </ul>

@@ -6,10 +6,10 @@ function DetInfo(props) {
     let {movie} = props;
     return (
     <div>
-    <Table table table-dark table-striped class="table-dark" style={{color: '#FFD368'}}>
+    <Table style={{color: '#FFD368'}}>
     <thead>
         <tr>
-        <th colspan={2} style={{textAlign: 'left', fontSize: 'larger'}} >영화 정보</th>
+        <th colSpan={2} style={{textAlign: 'left', fontSize: 'larger'}} >영화 정보</th>
         </tr>
     </thead>
     <tbody>

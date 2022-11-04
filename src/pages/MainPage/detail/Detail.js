@@ -6,6 +6,7 @@ import DetInfo from './DetInfo';
 import DetailImage from './DetailImage';
 import NoImage from '../../../util/NoImage';
 import Reviews from './Reviews';
+import Menu from '../../Menu/Menu';
 
 // 포스터 클릭시 보이는 영화 상세 페이지
 function Detail(props) {
@@ -64,6 +65,8 @@ function Detail(props) {
         }
     
     return (
+        <div>
+        <Menu/>
     <div style={{width: '100%', backgroundColor: 'black'}}>
         {/* 상세페이지 헤더영역 - 가로포스터 */}
         <div style={{width: '1280px', height: '600px', margin: '0.1rem auto'}}>
@@ -92,6 +95,7 @@ function Detail(props) {
 
         </div>
         </div>
+    </div>
     </div>
 )
 }

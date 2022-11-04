@@ -92,7 +92,7 @@ hr{
     margin-left :5px;
 }      
 img{
-    width: 100px;
+    width: 80px;
     height:70px;
 } 
 `;
