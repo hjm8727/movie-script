@@ -146,7 +146,7 @@ const Menu = () => {
     // 검색버튼 클릭시 검색한 값을 localstorage 에 저장
     const onClickSearch = () =>{
         window.localStorage.setItem("inputTxt", inputTxt);
-        if(inputTxt.length > 2){
+        if(inputTxt.length >= 2){
             window.location.replace("/Menu/SearchResult/SearchResult");
         } else {
             alert("2글자 이상 입력해 주세요.")
