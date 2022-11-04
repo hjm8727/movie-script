@@ -14,7 +14,6 @@ function Detail(props) {
     const [Cast, setCast] = useState([])
     const [CastToggle, setCastToggle] = useState(false)
     const [ReviewLists, setReviewLists] = useState([])
-    const [Comment, setComment] = useState([])
 
     useEffect(() => {
         // 영화 정보

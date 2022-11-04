@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Comment, Button, Input } from 'antd';
+import { Comment, Button, Input, Tooltip } from 'antd';
 import Axios from 'axios';
 const { TextArea } = Input;
 
@@ -39,14 +39,10 @@ function RComment(props) {
         }
         })
     }
-    const reply = [
-        <span onClick={openReply}>답글</span>
-    ]
-
+console.log(props)
     return (
         <div>
-            <Comment reply={reply} writer={props.id} content={<p>{props.comment.comment}</p>}></Comment>
-
+            <Comment author={<a>{props.comment.id}</a>} content={<p>{props.comment.comment}</p>}/>
             {OpenReply &&
                 <form style={{ display: 'flex' }} onSubmit={onSubmit}>
                     <TextArea style={{ width: '100%', borderRadius: '5px' }} onChange={handleChange} value={ReviewVal} placeholder="리뷰를 작성해 보세요."/>

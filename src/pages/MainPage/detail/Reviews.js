@@ -5,6 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import styled from "styled-components";
 import { Button } from 'antd';
 import RComment from './Comment';
+import { useParams } from 'react-router-dom';
 
 // 글자색이 안보여서 일단 styled components 씌움
 const PostBlock=styled.div`
@@ -13,6 +14,7 @@ color: white;
 
 // 구현중입니다.
 function Reviews(props) {
+    const {movieId} = useParams();
     const [Review, setReview] = useState("");
 
     const handleChange = (e) => {
@@ -36,6 +38,7 @@ function Reviews(props) {
             if(response.data.statusCode === 200) {
             setReview("")
             props.refreshFunction(response.data.result)
+            window.location.replace('/movie/'+rev.movie_id);
         } else {
             alert('리뷰 저장 실패')
         }
