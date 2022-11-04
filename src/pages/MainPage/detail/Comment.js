@@ -24,7 +24,7 @@ function RComment(props) {
     
         const rev = {
             id : idc,
-            movId : props.movid,
+            movId : props.movId,
             review : ReviewVal
         }
         console.log(rev)
@@ -45,7 +45,7 @@ function RComment(props) {
 
     return (
         <div>
-            <Comment reply={reply} writer={props.id} content={<p>{props.comment.content}</p>}></Comment>
+            <Comment reply={reply} writer={props.id} content={<p>{props.comment.comment}</p>}></Comment>
 
             {OpenReply &&
                 <form style={{ display: 'flex' }} onSubmit={onSubmit}>

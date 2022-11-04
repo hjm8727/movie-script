@@ -5,7 +5,7 @@ import GridCards2 from '../../Cards/GridCards2';
 import DetInfo from './DetInfo';
 import DetailImage from './DetailImage';
 import NoImage from '../../../util/NoImage';
-import Reviews from './Review';
+import Reviews from './Reviews';
 
 // 포스터 클릭시 보이는 영화 상세 페이지
 function Detail(props) {
@@ -22,7 +22,7 @@ function Detail(props) {
         // 영화 배우/제작진
         let contentCrew = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
         // 리뷰 
-        let contentComment = `http://cokebear756.synology.me:62322/api/movie/review`
+        let contentComment = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
 
         // 영화 상세 정보 처리
         fetch(contentInfo, {
@@ -47,13 +47,13 @@ function Detail(props) {
         // 리뷰 
         fetch(contentComment,{
             method : "POST",
-            body: JSON.stringify(Comment)
+            body: JSON.stringify(ReviewLists)
         })
             .then(response => response.json())
             .then(response => {
-                setComment(response.results)
+                setReviewLists(response.results.review)
         })
-        })
+        }, [])
 
         // 배우 정보를 토글로 가렸다 보여주기
         const toggleCastView = () => {
@@ -88,7 +88,9 @@ function Detail(props) {
         }
         {/* 리뷰 */}
         <div>
+
         <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId} refreshFunction={updateReview} />
+
         </div>
         </div>
     </div>
