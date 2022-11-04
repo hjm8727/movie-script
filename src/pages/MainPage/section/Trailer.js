@@ -41,7 +41,7 @@ function Trailer() {
         })
         .then(res => res.json())
         .then(res => {
-            setTrailer(res.results) 
+            setTrailer(res.results.youtube_url_list[0]) 
         })
     }
     const FetchTrailer2 = (nowTrailer2) => {
@@ -51,7 +51,7 @@ function Trailer() {
         })
         .then(res => res.json())
         .then(res => {
-        setTrailer2(res.results) 
+        setTrailer2(res.results.youtube_url_list[1]) 
         })
     }
     const FetchTrailer3 = (nowTrailer3) => {
@@ -61,7 +61,7 @@ function Trailer() {
         })
         .then(res => res.json())
         .then(res => {
-        setTrailer3(res.results) 
+        setTrailer3(res.results.youtube_url_list[0]) 
         })
     }
     const FetchTrailer4 = (nowTrailer4) => {
@@ -71,7 +71,7 @@ function Trailer() {
         })
         .then(res => res.json())
         .then(res => {
-        setTrailer4(res.results) 
+        setTrailer4(res.results.youtube_url_list[0]) 
         })
     }
     return (
