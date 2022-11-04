@@ -18,20 +18,24 @@ function DetInfo(props) {
         <td>{movie.title}</td>
         </tr>
         <tr>
-        <td>상영시간</td>
-        <td>{movie.runtime}분</td>
-        </tr>
-        <tr>
         <td>개봉일</td>
         <td>{movie.release_date}</td>
         </tr>
         <tr>
-        <td>평점</td>
-        <td>{movie.vote_average}</td>
+        <td>상영시간</td>
+        <td>{movie.runtime}분</td>
+        </tr>
+        <tr>
+        <td>감독</td>
+        <td>{movie.director}</td>
         </tr>
         <tr>
         <td>줄거리</td>
         <td>{movie.overview}</td>
+        </tr>
+        <tr>
+        <td>평점</td>
+        <td>{movie.vote_average}점</td>
         </tr>
         {/* 장르 추가 예정 */}
     </tbody>

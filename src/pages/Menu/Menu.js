@@ -2,19 +2,32 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+
 const Container = styled.div`
-    width : 1400px;
+@media screen and (max-width: 920px) {    
+    
+    .search .search-box{
+        /* 검색창 */
+        width: 85%;
+    }
+    .search .submit {
+        display: none;
+    }
+    .dropdown-icon  img{
+        /* 로그인 아이콘 */
+    }
+
+}
+    width : 100%;
     background-color: black;
     color: white;
     a{
         text-decoration: none;
         color: white;
     }
+
     ul li{
         list-style: none;
-        // 보류
-        margin: 0;
-        padding: 0;
     }
     .logo img{
         margin-left :20px;
@@ -22,65 +35,38 @@ const Container = styled.div`
         width: 80px;
         height: 70px; // 로고 원본크기 유지만 수정했습니다.
     }      
-    img {
-        width: 95px;
-        height:70px;
-    } 
     //검색창
     .search{
-        margin: 0;
-        padding: 0;
         display: inline-block;
-        width: 900px; 
-        /* 수정사항   */
-        margin-left: 200px;
+        width: 61%; 
         margin-top: 5px;
     }
     .search option{
         position : absolute;
         z-index : 1; /*다른 요소들보다 앞에 배치*/
         font-weight: 400;
-    }
-    select{
-        background-color: black;
-        width: 100px;
-        height: 50px;
-        color :white;
-        font-size: 20px;
-        border :none;
-        z-index: 5;
-        margin-right:20px;
-    }
-    .category{
-        width: 140px;
-        height: 30px;
-    }
-    
+    }    
     .search-box{
         padding: 10px;
         border-radius: 15px;
         border:1px solid #FFD369;
-        width: 600px;
+        width: 80%;
+        height: 50px;
         font-size: 13px;
-        line-height: 10px;
         margin-right: 10px;
-
     }
     // 검색 버튼
     .submit {
-        box-sizing: border-box;
         background-color: black;
         border: 2px solid #FFD369;
         border-radius: 0.6em;
         color: #FFD369;
         cursor: pointer;
-        /* display: flex; */
         font-size: 1rem;
         font-weight: 400;
-        line-height: 0;
-        margin-top: 5px;
-        /* margin-right: 10px; */
-        padding: 1.2em 2.8em;
+        width: 15%;
+        min-width: 100px;
+        height: 50px;
         text-align: center;
         text-transform: uppercase;
         font-weight: 700;
@@ -98,14 +84,10 @@ const Container = styled.div`
 
     // 아이콘 드롭다운
     .dropdown-icon{
-        position : relative;
-        display : inline-block; 
-        list-style:none; 
+        margin-right: 20px;
+        list-style : none; 
         margin-top: 20px;
-        font-weight: 400;
         cursor : pointer;
-        font-size : 20px;
-        margin-right: -75px;
     }
     .dropdown-content-icon{
         display : none;
@@ -114,14 +96,12 @@ const Container = styled.div`
         font-weight: 400;
         background-color: black;
         color: white;
-        width: 120px;
+        width: 115px;
         padding: 15px;
-        margin-left: -32px;
+        margin-left: -59px;
     }
 
     .dropdown-content-icon li{
-        display : block;
-        text-decoration : none;
         color : white;
         font-size: 18px;
         padding : 10px 5px;
@@ -215,7 +195,8 @@ const Menu = () => {
                         <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
                     </ul>
                 </li>
-        }
+            }
+
             </ul>
         </Container>
     );

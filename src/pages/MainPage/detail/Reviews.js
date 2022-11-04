@@ -5,16 +5,18 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import styled from "styled-components";
 import { Button } from 'antd';
 import RComment from './Comment';
-import { useParams } from 'react-router-dom';
 
 // 글자색이 안보여서 일단 styled components 씌움
 const PostBlock=styled.div`
 color: white;
+.under {
+    margin-top: 10px;
+    border-bottom: 2px solid silver;
+}
 `;
 
 // 구현중입니다.
 function Reviews(props) {
-    const {movieId} = useParams();
     const [Review, setReview] = useState("");
 
     const handleChange = (e) => {
@@ -44,11 +46,10 @@ function Reviews(props) {
         }
         })
     }
-
     return (
         <PostBlock>
         <b style={{color: '#FFD369'}}>{props.movieTitle}에 대한 리뷰를 남겨 보세요</b>
-        <hr/>
+        <p className='under'></p>
         
         {props.ReviewLists && props.ReviewLists.map((comment, index) => (
             // (!review.responseTo &&
@@ -64,7 +65,7 @@ function Reviews(props) {
         }
         <div style={{marginLeft: '13rem', marginRight: '13rem'}}>
         <InputGroup>
-        <Form.Control as="textarea" style={{ width: '60%', borderRadius: '5px', marginLeft: '5px', marginRight: '5px' }} onChange={handleChange} value={Review} placeholder="리뷰를 남겨 보세요." />
+        <Form.Control as="textarea" style={{ width: '60%', borderRadius: '5px', marginLeft: '5px', marginRight: '5px' }} onChange={handleChange} value={Review} placeholder="리뷰를 남겨 보세요."/>
             <Button style={{ backgroundColor: '#FFD369' ,width: '10%', fontWeight: 'bold'}} onClick={onSubmit}>저장</Button>
         </InputGroup>
         <br/>      
