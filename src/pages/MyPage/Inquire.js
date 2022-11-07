@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import MovieApi from "../../api/MovieApi";
+import LoginPage from "../Login/LoginPage";
 
 const StyleInquire = styled.div`
 /* 1:1 문의하기 페이지 css */
@@ -78,14 +79,17 @@ const StyleInquire = styled.div`
 
 const Inquire = () => {
     let userId = window.localStorage.getItem("userId");
-    let isLogin = window.localStorage.getItem('isLogin');
-    if(isLogin !== 'true') {
-        window.location.replace('/Login/LoginPage');
-    }
 
     // 문의 내용 입력받기
     const [inputText, setInputText] = useState("");
     const [inputSelect, setInputSelect] = useState("단순 변심");
+
+    let isLogin = window.localStorage.getItem('isLogin');
+    if(isLogin !== 'true') {
+        return(
+            <LoginPage />
+        );
+    }
 
     const onChangeText = e => setInputText(e.target.value);
     const onChangeSelect = e => setInputSelect(e.target.value);

@@ -3,6 +3,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import styled from "styled-components";
 import MovieApi from "../../api/MovieApi";
 import { useEffect, useState } from "react";
+import LoginPage from "../Login/LoginPage";
 
 const StyleMypage = styled.div`
     box-sizing: border-box;
@@ -170,11 +171,6 @@ const onClickLogout = () =>{
 /** 유저 계정 페이지 */
 function UserMypage() {
 
-    let isLogin = window.localStorage.getItem('isLogin');
-    if(isLogin !== 'true') {
-        window.location.replace('/Login/LoginPage');
-    }
-
 const [memberSelect, setMemberSelect] = useState('');
 const [listInfo, setListInfo] = useState('');
 const [listOpen, setListOpen] = useState(false);
@@ -206,7 +202,14 @@ useEffect(() => {
         }
     }
     info();
-}, [])
+}, []);
+
+let isLogin = window.localStorage.getItem('isLogin');
+    if(isLogin !== 'true') {
+        return(
+            <LoginPage />
+        );
+    }
 
 const Tbody = () => (
     listInfo && listInfo.map(list => (

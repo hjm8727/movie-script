@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import MovieApi from "../../api/MovieApi";
 import Modal from "../../util/Modal";
+import Main from "../Main";
 
 const StyleList = styled.div `
   margin:0 auto;
@@ -49,11 +50,6 @@ table,th, td {
 
 const InquireList = () => {
 
-  const userId = window.localStorage.getItem("userId");
-  if(userId !== 'admin123') {
-    window.location.replace('/');
-  }
-
   const [modalOpen, setModalOpen] = useState(false);
   const [modalText, setModalText] = useState('');
   const [inquireInfo, setInquireInfo] = useState('');
@@ -74,6 +70,13 @@ const closeModal = () => {
     };
     inquireData();
   }, []);
+
+  const userId = window.localStorage.getItem("userId");
+  if(userId !== 'admin123') {
+    return(
+      <Main />
+    );
+  }
 
     return (
         <StyleList>

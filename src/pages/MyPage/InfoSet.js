@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import MovieApi from "../../api/MovieApi";
+import LoginPage from "../Login/LoginPage";
 
 const StyleInfoSet = styled.div`
 margin-bottom: 6rem;
@@ -97,11 +98,6 @@ span {
 `;
 const InfoSet = () => {
 
-    let isLogin = window.localStorage.getItem('isLogin');
-    if(isLogin !== 'true') {
-        window.location.replace('/Login/LoginPage');
-    }
-
     // 비밀번호 찾기
     // 키보드 입력
     const [inputId, setInputId] = useState("");
@@ -118,6 +114,13 @@ const InfoSet = () => {
     const [isNewPwd, setIsNewPwd] = useState(false);
     const [isCheckPwd, setIsCheckPwd] = useState(false);
 
+
+    let isLogin = window.localStorage.getItem('isLogin');
+    if(isLogin !== 'true') {
+        return(
+            <LoginPage />
+        );
+    }
 
     // 현재 아이디
     const onChangePwd = e => {
