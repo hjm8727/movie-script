@@ -22,9 +22,9 @@ margin-bottom: 6rem;
     color: #ffd369;
     pointer-events: none;
 }
-* {
+/* * {
     color: white;
-}
+} */
 .infoset-container {
     display: flex;
     flex-direction: column;
@@ -45,6 +45,7 @@ margin-bottom: 6rem;
     background-color: #232323;
     border-radius: 8px;
 }
+.input-box.inputWrap:focus{border: 2px solid #FFD369;}
 .infoset-title {
     color: #ffd369;
     font-weight: bold;
@@ -91,7 +92,6 @@ span {
 }
 `;
 const InfoSet = () => {
-
     let isLogin = window.localStorage.getItem('isLogin');
     if(isLogin !== 'true') {
         alert('로그인 후 이용 부탁드립니다.');

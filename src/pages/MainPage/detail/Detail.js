@@ -17,40 +17,19 @@ function Detail(props) {
     const [ReviewLists, setReviewLists] = useState([])
 
     useEffect(() => {
-        // 영화 정보
+        // 영화 상세정보/배우/리뷰
         let contentInfo = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
-        // 영화 배우/제작진
-        let contentCrew = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
-        // 리뷰 
-        let contentComment = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
 
         // 영화 상세 정보 처리
         fetch(contentInfo, {
             method: "POST",
-            body: JSON.stringify(Movie)
+            body: JSON.stringify(Movie, Cast, ReviewLists)
         })
             .then(response => response.json())
             .then(response => {
                 console.log(response)
                 setMovie(response.results)
-        })
-        
-        // 배우/제작진 정보 처리
-        fetch(contentCrew, {
-            method : "POST",
-            body: JSON.stringify(Cast)
-        })
-            .then(response => response.json())
-            .then(response => {
                 setCast(response.results.cast)
-        })
-        // 리뷰 
-        fetch(contentComment,{
-            method : "POST",
-            body: JSON.stringify(ReviewLists)
-        })
-            .then(response => response.json())
-            .then(response => {
                 setReviewLists(response.results.review)
         })
         }, [])
