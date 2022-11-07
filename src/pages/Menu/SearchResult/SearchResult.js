@@ -60,7 +60,7 @@ const Container = styled.div`
         }, []);
         // 로딩중에 화면 출력
         if(loading){
-            return <div style={{display: 'flex', justifyContent: 'center'}}><NowLoading/>Loading ...</div>
+            return <div style={{display: 'flex', justifyContent: 'center', color: 'FFD369'}}><NowLoading/>Loading ...</div>
         }
 
         return(

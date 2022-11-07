@@ -22,9 +22,9 @@ margin-bottom: 6rem;
     color: #ffd369;
     pointer-events: none;
 }
-/* * {
+* {
     color: white;
-} */
+}
 .infoset-container {
     display: flex;
     flex-direction: column;
@@ -36,16 +36,20 @@ margin-bottom: 6rem;
     margin: 0 auto;
     margin-top: 3rem;
     width: 50vw;
-    height: 80vh;
+    height: 70vh;
 }
-.input-box {
+.input:focus-within{border: 2px solid #FFD369; border-radius: 15px;}
+.input-box{
     margin-top: 2rem;
     width: 35vw;
+    outline: none;
+    border: none;
     height: 8vh;
+    font-weight: 400px;
     background-color: #232323;
-    border-radius: 8px;
+    border-radius: 15px;
+    margin: 0 auto;
 }
-.input-box.inputWrap:focus{border: 2px solid #FFD369;}
 .infoset-title {
     color: #ffd369;
     font-weight: bold;
@@ -55,7 +59,7 @@ margin-bottom: 6rem;
 .button-submit {
     margin-top: 3rem;
     width: 15vw;
-    height: 10vh;
+    height: 8vh;
     background-color: #ffd369;
     color: #232323;
     border-radius: 8px;
@@ -81,8 +85,12 @@ span {
         width: 90%;
         height: 100%;
     }
+    .input {
+        width: 80vw;
+        height: 70px;
+    }
     .input-box {
-        width: 70%;
+        width: 80vw;
         height: 70px;
     }
     .button-submit {
@@ -92,6 +100,7 @@ span {
 }
 `;
 const InfoSet = () => {
+
     let isLogin = window.localStorage.getItem('isLogin');
     if(isLogin !== 'true') {
         alert('로그인 후 이용 부탁드립니다.');
@@ -196,17 +205,27 @@ const InfoSet = () => {
                 <h1 className="infoset-title">회원정보수정</h1>
             <div className="infoset-container">
                 <h3 className="pwd-find">비밀번호 변경</h3>
+                <br/>
+                <br/>
+                <div className="input">
                 <input className="input-box" type='text' placeholder="현재 아이디 입력*" value={inputId} onChange={onChangePwd} />
+                </div>
                 <div className="hint">
                     {inputId.length > 0 && <span className={`message ${isId ? 'success' : 'error'}`}>{idMessage}</span>}
                 </div>
-                <p />
+                <br />
+                <br/>
+                <div className="input">
                 <input className="input-box" type='text' placeholder="새로운 비밀번호 입력*" value={newInputPwd} onChange={onChangeNewPwd} />
+                </div>
                 <div className="hint">
                     {newInputPwd.length > 0 && <span className={`message ${isNewPwd ? 'success' : 'error'}`}>{newPwdMessage}</span>}
                 </div>
-                <p />
+                <br />
+                <br/>
+                <div className="input">
                 <input className="input-box" type='text' placeholder="비밀번호 확인*" value={newPwdCheck} onChange={onChangeNewPwdCheck} />
+                </div>
                 <div className="hint">
                     {newPwdCheck.length > 0 && <span className={`message ${isCheckPwd ? 'success' : 'error'}`}>{pwdCheckMessage}</span>}
                 </div>

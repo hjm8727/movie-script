@@ -20,15 +20,15 @@ function Trailer() {
         FetchTrailer(nowTrailer)
     }, [])
     useEffect(() => {
-        const nowTrailer2 = `http://cokebear756.synology.me:62322/api/movie/900667`;
+        const nowTrailer2 = `http://cokebear756.synology.me:62322/api/movie/758724`;
         FetchTrailer2(nowTrailer2)
     }, [])
     useEffect(() => {
-        const nowTrailer3 = `http://cokebear756.synology.me:62322/api/movie/848123`;
+        const nowTrailer3 = `http://cokebear756.synology.me:62322/api/movie/877269`;
         FetchTrailer3(nowTrailer3)
     }, [])
     useEffect(() => {
-        const nowTrailer4 = `http://cokebear756.synology.me:62322/api/movie/758724`;
+        const nowTrailer4 = `http://cokebear756.synology.me:62322/api/movie/800497`;
         FetchTrailer4(nowTrailer4)
     }, [])
 
@@ -50,7 +50,7 @@ function Trailer() {
         })
         .then(res => res.json())
         .then(res => {
-        setTrailer2(res.results.youtube_url_list[1]) 
+        setTrailer2(res.results.youtube_url_list[0]) 
         })
     }
     const FetchTrailer3 = (nowTrailer3) => {
