@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import styled from "styled-components";
@@ -17,7 +17,7 @@ function Reviews(props) {
 
     const handleChange = (e) => {
         setReview(e.target.value);
-    }
+    };
     // 로그인된 사용자 ID 받아오기
     const idc = window.localStorage.getItem("userId");
     
@@ -39,7 +39,7 @@ function Reviews(props) {
                 alert('리뷰 저장 실패')
         }
         })
-    }
+    };
 
     return (
         <PostBlock>
@@ -67,7 +67,7 @@ function Reviews(props) {
         <br/>      
         </div>
         </PostBlock>
-    )
+    );
 }
 
-export default Reviews
+export default Reviews;

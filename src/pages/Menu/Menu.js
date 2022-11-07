@@ -208,8 +208,8 @@ const Menu = () => {
                     <p className="category-icon">영화</p>
                     <ul className="category-content-icon">
                         <li><Link to ="/pages/Category/NowPlaying">최신 영화</Link> </li>
-                        <li><Link to ="/pages/Category/TopRated">인기 영화</Link></li>
-                        <li><Link to ="/pages/Category/Popular">최고 평점 영화</Link></li>
+                        <li><Link to ="/pages/Category/Popular">인기 영화</Link></li>
+                        <li><Link to ="/pages/Category/TopRated">최고 평점 영화</Link></li>
                         <li><Link to ="/pages/Category/UpComing">개봉 예정작</Link></li>
                     </ul>
                 </li>

@@ -15,27 +15,27 @@ const Trail = styled.div`
 `;
 // 예고편
 function Trailer() {
-    const [Trailer, setTrailer] = useState('')
-    const [Trailer2, setTrailer2] = useState('')
-    const [Trailer3, setTrailer3] = useState('')
-    const [Trailer4, setTrailer4] = useState('')
+    const [Trailer, setTrailer] = useState('');
+    const [Trailer2, setTrailer2] = useState('');
+    const [Trailer3, setTrailer3] = useState('');
+    const [Trailer4, setTrailer4] = useState('');
 
     useEffect(() => {
         const nowTrailer = `http://cokebear756.synology.me:62322/api/movie/505642`;
         FetchTrailer(nowTrailer)
-    }, [])
+    }, []);
     useEffect(() => {
         const nowTrailer2 = `http://cokebear756.synology.me:62322/api/movie/758724`;
         FetchTrailer2(nowTrailer2)
-    }, [])
+    }, []);
     useEffect(() => {
         const nowTrailer3 = `http://cokebear756.synology.me:62322/api/movie/877269`;
         FetchTrailer3(nowTrailer3)
-    }, [])
+    }, []);
     useEffect(() => {
         const nowTrailer4 = `http://cokebear756.synology.me:62322/api/movie/800497`;
         FetchTrailer4(nowTrailer4)
-    }, [])
+    }, []);
 
     // 받아온 정보 처리
     const FetchTrailer = (nowTrailer) => {
@@ -47,7 +47,7 @@ function Trailer() {
         .then(res => {
             setTrailer(res.results.youtube_url_list[0]) 
         })
-    }
+    };
     const FetchTrailer2 = (nowTrailer2) => {
         fetch(nowTrailer2, {
             method : "POST",
@@ -57,7 +57,7 @@ function Trailer() {
         .then(res => {
         setTrailer2(res.results.youtube_url_list[0]) 
         })
-    }
+    };
     const FetchTrailer3 = (nowTrailer3) => {
         fetch(nowTrailer3, {
             method : "POST",
@@ -67,7 +67,7 @@ function Trailer() {
         .then(res => {
         setTrailer3(res.results.youtube_url_list[0]) 
         })
-    }
+    };
     const FetchTrailer4 = (nowTrailer4) => {
         fetch(nowTrailer4, {
             method : "POST",
@@ -77,7 +77,7 @@ function Trailer() {
         .then(res => {
         setTrailer4(res.results.youtube_url_list[0]) 
         })
-    }
+    };
     return (
     // youtube 정책에 따라 재생 되지 않는 동영상 존재
     <Trail>

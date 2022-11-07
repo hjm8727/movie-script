@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Comment } from 'antd';
 import styled from 'styled-components';
 
@@ -23,7 +23,7 @@ function RComment(props) {
             <Comment author={<b>{props.comment.id}</b>} content={<p>{props.comment.comment}</p>}/>
             <p className='under'></p>
         </RE>
-    )
+    );
 }
 
-export default RComment
+export default RComment;

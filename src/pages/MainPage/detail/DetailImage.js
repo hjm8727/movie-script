@@ -7,10 +7,9 @@ function DetailImage(props) {
             backgroundRepeat: 'no-repeat', width: '1260px', position: 'relative', backgroundImage:`url('${props.image}')`}}>
             <div style={{position: 'absolute', maxWidth: '700px', bottom: '2rem', marginLeft: '2rem'}}>
                 <h2 style={{color: '#FFD669', fontSize: '3rem'}}>{props.title}</h2>
-                {/* <p style={{color:'#FFD669', fontSize: '1rem'}}>{props.text}</p> */}
             </div>
         </div>
-    )
+    );
 }
 
 export default DetailImage;

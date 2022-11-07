@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Table } from 'react-bootstrap';
 
 // 영화 정보 테이블
@@ -37,18 +37,10 @@ function DetInfo(props) {
         <td>평점</td>
         <td>{movie.vote_average}점</td>
         </tr>
-        
-        {/* {props.genre.map((gen, index) =>(
-        <tr>    
-            <React.Fragment key={index}>
-                <td>{gen.genre}</td>
-            </React.Fragment>
-        </tr>
-        ))} */}
     </tbody>
     </Table>
     </div>
-    )
+    );
 }
 
-export default DetInfo
+export default DetInfo;

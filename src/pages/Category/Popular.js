@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import NowLoading from '../../util/Loading';
 import NoImage from '../../util/NoImage';
 import GridCards3 from '../Cards/GridCard3';
-    
+
+// 인기 영화
 function Popular() {
     const [Movies, setMovies] = useState([]);
     const [CurrentPage, setCurrentPage] = useState(0);
@@ -35,7 +36,7 @@ function Popular() {
         <div style={{width: '100%', margin: '0',  backgroundColor: 'black'}}>
         {/* 카테고리 부분 */}
         <div style={{width: '85%', margin: '1rem auto'}}>
-            <h2 style={{color: '#FFD369'}}>최신 영화</h2>
+            <h2 style={{color: '#FFD369'}}>인기 영화</h2>
             <hr/>
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
             <Row gutter={[16, 16]}>
@@ -51,7 +52,7 @@ function Popular() {
         </div>
         </div>
         </div>
-        )
+        );
 }
 
-export default Popular
+export default Popular;

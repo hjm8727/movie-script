@@ -1,5 +1,5 @@
 import { Button, Row } from 'antd';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import GridCards2 from '../../Cards/GridCards2';
 import DetInfo from './DetInfo';
@@ -11,14 +11,14 @@ import Menu from '../../Menu/Menu';
 // 포스터 클릭시 보이는 영화 상세 페이지
 function Detail(props) {
     const {movieId} = useParams();
-    const [Movie, setMovie] = useState([])
-    const [Cast, setCast] = useState([])
-    const [CastToggle, setCastToggle] = useState(false)
-    const [ReviewLists, setReviewLists] = useState([])
+    const [Movie, setMovie] = useState([]);
+    const [Cast, setCast] = useState([]);
+    const [CastToggle, setCastToggle] = useState(false);
+    const [ReviewLists, setReviewLists] = useState([]);
 
     useEffect(() => {
         // 영화 상세정보/배우/리뷰
-        let contentInfo = `http://cokebear756.synology.me:62322/api/movie/${movieId}`
+        let contentInfo = `http://cokebear756.synology.me:62322/api/movie/${movieId}`;
 
         // 영화 상세 정보 처리
         fetch(contentInfo, {
@@ -32,7 +32,7 @@ function Detail(props) {
                 setCast(response.results.cast)
                 setReviewLists(response.results.review)
         })
-        }, [])
+        }, []);
 
         // 배우 정보를 토글로 가렸다 보여주기
         const toggleCastView = () => {
@@ -41,7 +41,7 @@ function Detail(props) {
         // 리뷰 목록 업데이트
         const updateReview = (newReview) => {
             setReviewLists(ReviewLists.concat(newReview))
-        }
+        };
     
     return (
         <div>
@@ -63,7 +63,7 @@ function Detail(props) {
             <Row gutter={[16, 16]}>
                 {Cast && Cast.map((cast, index) =>(
                     <React.Fragment key={index}>
-                        <GridCards2 image={cast.profile_path ? `${cast.profile_path}` : NoImage} characterName={`${cast.name}`} character={`${cast.character}`}/>
+                        <GridCards2 image={cast.profile_path ? `${cast.profile_path}` : null} characterName={`${cast.name}`} character={`${cast.character}`}/>
                     </React.Fragment>
                 ))}
             </Row>
@@ -71,14 +71,12 @@ function Detail(props) {
         <br/>
         {/* 리뷰 */}
         <div>
-
-        <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId} refreshFunction={updateReview} />
-
+            <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId} refreshFunction={updateReview} />
         </div>
         </div>
     </div>
     </div>
-)
+);
 }
 
 export default Detail;

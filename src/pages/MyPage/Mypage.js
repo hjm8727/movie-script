@@ -34,7 +34,6 @@ const StyleMypage = styled.div`
     width: 60%;
     height: 90%;
 }
-
 .info {
     margin-top:2rem;
     margin-left: 1rem;
@@ -59,7 +58,6 @@ const StyleMypage = styled.div`
     margin-right: 0.5rem;
     padding: 7px;
     border-radius: 15px;
-
 }
 .delete-member {
     float: right;
@@ -72,7 +70,6 @@ const StyleMypage = styled.div`
     text-align: center;
     margin-right: -0.25rem;
     padding: 2px;
-
 }
 .container-system {
     display: flex;
@@ -322,9 +319,9 @@ function AdminPage() {
             </tbody>
         )));
 
-  return (
+    return (
     <StyleMypage>
-      <div>
+        <div>
         <nav className="nav nav-pills nav-justified">
             <Link className="nav-link" to="/">홈</Link>
             <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>관리자 페이지</Link>
@@ -356,13 +353,12 @@ function AdminPage() {
             <button className="select-member" onClick={onClickButtonAll2}>회원 전체 닫기</button>
         </div>
     </div>
-  </StyleMypage>
+    </StyleMypage>
     );
 }
 
 const Mypage = () => {
-
-  return (
+    return (
     <div>
         {userAdmin ?
             <AdminPage /> :

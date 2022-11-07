@@ -3,16 +3,16 @@ import GridCards from '../Cards/GridCards';
 import NowLoading from '../../util/Loading';
 import Trailer from './section/Trailer';
 import NoImage from '../../util/NoImage';
-import HorizontalScroll from 'react-horizontal-scrolling'
+import HorizontalScroll from 'react-horizontal-scrolling';
 
 function MainPage() {
     // 로딩용
-    const [Loading, setLoading] = useState(true)
+    const [Loading, setLoading] = useState(true);
     // 영화 정보 
-    const [Movies, setMovies] = useState([])
-    const [Movies2, setMovies2] = useState([])
-    const [Movies3, setMovies3] = useState([])
-    const [Movies4, setMovies4] = useState([])
+    const [Movies, setMovies] = useState([]);
+    const [Movies2, setMovies2] = useState([]);
+    const [Movies3, setMovies3] = useState([]);
+    const [Movies4, setMovies4] = useState([]);
     // 더보기 위해 다음 데이터 받아오기 용도
 
     // DB에서 영화 정보 카테고리별 받아오기
@@ -28,7 +28,7 @@ function MainPage() {
 
         const upcoming = `http://cokebear756.synology.me:62322/api/movie/upcoming?page=0`;
         FetchMovies4(upcoming)
-    }, [])
+    }, []);
     
 
     // 받아온 정보 처리
@@ -42,7 +42,7 @@ function MainPage() {
         .then(response => {
         setMovies([...Movies,...response.results.contents])
         }, setLoading(false))
-    }
+    };
     const FetchMovies2 = (popular) => {
         setLoading(true)
         fetch(popular, {
@@ -53,7 +53,7 @@ function MainPage() {
         .then(response => {
         setMovies2([...Movies2,...response.results.contents])
         }, setLoading(false))
-    }
+    };
     const FetchMovies3 = (topRated) => {
         setLoading(true)
         fetch(topRated, {
@@ -64,7 +64,7 @@ function MainPage() {
         .then(response => {
         setMovies3([...Movies3,...response.results.contents])
         }, setLoading(false))
-    }
+    };
     const FetchMovies4 = (upcoming) => {
         setLoading(true)
         fetch(upcoming, {
@@ -75,7 +75,7 @@ function MainPage() {
         .then(response => {
         setMovies4([...Movies4,...response.results.contents])
         }, setLoading(false))
-    }
+    };
 
     return (
         <div style={{width: '100%', margin: '0',  backgroundColor: 'black'}}>
@@ -93,7 +93,7 @@ function MainPage() {
             <HorizontalScroll>
             {Movies && Movies.map((movie, index) => (
                 <React.Fragment key={index}>
-                    {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
+                {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
                 <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}
@@ -108,7 +108,7 @@ function MainPage() {
             <HorizontalScroll>
             {Movies2 && Movies2.map((movie, index) => (
                 <React.Fragment key={index}>
-                    {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
+                {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
                 <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}
@@ -123,7 +123,7 @@ function MainPage() {
             <HorizontalScroll>
             {Movies3 && Movies3.map((movie, index) => (
                 <React.Fragment key={index}>
-                    {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
+                {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
                 <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}
@@ -138,7 +138,7 @@ function MainPage() {
             <HorizontalScroll>
             {Movies4 && Movies4.map((movie, index) => (
                 <React.Fragment key={index}>
-                    {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
+                {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
                 <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}

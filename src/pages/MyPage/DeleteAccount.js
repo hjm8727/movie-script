@@ -143,8 +143,7 @@ const DeleteAccount=()=>{
             <div className="delButton"><button className="out" onClick={onClickDelete}>탈퇴하기</button>
             <button className="revoke" onClick={()=>{navigate('/Mypage/Mypage')}} >취소하기</button></div>
             <Modal open={modalOpen} close={closeModal} header={modalHeader}>{modalText}</Modal>
-                                                                   
-            <Modal open={deleteModal} close={closedeletModal} header="회원탈퇴 완료">이용해 주셔서 감사합니다. 다신보지말아요.</Modal>
+            <Modal open={deleteModal} close={closedeletModal} header="회원탈퇴 완료">이용해 주셔서 감사합니다. 다음에 또 만나요.</Modal>
             <hr/>
             <div>회원탈퇴시 모든 정보가 삭제되오니<br/> 신중하게 탈퇴 신청을 해주시기 바랍니다.</div>
             </div>

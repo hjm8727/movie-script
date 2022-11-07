@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import NowLoading from '../../util/Loading';
 import NoImage from '../../util/NoImage';
 import GridCards3 from '../Cards/GridCard3';
-    
+
+// 최신 영화
 function NowPlaying() {
     const [Movies, setMovies] = useState([]);
     const [CurrentPage, setCurrentPage] = useState(0);
@@ -51,7 +52,7 @@ function NowPlaying() {
         </div>
         </div>
         </div>
-        )
+        );
 }
 
-export default NowPlaying
+export default NowPlaying;

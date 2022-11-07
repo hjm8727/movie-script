@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Col } from 'antd';
 import NowLoading from '../../util/Loading';
 
 function GridCards3(props) {
-    const [Loading, setLoading] = useState(true)
-    useEffect(() => { setLoading(false) }, [])
+    const [Loading, setLoading] = useState(true);
+    useEffect(() => { setLoading(false) }, []);
 
     return (
     <div style={{display: 'inline-flex'}}>
@@ -17,7 +17,7 @@ function GridCards3(props) {
         </div>
     </Col>
     </div>
-    )
+    );
 }
 
 export default GridCards3;

@@ -97,7 +97,6 @@ span {
 }
 `;
 const InfoSet = () => {
-
     // 비밀번호 찾기
     // 키보드 입력
     const [inputId, setInputId] = useState("");
