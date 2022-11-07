@@ -3,6 +3,7 @@ import {useState} from "react";
 import MovieApi from '../../api/MovieApi';
 import Modal from '../../util/Modal';
 import {useNavigate} from 'react-router-dom';
+import LoginPage from "../Login/LoginPage";
 
 const DeleteBlock=styled.div`
 .delete-container{
@@ -69,11 +70,6 @@ hr{
 `;
 const DeleteAccount=()=>{
 
-    let isLogin = window.localStorage.getItem('isLogin');
-    if(isLogin !== 'true') {
-        window.location.replace('/Login/LoginPage');
-    }
-
     const [inputId, setInputId] = useState("");
     const [inputPwd, setInputPwd] = useState("");
     const [inputEmail, setInputEmail] = useState("");
@@ -82,6 +78,13 @@ const DeleteAccount=()=>{
     const [modalHeader, setModalHeader] = useState(false);
     const [modalText, setModalText] = useState(false);
     let navigate = useNavigate();
+
+    let isLogin = window.localStorage.getItem('isLogin');
+    if(isLogin !== 'true') {
+        return(
+            <LoginPage />
+        );
+    }
 
     const closeModal = () => {
         setModalOpen(false);
