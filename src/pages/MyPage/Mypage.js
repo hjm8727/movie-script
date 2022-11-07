@@ -51,24 +51,27 @@ const StyleMypage = styled.div`
     border-radius: 15px;
 }
 .logout {
-  float: right;
-  font-size: 1.4em;
-  background-color: #ffd369;
-  color: #232323;
-  margin-right: 0.5rem;
-  padding: 7px;
-  border-radius: 15px;
+    float: right;
+    font-size: 1.4em;
+    background-color: #ffd369;
+    color: #232323;
+    margin-right: 0.5rem;
+    padding: 7px;
+    border-radius: 15px;
+
 }
 .delete-member {
     float: right;
     text-decoration: none;
     font-size: 1.4em;
     color: #232323;
-    border: 3px solid #ffd369;
+    border: 1px solid white;
     border-radius: 15px;
     background-color: #ffd369;
     text-align: center;
     margin-right: -0.25rem;
+    padding: 2px;
+
 }
 .container-system {
     display: flex;
@@ -98,10 +101,10 @@ h1 {
     margin: 0 1.4rem;
 }
 button {
-  border: 2px solid silver;
-  background-color: #232323;
-  color: #ffd369;
-  height: 50px;
+    border: 2px solid silver;
+    background-color: #232323;
+    color: #ffd369;
+    height: 50px;
 }
 @media screen and (max-width: 768px){
     .container {
@@ -121,12 +124,12 @@ button {
         height: auto;
     }
     .container-system {
-      width: 100%;
-      height: 100%;
+        width: 100%;
+        height: 100%;
     }
     table, tr, td {
-      width: 100%;
-      height: 100%;
+        width: 100%;
+        height: 100%;
     }
     .num, .name, .id, .time, .email, .pwd {
         width: 10%;
@@ -194,9 +197,9 @@ return (
                     <h3 className="info">이메일 : {memberSelect.email}</h3>
                     <h3 className="info">가입일 : {memberSelect.create_time}</h3>
                 </div>
-            <br /> <br /><br />
-            <Link className="delete-member" to="/MyPage/DeleteAccount">회원 탈퇴</Link>
             <br /><br />
+            <Link className="delete-member" to="/MyPage/DeleteAccount">회원 탈퇴</Link>
+            <br/><br />
         </div>
     </div>
     </StyleMypage>
