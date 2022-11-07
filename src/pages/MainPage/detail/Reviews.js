@@ -5,6 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import styled from "styled-components";
 import { Button } from 'antd';
 import RComment from './Comment';
+import Modal from '../../../util/Modal';
 
 // 글자색이 안보여서 일단 styled components 씌움
 const PostBlock=styled.div`
@@ -42,10 +43,15 @@ function Reviews(props) {
             props.refreshFunction(response.data.result)
             window.location.replace('/movie/'+rev.movie_id);
         } else {
-            alert('리뷰 저장 실패')
+            setModalOpen(true);
         }
         })
     }
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
     return (
         <PostBlock>
         <b style={{color: '#FFD369'}}>{props.movieTitle}에 대한 리뷰를 남겨 보세요</b>
@@ -67,6 +73,7 @@ function Reviews(props) {
         <InputGroup>
         <Form.Control as="textarea" style={{ width: '60%', borderRadius: '5px', marginLeft: '5px', marginRight: '5px' }} onChange={handleChange} value={Review} placeholder="리뷰를 남겨 보세요."/>
             <Button style={{ backgroundColor: '#FFD369' ,width: '10%', fontWeight: 'bold'}} onClick={onSubmit}>저장</Button>
+            <Modal open={modalOpen} close={closeModal} header="오류">로그인 후 리뷰 작성이 가능합니다.</Modal>
         </InputGroup>
         <br/>      
         </div>
