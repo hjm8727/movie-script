@@ -134,7 +134,6 @@ button {
 }
 `;
 
-
 // 관리자 계정인지 확인
 const userId = window.localStorage.getItem("userId");
 let userAdmin = false;
@@ -256,9 +255,9 @@ function AdminPage() {
             </tbody>
         )));
 
-  return (
+    return (
     <StyleMypage>
-      <div>
+    <div>
         <nav className="nav nav-pills nav-justified">
             <Link className="nav-link" to="/">홈</Link>
             <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>관리자 페이지</Link>
@@ -290,13 +289,12 @@ function AdminPage() {
             <button className="select-member" onClick={onClickButtonAll2}>회원 전체 닫기</button>
         </div>
     </div>
-  </StyleMypage>
+    </StyleMypage>
     );
 }
 
 const Mypage = () => {
-
-  return (
+    return (
     <div>
         {userAdmin ?
             <AdminPage /> :

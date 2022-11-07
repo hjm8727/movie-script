@@ -6,28 +6,27 @@ import NowLoading from "../../../util/Loading";
 import SearchApi from "../../../api/SearchApi";
 import SearchItem from "./SearchItem";
 
-    const Container = styled.div`
-    .noResult{
-        display: flex;
-        justify-content: center;
-        color : white ;
-        margin-top: 200px;
-        span{
-            margin-top: 35px;
+const Container = styled.div`
+.noResult{
+    display: flex;
+    justify-content: center;
+    color : white ;
+    margin-top: 200px;
+    span{
+        margin-top: 35px;
         }
-        .noimg{
-            display: inline-block;
-            width: 100px;
-            height: 100px;
-            }
-    }
-    `;
+    .noimg{
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        }
+}
+`;
 
     const SearchResult = () =>{
         const [Movies , setMovies] = useState('');
         const [isResult, setResult] = useState(false);
         const [loading,setLoading] = useState(false);
-
         
         useEffect(() => {
             const fetchData = async () =>{
@@ -100,7 +99,7 @@ import SearchItem from "./SearchItem";
             </Container>
         {/* <Footer/> */}
     </>
-        )
-    };
+        );
+    }
 
 export default SearchResult;

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-
 const Container = styled.div`
 @media screen and (max-width: 920px) {    
     
@@ -121,7 +120,6 @@ const Container = styled.div`
     .category .optionItem:hover {
     background: rgb(175, 93, 93);
 }
-    
 `;
 
 const Menu = () => {

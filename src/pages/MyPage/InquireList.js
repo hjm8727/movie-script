@@ -8,7 +8,7 @@ const StyleList = styled.div `
   margin:0 auto;
   box-sizing: border-box;
   color: white;
-  
+
   .container {
     margin-top: 3rem;
     display: flex;
@@ -57,9 +57,7 @@ const StyleList = styled.div `
 }
 `;
 
-
 const InquireList = () => {
-
   const userId = window.localStorage.getItem("userId");
   if(userId !== 'admin123') {
     alert('관리자 페이지입니다.');

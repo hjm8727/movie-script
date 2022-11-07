@@ -13,17 +13,15 @@ hr {
     z-index: 1;
 }
 .under { 
-border-bottom: 3px solid silver;
+    border-bottom: 3px solid silver;
 }
 `
 
 function RComment(props) {
-    
     return (
         <RE>
             <Comment author={<b>{props.comment.id}</b>} content={<p>{props.comment.comment}</p>}/>
             <p className='under'></p>
-
         </RE>
     )
 }

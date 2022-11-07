@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const Foo = styled.div`
+const Foot = styled.div`
     text-align: center;
     color: white;
     background-color: #222831;
@@ -21,7 +21,7 @@ h2{
 `
 const Footer = () => {
     return(
-        <Foo>
+        <Foot>
             <img src="/images/Logo.png" alt="Logo"/>
             <h2>Contact MovieScript</h2>
             <p>Main : <span>하정목</span></p>
@@ -29,7 +29,7 @@ const Footer = () => {
             <p>DB & Server : <span>김성탁</span></p>
             <p>My Page : <span>지민</span></p>
             <p>Log In & SingUp : <span>박하린</span></p>
-        </Foo>
+        </Foot>
     )
 }
 

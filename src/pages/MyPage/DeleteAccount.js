@@ -6,21 +6,21 @@ import {useNavigate} from 'react-router-dom';
 
 const DeleteBlock=styled.div`
 .delete-container{
-position: absolute;
-top: 60px;
-bottom: 60px;
-width : 100%;
-height: 600px;
-padding: 65px 20px;
-max-width: 600px;
-left: 50%;
-transform: translate(-50%, 0);
-background-color: #393E46;
-color: #EEEEEE;
-overflow: hidden;
-text-align: center;
-display: flex;
-flex-direction: column;
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    width : 100%;
+    height: 600px;
+    padding: 65px 20px;
+    max-width: 600px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #393E46;
+    color: #EEEEEE;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 .title{
     margin-bottom : 30px;
@@ -29,11 +29,11 @@ h2{
     margin-bottom: 20px;
 }
 .inputWrap{
-display: flex;
-border-radius: 8px;
-padding: 16px;
-margin-top: 8px;
-border: 2px solid #EEEEEE;
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 8px;
+    border: 2px solid #EEEEEE;
 }
 .inputWrap:focus-within{border: 2px solid #FFD369;}
 .input{

@@ -21,11 +21,11 @@ const FindIDBlock=styled.div`
     flex-direction: column;
 }
 .inputWrap{
-display: flex;
-border-radius: 8px;
-padding: 16px;
-margin-top: 8px;
-border: 2px solid #EEEEEE;
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 8px;
+    border: 2px solid #EEEEEE;
 }
 .inputWrap:focus-within{border: 2px solid #FFD369;}
 .input{
@@ -86,9 +86,6 @@ const FindID=()=>{
     const onChangeEmail=(e)=>{
         setInputEmail(e.target.value);
     }
-    const openModal = () => {
-        setModalOpen(true);
-    };
     const closeModal = () => {
         setModalOpen(false);
     };

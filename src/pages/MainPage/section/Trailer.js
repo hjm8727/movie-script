@@ -15,7 +15,6 @@ function Trailer() {
     const [Trailer3, setTrailer3] = useState('')
     const [Trailer4, setTrailer4] = useState('')
 
-    // movie Id 값을 받아오려 했으니 렌더링 제한 관계로 직접 입력
     useEffect(() => {
         const nowTrailer = `http://cokebear756.synology.me:62322/api/movie/505642`;
         FetchTrailer(nowTrailer)
@@ -78,18 +77,18 @@ function Trailer() {
     // youtube 정책에 따라 재생 되지 않는 동영상 존재
     <Trail>
     <Carousel style={{width: '85%', margin: '5px auto', borderRadius: '10px', backgroundColor: '#FFD369', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
-    <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer.youtube_url} alt="xxx"/>
-    </Carousel.Item>
-    <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer2.youtube_url} alt="xxx"/>
-    </Carousel.Item>
-    <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer3.youtube_url} alt="xxx"/>
-    </Carousel.Item>
-    <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
-        <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer4.youtube_url} alt="xxx"/>
-    </Carousel.Item>
+        <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
+            <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer.youtube_url} alt=""/>
+        </Carousel.Item>
+        <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
+            <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer2.youtube_url} alt=""/>
+        </Carousel.Item>
+        <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
+            <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer3.youtube_url} alt=""/>
+        </Carousel.Item>
+        <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
+            <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer4.youtube_url} alt=""/>
+        </Carousel.Item>
     </Carousel>
     </Trail>
     );
