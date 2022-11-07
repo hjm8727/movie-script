@@ -38,7 +38,14 @@ function DetInfo(props) {
         <td>평점</td>
         <td>{movie.vote_average}점</td>
         </tr>
-        {/* 장르 추가 예정 */}
+        
+        {/* {props && props.genre.map((genres, index) =>(
+        <tr>    
+            <React.Fragment key={index}>
+                <td>{genres.genre}점</td>
+            </React.Fragment>
+        </tr>
+        ))} */}
     </tbody>
     </Table>
     </div>

@@ -71,7 +71,6 @@ const DeleteAccount=()=>{
 
     let isLogin = window.localStorage.getItem('isLogin');
     if(isLogin !== 'true') {
-        alert('로그인 후 이용 부탁드립니다.');
         window.location.replace('/Login/LoginPage');
     }
 

@@ -51,7 +51,6 @@ const InquireList = () => {
 
   const userId = window.localStorage.getItem("userId");
   if(userId !== 'admin123') {
-    alert('관리자 페이지입니다.');
     window.location.replace('/');
   }
 

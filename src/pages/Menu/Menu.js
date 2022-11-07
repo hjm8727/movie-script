@@ -187,11 +187,11 @@ const Menu = () => {
                 </li>
                 :
                 <li className="dropdown-icon">
-                    <p className="dropbtn-icon"><img src="/images/mem.png" alt="icon"/></p>
-                    <ul className="dropdown-content-icon">
-                        <li><Link to  ="/Login/LoginPage">로그인</Link></li>
+                    <p className="dropbtn-icon"><Link to="/Login/LoginPage"><img src="/images/mem.png" alt="icon"/></Link></p>
+                    {/* <ul className="dropdown-content-icon">
+                        <li></li>
                         <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
-                    </ul>
+                    </ul> */}
                 </li>
             }
 
