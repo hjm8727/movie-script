@@ -77,6 +77,7 @@ const DeleteAccount=()=>{
     const [modalOpen, setModalOpen] = useState(false);
     const [modalHeader, setModalHeader] = useState(false);
     const [modalText, setModalText] = useState(false);
+    const [deleteModal,setDeleteModal] = useState(false);
     let navigate = useNavigate();
 
     let isLogin = window.localStorage.getItem('isLogin');
@@ -85,7 +86,10 @@ const DeleteAccount=()=>{
             <LoginPage />
         );
     }
-
+    const closedeletModal = () =>{
+        setDeleteModal(true);
+        window.location.replace('/Login/LoginPage');
+    }
     const closeModal = () => {
         setModalOpen(false);
     };
@@ -113,12 +117,12 @@ const DeleteAccount=()=>{
             const deleteUser = await MovieApi.deleteUser(inputId,inputEmail,inputPwd);
             if(deleteUser.data.statusCode === 200) {
                 console.log("회원 정보가 탈퇴되었습니다.");
-                alert("탈퇴되었습니다.");
+                setDeleteModal(true);
+                // alert("탈퇴되었습니다.");
                 // 탈퇴 성공시 모달창이 너무 빨리 사라져서 alert으로 대체ㅠㅠ
                 // setModalOpen(true);
                 // setModalHeader("성공");
                 // setModalText("회원 정보가 탈퇴되었습니다.");
-                window.location.replace('/Login/LoginPage');
             } else {
                 setModalOpen(true);
                 setModalHeader("오류");
@@ -138,7 +142,9 @@ const DeleteAccount=()=>{
             <div className="inputWrap"><input className="input" placeholder="비밀번호를 입력하세요*" type="password" value={inputPwd} onChange={onChangePwd}/></div>
             <div className="delButton"><button className="out" onClick={onClickDelete}>탈퇴하기</button>
             <button className="revoke" onClick={()=>{navigate('/Mypage/Mypage')}} >취소하기</button></div>
-            <Modal open={modalOpen} close={closeModal} header={modalHeader}>{modalText}</Modal>                                                       
+            <Modal open={modalOpen} close={closeModal} header={modalHeader}>{modalText}</Modal>
+                                                                   
+            <Modal open={deleteModal} close={closedeletModal} header="회원탈퇴 완료">이용해 주셔서 감사합니다. 다신보지말아요.</Modal>
             <hr/>
             <div>회원탈퇴시 모든 정보가 삭제되오니<br/> 신중하게 탈퇴 신청을 해주시기 바랍니다.</div>
             </div>

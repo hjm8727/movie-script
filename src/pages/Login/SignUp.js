@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import './SignUp.css';
 import MovieApi from '../../api/MovieApi';
+import Modal from "../../util/Modal";
 
 const SignUpBlock=styled.div`
 .page{
@@ -113,6 +114,7 @@ const SignUp=()=>{
     const [confirmPwd, setConfirmPwd] = useState(""); 
     const [inputName, setInputName] = useState("");
     const [inputEmail, setInputEmail] = useState("");
+    const [modalOpen , setModalOpen] = useState(false);
     
     // 유효성 검사
     const [isId, setIsId] = useState(false);
@@ -183,11 +185,16 @@ const SignUp=()=>{
         const memberRegister = await MovieApi.memberReg(inputId, inputPwd,inputName, inputEmail);
         console.log(memberRegister.data.statusCode);
         if(memberRegister.data.statusCode === 200) {
-            window.location.replace('/Login/LoginPage');
+            setModalOpen(true);
         } else {
             alert("이미 존재한 회원이거나, 잘못 입력하셨습니다.");
         }
     }
+    
+    const closeModal = () => {
+        setModalOpen(false);
+        window.location.replace('/Login/LoginPage');
+    };
 
     return(
         <SignUpBlock>
@@ -224,6 +231,8 @@ const SignUp=()=>{
                 <hr/>
                 <div className="item"><button type="submit" disabled={submit} className="signUpButton" onClick={onSubmit}>확인</button></div>
                 </div>
+                <Modal></Modal>
+                <Modal open={modalOpen} close={closeModal} header="회원가입 완료">회원가입을 축하드립니다. 로그인 후 이용해 주세요</Modal>
                 </div>
             </SignUpBlock>
     );
