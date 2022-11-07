@@ -15,10 +15,16 @@ const SignUpBlock=styled.div`
     left: 50%;
     transform: translate(-50%, 0);
     background-color: #393E46;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     height : 800px; // 높이 만 추가했습니다.
+    overflow: auto;
+    -ms-overflow-style: none;
+}
+/* 잘리는 ui 스크롤로 */
+.page::-webkit-scrollbar{
+    display: none;
+    width: 0 !important;
 }
 .titleWrap{
     color: #EEEEEE;
@@ -74,6 +80,7 @@ const SignUpBlock=styled.div`
     background-color: #FFD369;
     color:#222831;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 .find{
     text-align: center;
