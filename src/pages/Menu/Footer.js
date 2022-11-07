@@ -25,10 +25,10 @@ const Footer = () => {
             <img src="/images/Logo.png" alt="Logo"/>
             <h2>Contact MovieScript</h2>
             <p>Main : <span>하정목</span></p>
-            <p>Menu : <span>김승렬</span></p>
+            <p>Menu & Search : <span>김승렬</span></p>
             <p>DB & Server : <span>김성탁</span></p>
             <p>My Page : <span>지민</span></p>
-            <p>Log In & SingUp : <span>박하린</span></p>
+            <p>LogIn & SingUp : <span>박하린</span></p>
         </Foot>
     )
 }

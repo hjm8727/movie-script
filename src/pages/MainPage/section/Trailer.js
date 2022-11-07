@@ -81,7 +81,7 @@ function Trailer() {
     return (
     // youtube 정책에 따라 재생 되지 않는 동영상 존재
     <Trail>
-    <Carousel style={{width: '85%', margin: '5px auto', borderRadius: '10px', backgroundColor: '#FFD369', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
+    <Carousel style={{width: '80%', margin: '5px auto', borderRadius: '10px', backgroundColor: '#FFD369', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
         <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>
             <ReactPlayer className="d-block w-100" controls={true} width="800px" height="685px" url={Trailer.youtube_url} alt=""/>
         </Carousel.Item>

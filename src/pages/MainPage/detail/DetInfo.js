@@ -4,7 +4,6 @@ import { Table } from 'react-bootstrap';
 // 영화 정보 테이블
 function DetInfo(props) {
     let {movie} = props;
-    console.log(props);
     return (
     <div>
     <Table style={{color: '#FFD368'}}>
@@ -39,10 +38,10 @@ function DetInfo(props) {
         <td>{movie.vote_average}점</td>
         </tr>
         
-        {/* {props && props.genre.map((genres, index) =>(
+        {/* {props.genre.map((gen, index) =>(
         <tr>    
             <React.Fragment key={index}>
-                <td>{genres.genre}점</td>
+                <td>{gen.genre}</td>
             </React.Fragment>
         </tr>
         ))} */}

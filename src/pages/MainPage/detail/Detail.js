@@ -68,6 +68,7 @@ function Detail(props) {
                 ))}
             </Row>
         }
+        <br/>
         {/* 리뷰 */}
         <div>
 

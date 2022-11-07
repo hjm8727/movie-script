@@ -8,7 +8,7 @@ function GridCards2(props) {
     useEffect(() => { setLoading(false) }, [])
 
     return (
-        <div style={{display: 'inline-flex'}}>
+        <div style={{display: 'inline-flex' , width: '250px'}}>
         <Col lg={6} md={8} xs={24}  style={{paddingBottom: '10px'}}>
             <div style={{ position: 'relative' }}>
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}

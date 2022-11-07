@@ -4,10 +4,14 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 @media screen and (max-width: 920px) {    
-    
+    .category-icon{
+        display: none;
+    }
+    .search{
+    }    
     .search .search-box{
-        /* 검색창 */
         width: 85%;
+        /* 검색창 */
     }
     .search .submit {
         display: none;
@@ -15,6 +19,7 @@ const Container = styled.div`
     .dropdown-icon  img{
         /* 로그인 아이콘 */
     }
+
 
 }
     width : 100%;
@@ -110,16 +115,45 @@ const Container = styled.div`
         color: #FFD369;
     }
 
-    .dropdown-icon:hover .dropdown-content-icon {
+    .dropdown-icon:hover .dropdown-content-icon  {
         display: block;
     }
     .dropbtn-icon img {
         height:40px;
         width:35px;
     }
-    .category .optionItem:hover {
-    background: rgb(175, 93, 93);
-}
+    .category-icon{
+        color: #FFD369;
+        font-size: 20px;
+        list-style : none; 
+        margin-top: 12px;
+        cursor : pointer;
+    }
+    .category-content-icon{
+        display : none;
+        position : absolute;
+        z-index : 1; /*다른 요소들보다 앞에 배치*/
+        font-weight: 400;
+        background-color: black;
+        color: white;
+        width: 200px;
+        padding: 15px;
+        margin-left: -59px;
+    }
+
+    .category-content-icon li{
+        color : white;
+        font-size: 18px;
+        padding : 10px 5px;
+    }
+
+    .category-content-icon :hover{
+        color: #FFD369;
+    }
+
+    .category-icon:hover .category-content-icon {
+        display: block;
+    }
 `;
 
 const Menu = () => {
@@ -169,7 +203,17 @@ const Menu = () => {
         <Container>
             <ul className="navbar">
                 <li className="logo"><Link to ="/"><img src="/images/Logo.png" alt="Logo"/></Link></li>
-            
+
+                <li className="category-icon">
+                    <p className="category-icon">영화</p>
+                    <ul className="category-content-icon">
+                        <li><Link to ="/pages/Category/NowPlaying">최신 영화</Link> </li>
+                        <li><Link to ="/pages/Category/TopRated">인기 영화</Link></li>
+                        <li><Link to ="/pages/Category/Popular">최고 평점 영화</Link></li>
+                        <li><Link to ="/pages/Category/UpComing">개봉 예정작</Link></li>
+                    </ul>
+                </li>
+
                 <li className="search" >
                         <input className="search-box" type="text" value={inputTxt} onKeyPress={onKeyPress} onChange={onChangeTxt} placeholder="영화 제목을 입력하세요."/>
                         <button className="submit" onClick={onClickSearch}>search</button>

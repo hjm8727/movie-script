@@ -47,7 +47,6 @@ table,th, td {
 }
 `;
 
-
 const InquireList = () => {
 
   const [modalOpen, setModalOpen] = useState(false);

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Col } from 'antd';
 import NowLoading from '../../util/Loading';
 
-function GridCards(props) {
+function GridCards3(props) {
     const [Loading, setLoading] = useState(true)
     useEffect(() => { setLoading(false) }, [])
 
     return (
     <div style={{display: 'inline-flex'}}>
-    <Col style={{paddingBottom: '10px'}}>
+    <Col Col lg={6} md={8} xs={24} style={{paddingBottom: '10px'}}>
         <div style={{ position: 'relative' }}>
             <a href={`/movie/${props.id}`} >
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
@@ -20,4 +20,4 @@ function GridCards(props) {
     )
 }
 
-export default GridCards;
+export default GridCards3;

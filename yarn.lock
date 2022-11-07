@@ -8198,6 +8198,11 @@
   "resolved" "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
   "version" "3.2.0"
 
+"react-horizontal-scrolling@^0.1.13":
+  "integrity" "sha512-LOInfIj77DA+Jijft5PZT/XGmF+B3iEx17wmXkBJ06J5VtjbXsO7zagP5ERJvUDM68M7Yd5dZEGpEW+8qlK0Sg=="
+  "resolved" "https://registry.npmjs.org/react-horizontal-scrolling/-/react-horizontal-scrolling-0.1.13.tgz"
+  "version" "0.1.13"
+
 "react-icon@^1.0.0":
   "integrity" "sha512-VzSlpBHnLanVw79mOxyq98hWDi6DlxK9qPiZ1bAK6bLurMBCaxO/jjyYUrRx9+JGLc/NbnwOmyE/W5Qglbb2QA=="
   "resolved" "https://registry.npmjs.org/react-icon/-/react-icon-1.0.0.tgz"

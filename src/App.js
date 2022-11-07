@@ -17,6 +17,10 @@ import Inquire from './pages/MyPage/Inquire';
 import InquireList from './pages/MyPage/InquireList';
 import DeleteAccount from './pages/MyPage/DeleteAccount';
 import SearchResult from './pages/Menu/SearchResult/SearchResult';
+import NowPlaying from './pages/Category/NowPlaying';
+import TopRated from './pages/Category/TopRated';
+import Popular from './pages/Category/Popular';
+import UpComing from './pages/Category/UpComing';
 
 function App() {
   return (
@@ -25,6 +29,11 @@ function App() {
         <Route path='/' element={<Main/>}></Route>
         <Route path='/pages/MainPage/MainPage' element={<MainPage/>}/>
         <Route exact path="/movie/:movieId" element={<Detail/>}/>
+        <Route path='/pages/Category/NowPlaying' element={<NowPlaying />} />
+        <Route path='/pages/Category/TopRated' element={<TopRated />} />
+        <Route path='/pages/Category/Popular' element={<Popular />} />
+        <Route path='/pages/Category/UpComing' element={<UpComing />} />
+
 
         <Route path='/Login/LoginPage' element={<LoginPage/>}/>
         <Route path='/Login/SignUp' element={<SignUp/>}/>
