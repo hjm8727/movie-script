@@ -73,7 +73,7 @@ function Reviews(props) {
         <InputGroup>
         <Form.Control as="textarea" style={{ width: '60%', borderRadius: '5px', marginLeft: '5px', marginRight: '5px' }} onChange={handleChange} value={Review} placeholder="리뷰를 남겨 보세요."/>
             <Button style={{ backgroundColor: '#FFD369' ,width: '10%', fontWeight: 'bold'}} onClick={onSubmit}>저장</Button>
-            <Modal open={modalOpen} close={closeModal} header="오류">로그인 후 리뷰 작성이 가능합니다.</Modal>
+            <Modal open={modalOpen} close={closeModal} header="리뷰 저장 실패">로그인 후 리뷰 작성이 가능합니다.</Modal>
         </InputGroup>
         <br/>      
         </div>
