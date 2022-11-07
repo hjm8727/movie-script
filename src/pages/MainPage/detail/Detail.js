@@ -53,7 +53,8 @@ function Detail(props) {
         </div>
         {/* 상세 페이지 바디 */}
         <div style={{ width: '85%', margin: '1rem auto'}}>
-        <DetInfo movie={Movie} />
+            <DetInfo movie={Movie} />
+        
         {/* 영화 배우 정보 */}
         <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem'}}>
             <Button style={{backgroundColor: '#FFD669', color: 'black'}} onClick={toggleCastView}>출연 배우 보기</Button>

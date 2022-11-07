@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap';
 // 영화 정보 테이블
 function DetInfo(props) {
     let {movie} = props;
+    console.log(props);
     return (
     <div>
     <Table style={{color: '#FFD368'}}>

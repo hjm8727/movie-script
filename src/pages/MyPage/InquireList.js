@@ -8,7 +8,7 @@ const StyleList = styled.div `
   margin:0 auto;
   box-sizing: border-box;
   color: white;
-
+  
   .container {
     margin-top: 3rem;
     display: flex;
@@ -17,21 +17,7 @@ const StyleList = styled.div `
     height: 100%;
     flex-direction: column;
     text-align: center;
-  }
-  .info {
-    font-size: 20px;
-    color: white;
-  }
-  .reason {
-    float: left;
-  }
-  .date {
-    float: right;
-    margin-right: 2.5rem;
-  }
-  .data-info {
-    border: 1px solid silver;
-    margin: 1.5rem 0;
+    padding: 3rem;
   }
   .var {
     font-size: 2.5em;
@@ -55,9 +41,14 @@ const StyleList = styled.div `
     color: white;
     color: #ffd369;
 }
+table,th, td {
+  border: 1px solid #ffd369;
+}
 `;
 
+
 const InquireList = () => {
+
   const userId = window.localStorage.getItem("userId");
   if(userId !== 'admin123') {
     alert('관리자 페이지입니다.');
@@ -76,8 +67,8 @@ const closeModal = () => {
     const inquireData = async () => {
       try {
         const response = await MovieApi.inquireInfo(); // 전체 리스트 조회
-        setInquireInfo(response.data);
-        console.log(response.data);
+        setInquireInfo(response.data.results);
+        console.log(response.data.results);
       } catch (e) {
         console.log(e);
       }
@@ -94,13 +85,25 @@ const closeModal = () => {
             </nav>
             <Link className="var" aria-current="page" to="./"mypage aria-disabled>문의 내역</Link>
             <div className="container">
-              {inquireInfo && inquireInfo.map(info => (
-                <div className="data-info">
-                  <span key={info.date} className='info reason' onClick={() => {setModalText(info);setModalOpen(true);}}>문의 이유 : {info.reason}</span>
-                  <span className="info date">문의 날짜 : {info.date}</span>
-                  <Modal open={modalOpen} close={closeModal}>----------------- 문의 내용 -----------------<br /><div style={{color: 'white'}}>{modalText.content}</div></Modal>
-                </div>
-              ))}
+              <table>
+                <thead>
+                  <tr>
+                    <th>회원 아이디</th>
+                    <th>문의 제목</th>
+                    <th>문의 날짜</th>
+                  </tr>
+                </thead>
+                {inquireInfo && inquireInfo.map(info => (
+                  <tbody key={info.id}>
+                    <tr>
+                      <td>{info.member_id}</td>
+                      <td onClick={() => {setModalText(info);setModalOpen(true);}}>{info.qna_title}</td>
+                      <td>{info.create_time}</td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
+                <Modal open={modalOpen} close={closeModal}>----------------- 문의 내용 -----------------<br /><div style={{color: 'white'}}>{modalText.qna_content}</div></Modal>
             </div>
           </div>
         </StyleList>

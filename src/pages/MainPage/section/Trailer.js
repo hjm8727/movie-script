@@ -7,6 +7,11 @@ const Trail = styled.div`
 .carousel-indicators {
     visibility: hidden;
 }
+.carousel-control-prev,
+.carousel-control-next {
+    margin-top: 10em;
+    height: 26em;
+}
 `;
 // 예고편
 function Trailer() {
