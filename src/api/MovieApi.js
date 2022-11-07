@@ -1,7 +1,6 @@
 import axios from "axios";
 const HEADER = 'application/json';
-const MOVIE_DOMAIN="http://cokebear756.synology.me:62322/api/";
-const MY_DOMAIN = "http://localhost:8090/kh_movie_project/";
+const MOVIE_DOMAIN="http://cokebear756.synology.me:62322/api";
 
 const MovieApi={
     // 로그인 api
@@ -10,7 +9,7 @@ const MovieApi={
             id : inputId,
             password : inputPwd
         }
-        return await axios.post(MOVIE_DOMAIN + "member/signin", loginObj, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "/member/signin", loginObj, HEADER)
     },
     // 회원가입 api
     memberReg : async function(inputId, inputPwd, inputName ,inputEmail){
@@ -20,14 +19,7 @@ const MovieApi={
             name : inputName,
             email : inputEmail
         }
-        return await axios.post(MOVIE_DOMAIN + "member/signup", memberObj, HEADER)
-    },
-    // 회원가입 여부 api
-    memberRegCheck : async function(inputId){
-        const regCheck = {
-            id : inputId,
-        }
-        return await axios.post(MOVIE_DOMAIN + "IdRegCheck", regCheck, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "/member/signup", memberObj, HEADER)
     },
      // 아이디 찾기 api
     findUser : async function(inputName,inputEmail){
@@ -60,7 +52,7 @@ const MovieApi={
             email : inputEmail,
             password : inputPwd
         }
-        return await axios.post(MOVIE_DOMAIN + "member/delete", deleteUser,HEADER);
+        return await axios.post(MOVIE_DOMAIN + "/member/delete", deleteUser,HEADER);
     },
     // 마이페이지 정보 조회 API
     memberSelect : async function(id) {
@@ -69,12 +61,18 @@ const MovieApi={
         }
         return await axios.post(MOVIE_DOMAIN + "/member/mypage", member, HEADER);
     },
-    // 지민 테스트 문의 내역 API
-    inquireInfo : async function() {
-        const info = {
-            cmd : "InquireInfo"
+    // 문의 내역 전송 API
+    qnaSend : async function(id, qna_title, qna_content) {
+        const qna = {
+            id : id,
+            qna_title : qna_title,
+            qna_content : qna_content
         }
-        return await axios.post(MY_DOMAIN + "InquireSelectServlet", info, HEADER);
+        return await axios.post(MOVIE_DOMAIN + "/member/qna/send", qna, HEADER);
+    },
+    // 관리자페이지 문의 내역 API
+    inquireInfo : async function() {
+        return await axios.post(MOVIE_DOMAIN + "/member/qna/receive", HEADER);
     },
     // 관리자페이지 회원 리스트 API
     memberInfo : async function() {

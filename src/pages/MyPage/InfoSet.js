@@ -36,7 +36,7 @@ margin-bottom: 6rem;
     margin: 0 auto;
     margin-top: 3rem;
     width: 50vw;
-    height: 70vh;
+    height: 80vh;
 }
 .input:focus-within{border: 2px solid #FFD369; border-radius: 15px;}
 .input-box{
@@ -59,7 +59,7 @@ margin-bottom: 6rem;
 .button-submit {
     margin-top: 3rem;
     width: 15vw;
-    height: 8vh;
+    height: 10vh;
     background-color: #ffd369;
     color: #232323;
     border-radius: 8px;
@@ -85,11 +85,7 @@ span {
         width: 90%;
         height: 100%;
     }
-    .input {
-        width: 80vw;
-        height: 70px;
-    }
-    .input-box {
+    .input, .input-box {
         width: 80vw;
         height: 70px;
     }
@@ -205,8 +201,6 @@ const InfoSet = () => {
                 <h1 className="infoset-title">회원정보수정</h1>
             <div className="infoset-container">
                 <h3 className="pwd-find">비밀번호 변경</h3>
-                <br/>
-                <br/>
                 <div className="input">
                 <input className="input-box" type='text' placeholder="현재 아이디 입력*" value={inputId} onChange={onChangePwd} />
                 </div>
@@ -214,7 +208,6 @@ const InfoSet = () => {
                     {inputId.length > 0 && <span className={`message ${isId ? 'success' : 'error'}`}>{idMessage}</span>}
                 </div>
                 <br />
-                <br/>
                 <div className="input">
                 <input className="input-box" type='text' placeholder="새로운 비밀번호 입력*" value={newInputPwd} onChange={onChangeNewPwd} />
                 </div>
@@ -222,7 +215,6 @@ const InfoSet = () => {
                     {newInputPwd.length > 0 && <span className={`message ${isNewPwd ? 'success' : 'error'}`}>{newPwdMessage}</span>}
                 </div>
                 <br />
-                <br/>
                 <div className="input">
                 <input className="input-box" type='text' placeholder="비밀번호 확인*" value={newPwdCheck} onChange={onChangeNewPwdCheck} />
                 </div>

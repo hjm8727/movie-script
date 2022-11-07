@@ -77,6 +77,7 @@ const StyleInquire = styled.div`
 `;
 
 const Inquire = () => {
+    let userId = window.localStorage.getItem("userId");
     let isLogin = window.localStorage.getItem('isLogin');
     if(isLogin !== 'true') {
         alert('로그인 후 이용 부탁드립니다.');
@@ -85,17 +86,17 @@ const Inquire = () => {
 
     // 문의 내용 입력받기
     const [inputText, setInputText] = useState("");
-    const [inputSelect, setInputSelect] = useState("");
+    const [inputSelect, setInputSelect] = useState("단순 변심");
 
     const onChangeText = e => setInputText(e.target.value);
     const onChangeSelect = e => setInputSelect(e.target.value);
-
+    
     const onClickSubmit = async () => {
-        const inquire = await MovieApi.inquireSubmit(inputSelect, inputText);
-        if(inquire.data.result === "OK") {
-            console.log('성공');
-            alert("문의 완료");
-            window.location.replace("/MyPage/Mypage");
+        const send = await MovieApi.qnaSend(userId, inputSelect, inputText);
+        if(send.data.statusCode === 200) {
+            console.log("성공");
+            // alert("문의 완료");
+            // window.location.replace("/MyPage/Mypage");
         } else {
             alert("1000글자 이하로 적어주세요.");
         }
@@ -111,7 +112,7 @@ const Inquire = () => {
                 <h1 className='inquire-head'>1:1 문의하기</h1>
             <form className="inquire-container">
                     <label for='why' className="inquire-text">문의 이유를 선택해주세요.</label>
-                    <select name='why' id='why' className="inquire" value={inputSelect} onChange={onChangeSelect}>
+                    <select className="inquire" value={inputSelect} onChange={onChangeSelect}>
                         <option>단순 변심</option>
                         <option>시작할 때 문제가 있음</option>
                         <option>사이트가 맘에 들지가 않음</option>

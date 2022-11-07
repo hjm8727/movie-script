@@ -81,6 +81,7 @@ const StyleMypage = styled.div`
 }
 table, th, tr, td {
     border: 1px solid #ffd369;
+    margin: 0 auto;
 }
 h1 {
     text-align: center;
@@ -102,6 +103,18 @@ button {
   background-color: #232323;
   color: #ffd369;
   height: 50px;
+}
+.list-open {
+    border: 1px solid #ffd369;
+    background-color: #ffd369;
+    color: black;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-radius: 15px;
 }
 @media screen and (max-width: 768px){
     .container {
@@ -134,6 +147,7 @@ button {
 }
 `;
 
+
 // 관리자 계정인지 확인
 const userId = window.localStorage.getItem("userId");
 let userAdmin = false;
@@ -155,17 +169,19 @@ function UserMypage() {
 
     let isLogin = window.localStorage.getItem('isLogin');
     if(isLogin !== 'true') {
-        alert('로그인 후 이용 부탁드립니다.');
         window.location.replace('/Login/LoginPage');
+        alert('로그인 후 이용 부탁드립니다.');
     }
 
 const [memberSelect, setMemberSelect] = useState('');
+const [listInfo, setListInfo] = useState('');
+const [listOpen, setListOpen] = useState(false);
+
 useEffect(() => {
 
         const memberInfo = async () => {
         try {
             const response = await MovieApi.memberSelect(userId); // 현재 회원만 조회
-            // console.log(response.data.results.id);
             console.log(response.data.results.id);
             setMemberSelect(response.data.results);
         } catch(e) {
@@ -174,6 +190,39 @@ useEffect(() => {
     };
     memberInfo();
 }, []);
+
+// 문의 내역 확인
+useEffect(() => {
+
+    const info = async () => {
+        try {
+            const res = await MovieApi.inquireInfo();
+            console.log(res.data.results);
+            setListInfo(res.data.results);
+        } catch(e) {
+            console.log(e);
+        }
+    }
+    info();
+}, [])
+
+const Tbody = () => (
+    listInfo && listInfo.map(list => (
+        <tbody key={list.id}>
+            {list.member_id === userId ?
+                <tr>
+                    <td>{list.member_id}</td>
+                    <td>{list.qna_title}</td>
+                    <td>{list.qna_content}</td>
+                    <td>{list.create_time}</td>
+                </tr> :
+                <></>}
+        </tbody>
+    )));
+
+const onClickList = () => {
+    setListOpen(!listOpen);
+}
 
 return (
     <StyleMypage>
@@ -195,6 +244,19 @@ return (
                     <h3 className="info">가입일 : {memberSelect.create_time}</h3>
                 </div>
             <br /> <br /><br />
+            <button className="list-open" onClick={onClickList}>내 문의 내역</button>
+            {listOpen &&
+            <table>
+                <thead>
+                    <tr>
+                        <th>회원 아이디</th>
+                        <th>문의 제목</th>
+                        <th>문의 내용</th>
+                        <th>문의 날짜</th>
+                    </tr>
+                </thead>
+                <Tbody />
+            </table>}
             <Link className="delete-member" to="/MyPage/DeleteAccount">회원 탈퇴</Link>
             <br /><br />
         </div>
@@ -211,9 +273,9 @@ function AdminPage() {
 
     const onClickButton = () => {
         setNumber(number + 10);
-        if(number >= 30) {
+        if(number >= 40) {
             alert('더 이상 조회 가능한 회원이 없습니다.');
-            return number === 29;
+            return number === 39;
         }
         console.log(number);
     }
@@ -255,9 +317,9 @@ function AdminPage() {
             </tbody>
         )));
 
-    return (
+  return (
     <StyleMypage>
-    <div>
+      <div>
         <nav className="nav nav-pills nav-justified">
             <Link className="nav-link" to="/">홈</Link>
             <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>관리자 페이지</Link>
@@ -289,12 +351,13 @@ function AdminPage() {
             <button className="select-member" onClick={onClickButtonAll2}>회원 전체 닫기</button>
         </div>
     </div>
-    </StyleMypage>
+  </StyleMypage>
     );
 }
 
 const Mypage = () => {
-    return (
+
+  return (
     <div>
         {userAdmin ?
             <AdminPage /> :
