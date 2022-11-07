@@ -138,7 +138,7 @@ const Container = styled.div`
         color: white;
         width: 200px;
         padding: 15px;
-        margin-left: -59px;
+        margin-left: -56px;
     }
 
     .category-content-icon li{

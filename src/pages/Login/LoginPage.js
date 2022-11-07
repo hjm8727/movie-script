@@ -196,7 +196,7 @@ const LoginPage=()=>{
                     <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd} onKeyPress={onKeyPress}/>
                 </div>
                 <div className="error">{!isPwd && inputPwd.length >0 &&('영문자 포함 숫자 8~16자')}</div>
-                <div className="auto"><input type="checkbox" id="remember"/><label for="remember">자동로그인</label></div>
+                <div className="auto"><input type="checkbox" id="remember" /><label for="remember">자동로그인</label></div>
                 <div className="item"><button type="submit" className="loginButton" disabled={submit} onClick={onClickLogin} >확인</button></div>
                     <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
                 <div className="find">
