@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import NowLoading from '../../util/Loading';
 import NoImage from '../../util/NoImage';
 import GridCards3 from '../Cards/GridCard3';
+import Menu from '../Menu/Menu';
 
 // 개봉 예정작
 function UpComing() {
@@ -34,6 +35,8 @@ function UpComing() {
 
     return (
         <div style={{width: '100%', margin: '0',  backgroundColor: 'black'}}>
+        <Menu/>
+        <br/>
         {/* 카테고리 부분 */}
         <div style={{width: '85%', margin: '1rem auto'}}>
             <h2 style={{color: '#FFD369'}}>개봉 예정작</h2>

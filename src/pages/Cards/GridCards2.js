@@ -3,15 +3,13 @@ import { Col } from 'antd';
 import NowLoading from '../../util/Loading';
 import xbox from "../../images/sad.jpg";
 
-
 function GridCards2(props) {
     const [Loading, setLoading] = useState(true);
     useEffect(() => { setLoading(false) }, []);
-    
+    // 이미지 없을시 아이콘 처리
     const onErrorImg = (e) => {
         e.target.src = xbox;
     }
-
     return (
         <div style={{display: 'inline-flex'}}>
         <Col lg={6} md={8} xs={24}  style={{paddingBottom: '10px'}}>

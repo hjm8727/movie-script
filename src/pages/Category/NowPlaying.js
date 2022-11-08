@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import NowLoading from '../../util/Loading';
 import NoImage from '../../util/NoImage';
 import GridCards3 from '../Cards/GridCard3';
+import Menu from '../Menu/Menu';
 
 // 최신 영화
 function NowPlaying() {
@@ -34,6 +35,8 @@ function NowPlaying() {
 
     return (
         <div style={{width: '100%', margin: '0',  backgroundColor: 'black'}}>
+        <Menu/>
+        <br/>
         {/* 카테고리 부분 */}
         <div style={{width: '85%', margin: '1rem auto'}}>
             <h2 style={{color: '#FFD369'}}>최신 영화</h2>

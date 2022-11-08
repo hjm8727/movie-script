@@ -19,8 +19,6 @@ const Container = styled.div`
     .dropdown-icon  img{
         /* 로그인 아이콘 */
     }
-
-
 }
     width : 100%;
     background-color: black;
@@ -29,7 +27,6 @@ const Container = styled.div`
         text-decoration: none;
         color: white;
     }
-
     ul li{
         list-style: none;
     }
@@ -104,17 +101,14 @@ const Container = styled.div`
         padding: 15px;
         margin-left: -59px;
     }
-
     .dropdown-content-icon li{
         color : white;
         font-size: 18px;
         padding : 10px 5px;
     }
-
     .dropdown-content-icon :hover{
         color: #FFD369;
     }
-
     .dropdown-icon:hover .dropdown-content-icon  {
         display: block;
     }
@@ -138,19 +132,16 @@ const Container = styled.div`
         color: white;
         width: 200px;
         padding: 15px;
-        margin-left: -56px;
+        margin-left: -55px;
     }
-
     .category-content-icon li{
         color : white;
         font-size: 18px;
         padding : 10px 5px;
     }
-
     .category-content-icon :hover{
         color: #FFD369;
     }
-
     .category-icon:hover .category-content-icon {
         display: block;
     }
