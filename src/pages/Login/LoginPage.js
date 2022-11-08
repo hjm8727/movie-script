@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import styled from "styled-components";
+// import axios from "axios";
 import { Link } from 'react-router-dom';
 import Modal from "../../util/Modal";
 import MovieApi from "../../api/MovieApi";
+import { ConsoleSqlOutlined } from "@ant-design/icons";
 
 const LoginBlock=styled.div`
 .page{
@@ -116,11 +118,12 @@ img{
 `;
 const LoginPage=()=>{
     let navigate = useNavigate(); 
-    const [inputId, setInputId] = useState("");
-    const [inputPwd, setInputPwd] = useState("");
+    const [inputId, setInputId] = useState(window.localStorage.getItem("userId"));
+    const [inputPwd, setInputPwd] = useState(window.localStorage.getItem("userPwd"));
     const [isId, setIsId] = useState(false);
     const [isPwd, setIsPwd] = useState(false);
     const [submit, setSubmit] = useState(true);
+    const [autoLogin,setAutoLogin] = useState(false);
 
     const onChangeId = (e) => {
         const idCurrent = e.target.value; // 변수 하나 만들어서 실시간 적용되게
@@ -180,24 +183,71 @@ const LoginPage=()=>{
         }
     }
 
+    const AutoLogin = e =>{
+        if(e.target.checked){
+            window.localStorage.setItem("autoLogin", "TRUE");
+            console.log(window.localStorage.getItem('autoLogin'));
+            setAutoLogin(!autoLogin);
+            console.log(autoLogin);
+        } else {
+            window.localStorage.setItem("autoLogin", "FALSE");
+            console.log(window.localStorage.getItem('autoLogin'));
+            setAutoLogin(!autoLogin);
+            console.log(autoLogin);
+            setInputId('');
+            setInputPwd('');
+        }
+    }
     return(
     <LoginBlock>
     <div className="page">
         <div className='titleWrap'><Link to ="/"><img src="/images/Logo.png" alt="Logo"/></Link>LOGIN</div>
             <div className="loginWrap">
+                
+                {window.localStorage.getItem('autoLogin') === "TRUE" ?
+                <>
                 <div className="inputTitle">아이디</div>
+                 <div className="inputWrap">
+                     <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
+                 </div>
+                 </>
+                 :
+                 <>
+                 <div className="inputTitle">아이디</div>
+                 <div className="inputWrap">
+                     <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
+                 </div>
+                 <div className="error">{!isId && inputId.length >0 &&('영문자 또는 숫자 6~20자')}</div>
+                 </>
+                }
+                
+                {window.localStorage.getItem('autoLogin') === "TRUE" ?
+                <>
+                <div className="inputTitle">비밀번호</div>
                 <div className="inputWrap">
-                    <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
+                    <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd} onKeyPress={onKeyPress}/>
                 </div>
-                <div className="error">{!isId && inputId.length >0 &&('영문자 또는 숫자 6~20자')}</div>
-
+                </>
+                :
+                <>
                 <div className="inputTitle">비밀번호</div>
                 <div className="inputWrap">
                     <input className="input" placeholder="패스워드*" type="password" value={inputPwd} onChange={onChangePwd} onKeyPress={onKeyPress}/>
                 </div>
                 <div className="error">{!isPwd && inputPwd.length >0 &&('영문자 포함 숫자 8~16자')}</div>
-                <br/>
-                <div className="item"><button type="submit" className="loginButton" disabled={submit} onClick={onClickLogin} >확인</button></div>
+                </>
+                }
+
+                {/* 체크 되는 것 확인. */}
+                {window.localStorage.getItem('autoLogin') === "TRUE" ?
+                <div className="auto"><input type="checkbox" checked onClick={AutoLogin} id="remember"/><label for="remember">자동로그인</label></div>
+                : <div className="auto"><input type="checkbox" onClick={AutoLogin} id="remember"/><label for="remember">자동로그인</label></div>}
+                
+                {window.localStorage.getItem('autoLogin') === "TRUE" ?
+                <div className="item"><button type="submit" className="loginButton" onClick={onClickLogin} >확인</button></div>
+                :
+                <div className="item"><button type="submit" checked={false} className="loginButton" disabled={submit} onClick={onClickLogin} >확인</button></div>
+                }
                     <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
                 <div className="find">
                     <span className="findId" onClick={()=>{navigate('/Login/FindId')}}>아이디 찾기</span>
