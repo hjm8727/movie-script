@@ -184,9 +184,9 @@ const Menu = () => {
 
     // 로그아웃
     const onClickLogout = () =>{
-        window.localStorage.setItem("userId", "");
-        window.localStorage.setItem("userPwd","");
-        window.localStorage.setItem("isLogin", "false")
+        window.localStorage.removeItem("userId");
+        window.localStorage.removeItem("userPwd");
+        window.localStorage.setItem("isLogin", false)
         window.location.replace("/");
     }
     
