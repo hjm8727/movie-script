@@ -99,7 +99,7 @@ const Container = styled.div`
         color: white;
         width: 115px;
         padding: 15px;
-        margin-left: -59px;
+        margin-left: -57px;
     }
     .dropdown-content-icon li{
         color : white;

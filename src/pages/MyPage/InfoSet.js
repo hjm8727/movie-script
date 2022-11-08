@@ -58,7 +58,7 @@ margin-bottom: 6rem;
     text-align: center;
 }
 .button-submit {
-    margin-top: 3rem;
+    margin-top: 2rem;
     width: 15vw;
     height: 10vh;
     background-color: #ffd369;
@@ -70,6 +70,7 @@ margin-bottom: 6rem;
 .pwd-find {
     color: #ffd369;
     font-weight: 700;
+    margin-bottom: 40px;
 }
 .pwd-exist {
     background-color: #232323;
@@ -222,6 +223,7 @@ const InfoSet = () => {
                 <div className="hint">
                     {newPwdCheck.length > 0 && <span className={`message ${isCheckPwd ? 'success' : 'error'}`}>{pwdCheckMessage}</span>}
                 </div>
+                <br/>
                     <div>
                         <button className="button-submit" onClick={onClickSet}>수정 완료</button>
                     </div>
