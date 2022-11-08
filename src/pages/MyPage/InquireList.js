@@ -81,7 +81,7 @@ const closeModal = () => {
         <StyleList>
           <div>
             <nav className="nav nav-pills nav-justified">
-              <Link className="nav-link" to="/">홈</Link>
+              <Link className="nav-link" style={{fontSize: '25px'}} to="/">홈</Link>
               <Link className="nav-link" aria-current="page" to="/MyPage/Mypage"mypage aria-disabled>관리자 페이지</Link>
             </nav>
             <Link className="var" aria-current="page" to="./"mypage aria-disabled>문의 내역</Link>
