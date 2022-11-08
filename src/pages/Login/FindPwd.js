@@ -90,6 +90,7 @@ const FindPwd=()=>{
         setModalOpen(false);
     };
     const onClickFind=async()=>{
+        try {
         const findPassword = await MovieApi.findPassword(inputId, inputEmail);
         console.log(findPassword.status);
         if(findPassword.data.statusCode === 200) {
@@ -98,11 +99,12 @@ const FindPwd=()=>{
             setModalOpen(true);
             setModalHeader(inputId+" 님의 비밀번호는");
             setModalText(pwd+" 입니다.");
-        } else {
-            setModalOpen(true);
-            setModalHeader("오류");
-            setModalText("아이디와 이메일이 일치하지 않습니다.");
         }
+    } catch (e) {
+        setModalOpen(true);
+        setModalHeader("오류");
+        setModalText("아이디와 이메일이 일치하지 않습니다.");
+    }
     }
     useEffect(()=>{
         if(inputId&&inputEmail){

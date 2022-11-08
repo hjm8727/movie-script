@@ -90,6 +90,7 @@ const FindID=()=>{
         setModalOpen(false);
     };
     const onClickFind=async()=>{
+        try {
         const findUser = await MovieApi.findUser(inputName, inputEmail);
         if(findUser.data.statusCode === 200) {
             console.log(findUser);
@@ -97,7 +98,8 @@ const FindID=()=>{
             setModalOpen(true);
             setModalHeader(inputName+" 님의 아이디는");
             setModalText(id+" 입니다.");    
-        } else {
+        }
+    } catch (e) {
             setModalOpen(true);
             setModalHeader("오류");
             setModalText("이름과 이메일이 일치하지 않습니다.");

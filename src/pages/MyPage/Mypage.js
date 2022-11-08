@@ -261,6 +261,7 @@ return (
                 </thead>
                 <Tbody />
             </table>}
+            <br/>
             <Link className="delete-member" to="/MyPage/DeleteAccount">회원 탈퇴</Link>
             <br/><br />
         </div>

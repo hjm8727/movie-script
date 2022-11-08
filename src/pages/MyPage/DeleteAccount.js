@@ -80,12 +80,12 @@ const DeleteAccount=()=>{
     const [deleteModal,setDeleteModal] = useState(false);
     let navigate = useNavigate();
 
-    let isLogin = window.localStorage.getItem('isLogin');
-    if(isLogin !== 'true') {
-        return(
-            <LoginPage />
-        );
-    }
+    // let isLogin = window.localStorage.getItem('isLogin');
+    // if(isLogin !== 'true') {
+    //     return(
+    //         <LoginPage />
+    //     );
+    // }
     const closedeletModal = () =>{
         setDeleteModal(true);
         window.location.replace('/Login/LoginPage');
@@ -113,18 +113,25 @@ const DeleteAccount=()=>{
         }
     }
     const onClickDelete = async()=> {
+        try {
         if(loginCheck) {
             const deleteUser = await MovieApi.deleteUser(inputId,inputEmail,inputPwd);
             if(deleteUser.data.statusCode === 200) {
                 console.log("회원 정보가 탈퇴되었습니다.");
                 setDeleteModal(true);
-            } else {
-                setModalOpen(true);
-                setModalHeader("오류");
-                setModalText("일치하는 회원정보가 없습니다.");
-            }
-        }
+                const isAuto = window.localStorage.getItem("autoLogin");
+                console.log(isAuto);
+                window.localStorage.setItem("userId", '');
+                window.localStorage.setItem("userPwd",'');
+                window.localStorage.setItem("autoLogin",'');
+            }}
+    } catch (e) {
+        setModalOpen(true);
+        setModalHeader("오류");
+        setModalText("일치하는 회원정보가 없습니다.");
     }
+    }
+
     return(
         <DeleteBlock>
             <div className='delete-container'>
@@ -134,7 +141,7 @@ const DeleteAccount=()=>{
             </div>
             <div className="inputWrap"><input className="input" placeholder="아이디를 입력하세요*" type="text" value={inputId} onChange={onChangeId}/></div>
             <div className="inputWrap"><input className="input" placeholder="이메일을 입력하세요*" type="email" value={inputEmail} onChange={onChangeEmail}/></div>
-            <div className="inputWrap"><input className="input" placeholder="비밀번호를 입력하세요*" type="password" value={inputPwd} onChange={onChangePwd}/></div>
+            <div className="inputWrap"><input className="input" placeholder="비밀번호를 입력하세요*" type="password" value={inputPwd} onChange={onChangePwd} onBlur={loginCheck}/></div>
             <div className="delButton"><button className="out" onClick={onClickDelete}>탈퇴하기</button>
             <button className="revoke" onClick={()=>{navigate('/Mypage/Mypage')}} >취소하기</button></div>
             <Modal open={modalOpen} close={closeModal} header={modalHeader}>{modalText}</Modal>
