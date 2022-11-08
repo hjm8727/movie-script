@@ -159,7 +159,7 @@ if(userId === 'admin123') {
 const onClickLogout = () =>{
     window.localStorage.setItem("userId", "");
     window.localStorage.setItem("userPwd","");
-    window.localStorage.setItem("isLogin", "false")
+    window.localStorage.setItem("isLogin", false)
     window.location.replace("/");
 }
 

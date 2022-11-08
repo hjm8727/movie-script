@@ -98,6 +98,8 @@ const Inquire = () => {
         const send = await MovieApi.qnaSend(userId, inputSelect, inputText);
         if(send.data.statusCode === 200) {
             console.log("성공");
+            alert("문의 사항이 접수 되었습니다.");
+            window.location.replace('/');
         } else {
             alert("1000글자 이하로 적어주세요.");
         }
