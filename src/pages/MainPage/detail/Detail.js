@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import GridCards2 from '../../Cards/GridCards2';
 import DetInfo from './DetInfo';
 import DetailImage from './DetailImage';
-import NoImage from '../../../util/NoImage';
 import Reviews from './Reviews';
 import Menu from '../../Menu/Menu';
 
@@ -46,37 +45,39 @@ function Detail(props) {
     return (
         <div>
         <Menu/>
-    <div style={{width: '100%', backgroundColor: 'black'}}>
-        {/* 상세페이지 헤더영역 - 가로포스터 */}
-        <div style={{width: '1280px', height: '600px', margin: '0.1rem auto'}}>
-            <DetailImage image={`${Movie.backdrop_path}`} title={Movie.title}/>
+        <div style={{width: '100%', backgroundColor: 'black'}}>
+            {/* 상세페이지 헤더영역 - 가로포스터 */}
+            <div style={{width: '1280px', height: '700px', margin: '0.1rem auto'}}>
+                <DetailImage image={`${Movie.backdrop_path}`} title={Movie.title}/>
+            </div>
+
+            {/* 상세 페이지 바디 */}
+            <div style={{ width: '85%', margin: '1rem auto'}}>
+                <DetInfo movie={Movie} />
+            
+            {/* 영화 배우 정보 */}
+            <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem'}}>
+                <Button style={{backgroundColor: '#FFD669', color: 'black'}} onClick={toggleCastView}>출연 배우 보기</Button>
+            </div>
+            {CastToggle &&
+                <Row gutter={[16, 16]}>
+                    {Cast && Cast.map((cast, index) =>(
+                        <React.Fragment key={index}>
+                            <GridCards2 image={cast.profile_path ? `${cast.profile_path}` : null} characterName={`${cast.name}`} character={`${cast.character}`}/>
+                        </React.Fragment>
+                    ))}
+                </Row>
+            }
+            <br/>
+            
+            {/* 리뷰 */}
+            <div>
+                <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId} refreshFunction={updateReview} />
+            </div>
+            </div>
+            </div>
         </div>
-        {/* 상세 페이지 바디 */}
-        <div style={{ width: '85%', margin: '1rem auto'}}>
-            <DetInfo movie={Movie} />
-        
-        {/* 영화 배우 정보 */}
-        <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem'}}>
-            <Button style={{backgroundColor: '#FFD669', color: 'black'}} onClick={toggleCastView}>출연 배우 보기</Button>
-        </div>
-        {CastToggle &&
-            <Row gutter={[16, 16]}>
-                {Cast && Cast.map((cast, index) =>(
-                    <React.Fragment key={index}>
-                        <GridCards2 image={cast.profile_path ? `${cast.profile_path}` : null} characterName={`${cast.name}`} character={`${cast.character}`}/>
-                    </React.Fragment>
-                ))}
-            </Row>
-        }
-        <br/>
-        {/* 리뷰 */}
-        <div>
-            <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId} refreshFunction={updateReview} />
-        </div>
-        </div>
-    </div>
-    </div>
-);
+    );
 }
 
 export default Detail;

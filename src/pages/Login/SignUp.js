@@ -194,7 +194,7 @@ const SignUp=()=>{
     const closeModal = () => {
         setModalOpen(false);
         window.location.replace('/Login/LoginPage');
-    };
+    }
 
     return(
         <SignUpBlock>

@@ -148,7 +148,6 @@ button {
 }
 `;
 
-
 // 관리자 계정인지 확인
 const userId = window.localStorage.getItem("userId");
 let userAdmin = false;
@@ -163,7 +162,6 @@ const onClickLogout = () =>{
     window.localStorage.setItem("isLogin", "false")
     window.location.replace("/");
 }
-
 
 /** 유저 계정 페이지 */
 function UserMypage() {
@@ -224,7 +222,7 @@ const Tbody = () => (
 
 const onClickList = () => {
     setListOpen(!listOpen);
-}
+};
 
 return (
     <StyleMypage>

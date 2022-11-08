@@ -7,7 +7,6 @@ import { Button } from 'antd';
 import RComment from './Comment';
 import Modal from '../../../util/Modal';
 
-// 글자색이 안보여서 일단 styled components 씌움
 const PostBlock=styled.div`
 color: white;
 .under {
@@ -16,7 +15,6 @@ color: white;
 }
 `;
 
-// 구현중입니다.
 function Reviews(props) {
     const [Review, setReview] = useState("");
 
@@ -46,7 +44,7 @@ function Reviews(props) {
             setModalOpen(true);
         }
         })
-    }
+    };
     const [modalOpen, setModalOpen] = useState(false);
 
     const closeModal = () => {
@@ -58,17 +56,16 @@ function Reviews(props) {
         <p className='under'></p>
         
         {props.ReviewLists && props.ReviewLists.map((comment, index) => (
-            // (!review.responseTo &&
-                <React.Fragment key={index}>
-                    <RComment comment={comment} movId={props.movId} refreshFunction={props.refreshFunction}/>
-                </React.Fragment>
-                // )
+            <React.Fragment key={index}>
+                <RComment comment={comment} movId={props.movId} refreshFunction={props.refreshFunction}/>
+            </React.Fragment>
         ))}
         {props.ReviewLists && props.ReviewLists.length === 0 &&
             <div style={{color: '#FFD369', display: 'flex', justifyContent:'center', alignItems:'center', height:'200px'}} >
                 첫 리뷰를 남겨보세요.
             </div>
         }
+        <br/><br/>
         <div style={{marginLeft: '13rem', marginRight: '13rem'}}>
         <InputGroup>
         <Form.Control as="textarea" style={{ width: '60%', borderRadius: '5px', marginLeft: '5px', marginRight: '5px' }} onChange={handleChange} value={Review} placeholder="리뷰를 남겨 보세요."/>
@@ -78,7 +75,7 @@ function Reviews(props) {
         <br/>      
         </div>
         </PostBlock>
-    )
+    );
 }
 
-export default Reviews
+export default Reviews;

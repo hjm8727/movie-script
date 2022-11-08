@@ -108,7 +108,7 @@ const closeModal = () => {
             </div>
           </div>
         </StyleList>
-    )
+    );
 }
 
 export default InquireList;

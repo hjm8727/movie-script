@@ -12,7 +12,7 @@ function SearchItem(props) {
         </div>
     </Col>
     </div>
-    )
+    );
 }
 
 export default SearchItem;

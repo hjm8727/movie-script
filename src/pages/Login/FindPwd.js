@@ -86,9 +86,6 @@ const FindPwd=()=>{
     const onchangeEmail=(e)=>{
         setInputEmail(e.target.value);
     }
-    const openModal = () => {
-        setModalOpen(true);
-    };
     const closeModal = () => {
         setModalOpen(false);
     };

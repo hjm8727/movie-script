@@ -30,7 +30,7 @@ const Footer = () => {
             <p>My Page : <span>지민</span></p>
             <p>LogIn & SingUp : <span>박하린</span></p>
         </Foot>
-    )
+    );
 }
 
 export default Footer;

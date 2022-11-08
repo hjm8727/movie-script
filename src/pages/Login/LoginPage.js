@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Modal from "../../util/Modal";
 import MovieApi from "../../api/MovieApi";
 
-
 const LoginBlock=styled.div`
 .page{
     position: absolute;

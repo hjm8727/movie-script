@@ -81,7 +81,7 @@ function MainPage() {
         <div style={{width: '100%', margin: '0',  backgroundColor: 'black'}}>
         {/* 영화 예고편 */}
         <Trailer/>
-        <br/>
+        <br/><br/>
         {/* 카테고리 부분 */}
         <div style={{width: '81%', margin: '1rem auto'}}>
 
@@ -98,7 +98,7 @@ function MainPage() {
                 </React.Fragment>
             ))}
             </HorizontalScroll>
-            <br/><br/>
+            <br/><br/><br/>
 
             <h2 style={{color: '#FFD369'}}>인기 영화</h2>
             <hr/>
@@ -113,7 +113,7 @@ function MainPage() {
                 </React.Fragment>
             ))}
             </HorizontalScroll>
-            <br/><br/>
+            <br/><br/><br/>
 
             <h2 style={{color: '#FFD369'}}>최고 평점 영화</h2>
             <hr/>
@@ -128,7 +128,7 @@ function MainPage() {
                 </React.Fragment>
             ))}
             </HorizontalScroll>
-            <br/><br/>
+            <br/><br/><br/>
             
             <h2 style={{color: '#FFD369'}}>개봉 예정작</h2>
             <hr/>

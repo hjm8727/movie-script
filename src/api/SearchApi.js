@@ -3,7 +3,6 @@ const HEADER = 'application/json';
 const MOVIE_DOMAIN="http://cokebear756.synology.me:62322/api/movie/search?query=";
 
 const SearchApi={
-    // 로그인 api
     movieSearch : async function(searchRes){
         const searchObj = {
             query : searchRes

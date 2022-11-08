@@ -53,7 +53,7 @@ const Container = styled.div`
         border:1px solid #FFD369;
         width: 80%;
         height: 50px;
-        font-size: 13px;
+        font-size: 15px;
         margin-right: 10px;
     }
     // 검색 버튼
@@ -118,7 +118,7 @@ const Container = styled.div`
     }
     .category-icon{
         color: #FFD369;
-        font-size: 20px;
+        font-size: 25px;
         list-style : none; 
         margin-top: 12px;
         cursor : pointer;
@@ -132,7 +132,7 @@ const Container = styled.div`
         color: white;
         width: 200px;
         padding: 15px;
-        margin-left: -55px;
+        margin-left: -49px;
     }
     .category-content-icon li{
         color : white;
@@ -208,7 +208,6 @@ const Menu = () => {
                 <li className="search" >
                         <input className="search-box" type="text" value={inputTxt} onKeyPress={onKeyPress} onChange={onChangeTxt} placeholder="영화 제목을 입력하세요."/>
                         <button className="submit" onClick={onClickSearch}>search</button>
-                        {/* <Link to ="/Menu/SearchResult/SearchResult"  onClick={onClickSearch}><button class="submit">search</button></Link> */}
                 </li>
 
                 {isLogin ?
@@ -223,10 +222,6 @@ const Menu = () => {
                 :
                 <li className="dropdown-icon">
                     <p className="dropbtn-icon"><Link to="/Login/LoginPage"><img src="/images/mem.png" alt="icon"/></Link></p>
-                    {/* <ul className="dropdown-content-icon">
-                        <li></li>
-                        <li><Link to ="/MyPage/Inquire">고객센터</Link></li>
-                    </ul> */}
                 </li>
             }
 

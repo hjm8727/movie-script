@@ -118,11 +118,6 @@ const DeleteAccount=()=>{
             if(deleteUser.data.statusCode === 200) {
                 console.log("회원 정보가 탈퇴되었습니다.");
                 setDeleteModal(true);
-                // alert("탈퇴되었습니다.");
-                // 탈퇴 성공시 모달창이 너무 빨리 사라져서 alert으로 대체ㅠㅠ
-                // setModalOpen(true);
-                // setModalHeader("성공");
-                // setModalText("회원 정보가 탈퇴되었습니다.");
             } else {
                 setModalOpen(true);
                 setModalHeader("오류");
