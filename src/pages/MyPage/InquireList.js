@@ -104,7 +104,7 @@ const closeModal = () => {
                   </tbody>
                 ))}
               </table>
-                <Modal open={modalOpen} close={closeModal}>----------------- 문의 내용 -----------------<br /><div style={{color: 'white'}}>{modalText.qna_content}</div></Modal>
+                <Modal open={modalOpen} close={closeModal} header="문의 사항"><div style={{color: 'white'}}>{modalText.qna_content}</div></Modal>
             </div>
           </div>
         </StyleList>
