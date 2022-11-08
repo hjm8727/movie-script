@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import styled from "styled-components";
-// import axios from "axios";
 import { Link } from 'react-router-dom';
 import Modal from "../../util/Modal";
 import MovieApi from "../../api/MovieApi";
-import { ConsoleSqlOutlined } from "@ant-design/icons";
 
 const LoginBlock=styled.div`
+
 .page{
     position: absolute;
-    top: 60px;
+    top: 135px;
     bottom: 60px;
     width : 100%;
     padding: 0 20px;
@@ -118,8 +117,8 @@ img{
 `;
 const LoginPage=()=>{
     let navigate = useNavigate(); 
-    const [inputId, setInputId] = useState(window.localStorage.getItem("userId"));
-    const [inputPwd, setInputPwd] = useState(window.localStorage.getItem("userPwd"));
+    const [inputId, setInputId] = useState(window.localStorage.getItem("userId", ''));
+    const [inputPwd, setInputPwd] = useState(window.localStorage.getItem("userPwd", ''));
     const [isId, setIsId] = useState(false);
     const [isPwd, setIsPwd] = useState(false);
     const [submit, setSubmit] = useState(true);
@@ -207,18 +206,18 @@ const LoginPage=()=>{
                 {window.localStorage.getItem('autoLogin') === "TRUE" ?
                 <>
                 <div className="inputTitle">아이디</div>
-                 <div className="inputWrap">
-                     <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
-                 </div>
-                 </>
-                 :
-                 <>
-                 <div className="inputTitle">아이디</div>
-                 <div className="inputWrap">
-                     <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
-                 </div>
-                 <div className="error">{!isId && inputId.length >0 &&('영문자 또는 숫자 6~20자')}</div>
-                 </>
+                <div className="inputWrap">
+                    <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
+                </div>
+                </>
+                :
+                <>
+                <div className="inputTitle">아이디</div>
+                <div className="inputWrap">
+                    <input className="input" placeholder="아이디*" type="text" value={inputId} onChange={onChangeId}/>
+                </div>
+                <div className="error">{!isId && inputId.length >0 &&('영문자 또는 숫자 6~20자')}</div>
+                </>
                 }
                 
                 {window.localStorage.getItem('autoLogin') === "TRUE" ?
@@ -240,8 +239,8 @@ const LoginPage=()=>{
 
                 {/* 체크 되는 것 확인. */}
                 {window.localStorage.getItem('autoLogin') === "TRUE" ?
-                <div className="auto"><input type="checkbox" checked onClick={AutoLogin} id="remember"/><label for="remember">자동로그인</label></div>
-                : <div className="auto"><input type="checkbox" onClick={AutoLogin} id="remember"/><label for="remember">자동로그인</label></div>}
+                <div className="auto"><input type="checkbox" checked onClick={AutoLogin} id="remember"/><label for="remember">Remember me</label></div>
+                : <div className="auto"><input type="checkbox" onClick={AutoLogin} id="remember"/><label for="remember">Remember me</label></div>}
                 
                 {window.localStorage.getItem('autoLogin') === "TRUE" ?
                 <div className="item"><button type="submit" className="loginButton" onClick={onClickLogin} >확인</button></div>

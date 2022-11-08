@@ -21,7 +21,6 @@ margin-bottom: 6rem;
     font-size: 1.5em;
     font-weight: bold;
     color: #ffd369;
-    pointer-events: none;
 }
 * {
     color: white;
@@ -29,7 +28,6 @@ margin-bottom: 6rem;
 .infoset-container {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: nowrap; */
     align-items: center;
     justify-content: center;
     border: 5px solid #ffd369;
@@ -114,7 +112,6 @@ const InfoSet = () => {
     const [isNewPwd, setIsNewPwd] = useState(false);
     const [isCheckPwd, setIsCheckPwd] = useState(false);
 
-
     let isLogin = window.localStorage.getItem('isLogin');
     if(isLogin !== 'true') {
         return(
@@ -196,7 +193,7 @@ const InfoSet = () => {
         <StyleInfoSet>
         <div>
             <nav className="nav nav-pills nav-justified">
-                <Link className="nav-link" to="/">홈</Link>
+                <Link className="nav-link" style={{fontSize: '25px'}} to="/">홈</Link>
                 <Link className="nav-link mypage" to="/Mypage/mypage">마이페이지</Link>
                 <Link className="nav-link" to="/Mypage/inquire">1:1 문의하기</Link>
             </nav>

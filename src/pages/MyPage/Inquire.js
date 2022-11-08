@@ -21,7 +21,6 @@ const StyleInquire = styled.div`
     font-size: 1.5em;
     font-weight: bold;
     color: #ffd369;
-    pointer-events: none;
 }
 .inquire-container {
     display: flex;
@@ -39,11 +38,13 @@ const StyleInquire = styled.div`
 .inquire {
     margin: 1rem 0;
     width: 40vw;
+    font-size: 20px;
 }
 .content {
     width: 40vw;
     height: 80vh;
     background-color: #eeeeee;
+    font-size: 20px;
 }
 .inquire-submit {
     width: 15vw;
@@ -62,8 +63,9 @@ const StyleInquire = styled.div`
     text-align: center;
 }
 .inquire-text {
-    font-size: 20px;
+    font-size: 30px;
     color: #ffd369;
+    margin-bottom: 20px;
 }
 @media screen and (max-width: 768px){
     .inquire-container {
@@ -109,8 +111,8 @@ const Inquire = () => {
     <StyleInquire>
         <div>
             <nav className="nav nav-pills nav-justified">
-                <Link className="nav-link" to="/">홈</Link>
-                <Link className="nav-link mypage" to="/MyPage/mypage">마이페이지</Link>
+                <Link className="nav-link" style={{fontSize: '25px'}} to="/">홈</Link>
+                <Link className="nav-link mypage" to="/MyPage/Mypage">마이페이지</Link>
                 <Link className="nav-link" to="/MyPage/infoset">회원정보수정</Link>
             </nav>
                 <h1 className='inquire-head'>1:1 문의하기</h1>

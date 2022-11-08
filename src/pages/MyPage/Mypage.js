@@ -156,12 +156,16 @@ if(userId === 'admin123') {
     userAdmin = true;
 }
 // 로그아웃
-const onClickLogout = () =>{
-    window.localStorage.setItem("userId", "");
-    window.localStorage.setItem("userPwd", "");
-    window.localStorage.setItem("isLogin", false)
-    window.location.replace("/");
-}
+    const onClickLogout = () =>{
+        const isAuto = window.localStorage.getItem("autoLogin");
+        console.log(isAuto);
+        if(isAuto === "FALSE"){
+            window.localStorage.setItem("userId", '');
+            window.localStorage.setItem("userPwd",'');
+        }
+        window.localStorage.setItem("isLogin", "false")
+        window.location.replace("/");
+    }
 
 /** 유저 계정 페이지 */
 function UserMypage() {
@@ -228,7 +232,7 @@ return (
     <StyleMypage>
         <div>
         <nav className="nav nav-pills nav-justified">
-            <Link className="nav-link" to="/">홈</Link>
+            <Link className="nav-link" style={{fontSize: '25px'}} to="/">홈</Link>
             <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>마이페이지</Link>
             <Link className="nav-link" to="/MyPage/Inquire">1:1 문의하기</Link>
         </nav>

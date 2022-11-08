@@ -56,7 +56,7 @@ const Container = styled.div`
         border:1px solid #FFD369;
         width: 80%;
         height: 50px;
-        font-size: 13px;
+        font-size: 15px;
         margin-right: 10px;
     }
     // 검색 버튼
@@ -124,7 +124,8 @@ const Container = styled.div`
     }
     .category-icon{
         color: #FFD369;
-        font-size: 20px;
+        font-size: 23px;
+        font-weight: 400;
         list-style : none; 
         margin-top: 12px;
         cursor : pointer;
@@ -138,7 +139,7 @@ const Container = styled.div`
         color: white;
         width: 200px;
         padding: 15px;
-        margin-left: -59px;
+        margin-left: -49px;
     }
 
     .category-content-icon li{
