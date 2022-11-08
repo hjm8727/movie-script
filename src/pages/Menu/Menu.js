@@ -85,7 +85,7 @@ const Container = styled.div`
 
     // 아이콘 드롭다운
     .dropdown-icon{
-        margin-right: 20px;
+        margin-right: 30px;
         list-style : none; 
         margin-top: 20px;
         cursor : pointer;
