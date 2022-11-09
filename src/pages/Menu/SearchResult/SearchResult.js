@@ -85,7 +85,6 @@ const Container = styled.div`
                             ))};
                             </Row>
                         </div>
-
                         :
                     // 검색결과가 존재하지 않을경우
                     <div style={{width: '85%', margin: '1rem auto'}}>

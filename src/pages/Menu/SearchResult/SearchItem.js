@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col } from 'antd';
 
+// 영화 검색 결과 영화 포스터로 보여주기
 function SearchItem(props) {
     return (
     <div style={{display: 'inline-flex'}}>

@@ -108,17 +108,17 @@ img{
 /** 회원가입 성공 */
 const SignUp=()=>{
 
-    // 키보드 입력
+    // 회원가입 정보 입력
     const [inputId, setInputId] = useState("");
     const [inputPwd, setInputPwd] = useState("");
     const [confirmPwd, setConfirmPwd] = useState(""); 
     const [inputName, setInputName] = useState("");
     const [inputEmail, setInputEmail] = useState("");
 
-
-    const [deleteModal,setDeleteModal] = useState(false);
-    
+    // 모달
     const [modalOpen , setModalOpen] = useState(false);
+    // 정보 입력 오류시 모달
+    const [eModal,setEModal] = useState(false);
     
     // 유효성 검사
     const [isId, setIsId] = useState(false);
@@ -128,6 +128,7 @@ const SignUp=()=>{
     const [isEmail, setIsEmail] = useState(false);
     const [submit, setSubmit] = useState(true);
 
+    // 아이디 입력, 정규식
     const onChangeId = (e) => {
         // 회원 가입도 변수 만드신걸로 바꿔놨습니다.
         const idCurrent = e.target.value; // 변수 하나 만들어서 실시간 적용되게
@@ -139,6 +140,7 @@ const SignUp=()=>{
             setIsId(false)
         }};
 
+    // 비밀번호 입력, 정규식
     const onChangePwd = (e) => {
         // passwordCurrent 변수 : 비번, 비번재확인 실시간 반영을 위해 변수 생성 
         const passwordCurrent = e.target.value;
@@ -150,6 +152,7 @@ const SignUp=()=>{
             setIsPwd(false)
         }};
     
+    // 비밀번호 확인
     const onChangeConfirmPwd = (e) => {
         const passwordCurrent = e.target.value;
         setConfirmPwd(passwordCurrent)
@@ -159,6 +162,7 @@ const SignUp=()=>{
             setIsConfirmPwd(true);
         }};
 
+    // 이메일 입력, 정규식
     const onChangeEmail = (e) => {
         setInputEmail(e.target.value);
         const regEmail = /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -167,6 +171,8 @@ const SignUp=()=>{
         }else{
             setIsEmail(false)
         }};
+
+    // 이름 입력, 정규식
     const onChangeName = (e) => {
         setInputName(e.target.value);
         const regName = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,}$/;
@@ -176,7 +182,7 @@ const SignUp=()=>{
             setIsName(false)
         }};
     
-//  모든 유효성 검사 충족해야 가입버튼 누를 수 있도록 
+    //  모든 유효성 검사 충족해야 가입버튼 누를 수 있도록 
     useEffect(()=>{
         if(isId&&isPwd&&isConfirmPwd&&isName&&isEmail){
             setSubmit(false);
@@ -194,13 +200,16 @@ const SignUp=()=>{
         } else {
         }
     } catch (e) {
-        alert("이미 존재한 회원이거나, 잘못 입력하셨습니다.");
+        setEModal(true);
     }
 }
     
     const closeModal = () => {
         setModalOpen(false);
         window.location.replace('/Login/LoginPage');
+    };
+    const closeEModal = () => {
+        setEModal(false);
     };
 
     return(
@@ -239,6 +248,7 @@ const SignUp=()=>{
                 <div className="item"><button type="submit" disabled={submit} className="signUpButton" onClick={onSubmit}>확인</button></div>
                 </div>
                 <Modal open={modalOpen} close={closeModal} header="회원가입 완료">회원가입을 축하드립니다. 로그인 후 이용해 주세요</Modal>
+                <Modal open={eModal} close={closeEModal} header="회원 정보 입력 오류">이미 존재하는 아이디 이거나 잘못 입력하셨습니다</Modal>
                 </div>
             </SignUpBlock>
     );

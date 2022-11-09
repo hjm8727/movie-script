@@ -69,16 +69,22 @@ hr{
 `;
 const DeleteAccount=()=>{
 
+    // 아이디, 비번, 이메일
     const [inputId, setInputId] = useState("");
     const [inputPwd, setInputPwd] = useState("");
     const [inputEmail, setInputEmail] = useState("");
-    // 모달창
-    const [modalOpen, setModalOpen] = useState(false);
-    const [modalHeader, setModalHeader] = useState(false);
-    const [modalText, setModalText] = useState(false);
+
+    // 정상 삭제시 모달
     const [deleteModal,setDeleteModal] = useState(false);
     let navigate = useNavigate();
 
+    // 오류시 모달창
+    const [modalOpen, setModalOpen] = useState(false);
+    // 모달 header/text 입력
+    const [modalHeader, setModalHeader] = useState(false);
+    const [modalText, setModalText] = useState(false);
+
+    // 삭제 성공시 모달창 이후 로그인 페이지로 이동
     const closedeletModal = () =>{
         setDeleteModal(true);
         window.location.replace('/Login/LoginPage');
@@ -86,6 +92,7 @@ const DeleteAccount=()=>{
     const closeModal = () => {
         setModalOpen(false);
     };
+    // 아이디/비밀번호/이메일 변경시 값 입력
     const onChangeId=(e)=>{
         setInputId(e.target.value);
     }
@@ -120,7 +127,6 @@ const DeleteAccount=()=>{
                 window.localStorage.setItem("autoLogin",'');
             }}
     };
-    
 
     return(
         <DeleteBlock>

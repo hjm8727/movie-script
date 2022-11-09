@@ -82,7 +82,6 @@ const Container = styled.div`
         position: relative;
         }
     }
-
     // 아이콘 드롭다운
     .dropdown-icon{
         margin-right: 30px;
@@ -132,7 +131,7 @@ const Container = styled.div`
         color: white;
         width: 200px;
         padding: 15px;
-        margin-left: -49px;
+        margin-left: -44px;
     }
     .category-content-icon li{
         color : white;
@@ -229,7 +228,6 @@ const Menu = () => {
                     <p className="dropbtn-icon"><Link to="/Login/LoginPage"><img src="/images/mem.png" alt="icon"/></Link></p>
                 </li>
             }
-
             </ul>
         </Container>
     );

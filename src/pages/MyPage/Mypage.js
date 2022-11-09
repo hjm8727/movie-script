@@ -9,7 +9,6 @@ const StyleMypage = styled.div`
     box-sizing: border-box;
     margin: 0 auto;
     color: white;
-
 .nav {
     text-decoration: none;
     display: flex;
