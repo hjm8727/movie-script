@@ -9,7 +9,7 @@ function DetInfo(props) {
         <Table style={{color: '#FFD368'}}>
         <thead>
             <tr>
-                <th colSpan={2} style={{textAlign: 'left', fontSize: 'larger'}} >영화 정보</th>
+                <th colSpan={2} style={{textAlign: 'left', fontSize: 'larger'}}>영화 정보</th>
             </tr>
         </thead>
         <tbody>

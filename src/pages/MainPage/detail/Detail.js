@@ -9,14 +9,24 @@ import Menu from '../../Menu/Menu';
 
 // 포스터 클릭시 보이는 영화 상세 페이지
 function Detail(props) {
+
+    // 리액트에서 제공하는 Hook으로 동적으로 라우팅을 생성하기 위해 사용
     const {movieId} = useParams();
+
+    // 영화 정보
     const [Movie, setMovie] = useState([]);
+
+    // 배우 정보
     const [Cast, setCast] = useState([]);
+
+    // 배우 보기 토글
     const [CastToggle, setCastToggle] = useState(false);
+
+    // 리뷰 목록
     const [ReviewLists, setReviewLists] = useState([]);
 
+    // 영화 상세정보/배우/리뷰
     useEffect(() => {
-        // 영화 상세정보/배우/리뷰
         let contentInfo = `http://cokebear756.synology.me:62322/api/movie/${movieId}`;
 
         // 영화 상세 정보 처리
@@ -37,11 +47,7 @@ function Detail(props) {
         const toggleCastView = () => {
             setCastToggle(!CastToggle)
         }
-        // 리뷰 목록 업데이트
-        const updateReview = (newReview) => {
-            setReviewLists(ReviewLists.concat(newReview))
-        };
-    
+
     return (
         <div>
         <Menu/>
@@ -53,6 +59,7 @@ function Detail(props) {
 
             {/* 상세 페이지 바디 */}
             <div style={{ width: '85%', margin: '1rem auto'}}>
+                {/* 받아온 정보 DetInfo로 넘김 */}
                 <DetInfo movie={Movie} />
             
             {/* 영화 배우 정보 */}
@@ -61,6 +68,7 @@ function Detail(props) {
             </div>
             {CastToggle &&
                 <Row gutter={[16, 16]}>
+                    {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
                     {Cast && Cast.map((cast, index) =>(
                         <React.Fragment key={index}>
                             <GridCards2 image={cast.profile_path ? `${cast.profile_path}` : null} characterName={`${cast.name}`} character={`${cast.character}`}/>
@@ -72,7 +80,7 @@ function Detail(props) {
             
             {/* 리뷰 */}
             <div>
-                <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId} refreshFunction={updateReview} />
+                <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId}  />
             </div>
             </div>
             </div>

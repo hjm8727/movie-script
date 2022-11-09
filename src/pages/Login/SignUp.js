@@ -114,6 +114,10 @@ const SignUp=()=>{
     const [confirmPwd, setConfirmPwd] = useState(""); 
     const [inputName, setInputName] = useState("");
     const [inputEmail, setInputEmail] = useState("");
+
+
+    const [deleteModal,setDeleteModal] = useState(false);
+    
     const [modalOpen , setModalOpen] = useState(false);
     
     // 유효성 검사

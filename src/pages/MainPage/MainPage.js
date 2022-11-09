@@ -8,12 +8,11 @@ import HorizontalScroll from 'react-horizontal-scrolling';
 function MainPage() {
     // 로딩용
     const [Loading, setLoading] = useState(true);
-    // 영화 정보 
+    // 영화 정보 (각 카테고리별)
     const [Movies, setMovies] = useState([]);
     const [Movies2, setMovies2] = useState([]);
     const [Movies3, setMovies3] = useState([]);
     const [Movies4, setMovies4] = useState([]);
-    // 더보기 위해 다음 데이터 받아오기 용도
 
     // DB에서 영화 정보 카테고리별 받아오기
     useEffect(() => {
@@ -90,7 +89,10 @@ function MainPage() {
             {/* 로딩시 보여주기 */}
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
             {/* 카테고리 별로 맵에 담아서 출력 */}
+
+            {/* 횡스크롤 */}
             <HorizontalScroll>
+            {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
             {Movies && Movies.map((movie, index) => (
                 <React.Fragment key={index}>
                 {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
@@ -105,7 +107,10 @@ function MainPage() {
             {/* 로딩시 보여주기 */}
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
             {/* 카테고리 별로 맵에 담아서 출력 */}
+
+            {/* 횡스크롤 */}
             <HorizontalScroll>
+            {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
             {Movies2 && Movies2.map((movie, index) => (
                 <React.Fragment key={index}>
                 {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
@@ -120,7 +125,10 @@ function MainPage() {
             {/* 로딩시 보여주기 */}
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
             {/* 카테고리 별로 맵에 담아서 출력 */}
+
+            {/* 횡스크롤 */}
             <HorizontalScroll>
+            {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
             {Movies3 && Movies3.map((movie, index) => (
                 <React.Fragment key={index}>
                 {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
@@ -135,7 +143,10 @@ function MainPage() {
             {/* 로딩시 보여주기 */}
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
             {/* 카테고리 별로 맵에 담아서 출력 */}
+
+            {/* 횡스크롤 */}
             <HorizontalScroll>
+            {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
             {Movies4 && Movies4.map((movie, index) => (
                 <React.Fragment key={index}>
                 {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}

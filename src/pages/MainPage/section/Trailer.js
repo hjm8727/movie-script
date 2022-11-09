@@ -20,6 +20,7 @@ function Trailer() {
     const [Trailer3, setTrailer3] = useState('');
     const [Trailer4, setTrailer4] = useState('');
 
+    // DB에서 예고편 youtube url 받아오기
     useEffect(() => {
         const nowTrailer = `http://cokebear756.synology.me:62322/api/movie/436270`;
         FetchTrailer(nowTrailer)
@@ -78,8 +79,10 @@ function Trailer() {
         setTrailer4(res.results.youtube_url_list[0]) 
         })
     };
+
     return (
     // youtube 정책에 따라 재생 되지 않는 동영상 존재
+    // 리액트 플에이어로 youtube 영상 출력
     <Trail>
     <Carousel style={{width: '80%', margin: '5px auto', borderRadius: '10px', backgroundColor: '#FFD369', padding: '30px', boxSizing: 'borderBox', height: '100%'}}>
         <Carousel.Item style={{position: 'relative', width: '100%', height: '100%'}}>

@@ -7,15 +7,20 @@ import Menu from '../Menu/Menu';
 
 // 개봉 예정작
 function UpComing() {
+    // DB에서 영화 데이터 받아오기
     const [Movies, setMovies] = useState([]);
+    // 더보기 위한 페이지 세팅
     const [CurrentPage, setCurrentPage] = useState(0);
+    // 로딩중
     const [Loading, setLoading] = useState(true);
     
+    // DB에서 영화 정보 받아오기
     useEffect(() => {
         const upcoming = `http://cokebear756.synology.me:62322/api/movie/upcoming?page=0`;
         FetchMovies(upcoming)
     }, []);
 
+    // 받아온 정보 처리
     const FetchMovies = (upcoming) => {
         setLoading(true)
         fetch(upcoming, {
@@ -28,6 +33,8 @@ function UpComing() {
         setCurrentPage(response.results.page)
         }, setLoading(false))
     };
+
+    // 더보기
     const loadMore = () => {
         const upcoming = `http://cokebear756.synology.me:62322/api/movie/upcoming?page=${CurrentPage +1}`;
         FetchMovies(upcoming)
@@ -41,8 +48,10 @@ function UpComing() {
         <div style={{width: '85%', margin: '1rem auto'}}>
             <h2 style={{color: '#FFD369'}}>개봉 예정작</h2>
             <hr/>
+            {/* 렌더링 전 로딩중일시 보이게 */}
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
             <Row gutter={[16, 16]}>
+            {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
             {Movies && Movies.map((movie, index) => (
                 <React.Fragment key={index}>
                 <GridCards3 id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>

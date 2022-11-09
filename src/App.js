@@ -34,7 +34,6 @@ function App() {
         <Route path='/pages/Category/Popular' element={<Popular />} />
         <Route path='/pages/Category/UpComing' element={<UpComing />} />
 
-
         <Route path='/Login/LoginPage' element={<LoginPage/>}/>
         <Route path='/Login/SignUp' element={<SignUp/>}/>
         <Route path='/Login/FindPwd' element={<FindPwd/>}/>
