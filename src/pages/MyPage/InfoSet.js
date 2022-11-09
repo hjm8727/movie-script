@@ -120,6 +120,7 @@ const InfoSet = () => {
     const [isNewPwd, setIsNewPwd] = useState(false);
     const [isCheckPwd, setIsCheckPwd] = useState(false);
 
+    // 비로그인 상태일 때 접근하면 로그인 페이지로 넘기기
     let isLogin = window.localStorage.getItem('isLogin');
     if(isLogin !== 'true') {
         return(
@@ -127,8 +128,9 @@ const InfoSet = () => {
         );
     }
 
-    // 현재 아이디
+    /** 아이디 함수 */
     const onChangePwd = e => {
+        // 정규식 체크
         const regPwd = /^[A-Za-z]+[A-Za-z0-9]{5,19}$/g
         const pwdCurrent = e.target.value;
         setInputId(pwdCurrent);
@@ -141,8 +143,9 @@ const InfoSet = () => {
         }
     }
 
-    // 새로운 비밀번호 확인
+    /** 새로운 비밀번호 함수 */
     const onChangeNewPwd = e => {
+        // 정규식 체크
         const regPwd = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/
         const newPwdCurrent = e.target.value;
         setNewInputPwd(newPwdCurrent);
@@ -155,7 +158,7 @@ const InfoSet = () => {
             setIsNewPwd(true);
         }
     }
-    // 비밀번호 확인
+    /** 비밀번호 확인 함수 */
     const onChangeNewPwdCheck = e => {
         const newPwdCurrent = e.target.value;
         setNewPwdCheck(newPwdCurrent);
@@ -170,6 +173,7 @@ const InfoSet = () => {
 
     // 현재 아이디 로그인 계정이랑 일치 하는지 확인.
     const onCheckId = () => {
+        // 아이디 값을 받아와 현재 입력한 아이디랑 비교.. 같으면 통과
         const id = window.localStorage.getItem("userId");
         if(inputId === id) {
             console.log("현재 아이디랑 로그인 계정이랑 일치함");
@@ -180,23 +184,23 @@ const InfoSet = () => {
         }
     }
 
-    // 다 트루면 비밀번호 확인 함수를 거쳐 수정 진행
+    /** 비밀번호 변경 버튼 함수 */
     const onClickSet = async () => {
         if(isId && isNewPwd && isCheckPwd) {
             console.log("성공 다음 단계로 진행");
+            // 아이디 체크하는 함수 불러서 확인
             onCheckId();
+            // 맞으면 서버로 값을 넘겨줌
             const newPassword = await MovieApi.setPwd(inputId, newInputPwd);
-            console.log(newPassword.data);
             if(newPassword.data.statusCode === 200) {
-                setModalHeader("비밀번호 변경 완료")
-                setModalText("비밀번호가 성공적으로 변경 되었습니다.")
+                setModalHeader("비밀번호 변경 완료");
+                setModalText("비밀번호가 성공적으로 변경 되었습니다.");
                 setModalOpen(true);
             } else {
                 console.log("수정 실패..");
             }
         }
         else {
-            console.log(isId);
             alert("다시 확인 부탁드립니다.");
         }
     }    

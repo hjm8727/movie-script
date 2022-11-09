@@ -157,7 +157,7 @@ const Menu = () => {
         if(isLoginStorage === "true"){
             setIsLogin(true);
         }
-    }, []);    
+    }, [isLoginStorage]);    
     
     // 검색창에 입력값이 들어올때 value 에 값을 담음
     const onChangeTxt = (e) =>{
