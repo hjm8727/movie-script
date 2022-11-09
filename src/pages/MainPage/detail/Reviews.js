@@ -36,13 +36,10 @@ function Reviews(props) {
         }
         try {
             const response = await axios.post('http://cokebear756.synology.me:62322/api/member/review', rev)
-            console.log("try before")
             if(response.data.statusCode === 200) {
             setReview("")
             props.refreshFunction(response.data.result)
             window.location.replace('/movie/'+rev.movie_id);
-            }else{
-                console.log("else")
             }
         } catch (e) {
     setModalOpen(true);
