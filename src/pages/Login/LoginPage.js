@@ -115,9 +115,9 @@ img{
 } 
 `;
 const LoginPage=()=>{
-    let navigate = useNavigate(); 
-    const [inputId, setInputId] = useState(window.localStorage.getItem("userId", ''));
-    const [inputPwd, setInputPwd] = useState(window.localStorage.getItem("userPwd", ''));
+    let navigate = useNavigate();
+    const [inputId, setInputId] = useState(window.localStorage.getItem(window.localStorage.getItem('autoLogin') === "TRUE" ? "autoId" : "userId"));
+    const [inputPwd, setInputPwd] = useState(window.localStorage.getItem(window.localStorage.getItem('autoLogin') === "TRUE" ? "autoPwd" : "userPwd"));
     const [isId, setIsId] = useState(false);
     const [isPwd, setIsPwd] = useState(false);
     const [submit, setSubmit] = useState(true);
@@ -163,6 +163,8 @@ const LoginPage=()=>{
             if(res.data.statusCode === 200){
                 window.localStorage.setItem("userId", inputId);
                 window.localStorage.setItem("userPwd",inputPwd);
+                window.localStorage.setItem('autoId', inputId);
+                window.localStorage.setItem('autoPwd', inputPwd);
                 window.localStorage.setItem("isLogin", true);
                 window.location.replace("/");
                 console.log("로그인 성공");

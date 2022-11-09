@@ -19,9 +19,6 @@ function Reviews(props) {
     // 리뷰
     const [Review, setReview] = useState("");
 
-    // 모달 창
-    const [modalOpen, setModalOpen] = useState(false);
-
     // 리뷰 저장시 값 넣어주기
     const handleChange = (e) => {
         setReview(e.target.value);
@@ -30,25 +27,30 @@ function Reviews(props) {
     const idc = window.localStorage.getItem("userId");
 
     // 리뷰 저장
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-
         const rev = {
             id : idc,
             movie_id : props.movId,
             review : Review
         }
-        axios.post('http://cokebear756.synology.me:62322/api/member/review', rev)
-        .then(response => {
+        try {
+            const response = await axios.post('http://cokebear756.synology.me:62322/api/member/review', rev)
+            console.log("try before")
             if(response.data.statusCode === 200) {
             setReview("")
-            // props.refreshFunction(response.data.result)
+            props.refreshFunction(response.data.result)
             window.location.replace('/movie/'+rev.movie_id);
-        } else {
-            setModalOpen(true);
-        }
-        })
-    };
+            }else{
+                console.log("else")
+            }
+        } catch (e) {
+    setModalOpen(true);
+    console.log("catch")
+    }}
+
+    // 모달 창
+    const [modalOpen, setModalOpen] = useState(false);
 
     // 모달 닫기
     const closeModal = () => {
@@ -63,7 +65,7 @@ function Reviews(props) {
         {/* 리뷰가 존재하는 경우 보여주는 리스트 map에 담아서 출력 */}
         {props.ReviewLists && props.ReviewLists.map((comment, index) => (
             <React.Fragment key={index}>
-                <RComment comment={comment} movId={props.movId}/>
+                <RComment comment={comment} movId={props.movId} refreshFunction={props.refreshFunction}/>
             </React.Fragment>
         ))}
 
@@ -79,7 +81,6 @@ function Reviews(props) {
         <InputGroup>
         <Form.Control as="textarea" style={{ width: '60%', borderRadius: '5px', marginLeft: '5px', marginRight: '5px' }} onChange={handleChange} value={Review} placeholder="리뷰를 남겨 보세요."/>
             <Button style={{ backgroundColor: '#FFD369' ,width: '10%', fontWeight: 'bold'}} onClick={onSubmit}>저장</Button>
-            {/* 비로그인상태로 리뷰 작성시 보여주는 모달창 */}
             <Modal open={modalOpen} close={closeModal} header="리뷰 저장 실패">로그인 후 리뷰 작성이 가능합니다.</Modal>
         </InputGroup>
         <br/>      

@@ -183,12 +183,8 @@ const Menu = () => {
 
     // 로그아웃
     const onClickLogout = () =>{
-        const isAuto = window.localStorage.getItem("autoLogin");
-        console.log(isAuto);
-        if(isAuto === "FALSE"){
-            window.localStorage.setItem("userId", '');
-            window.localStorage.setItem("userPwd",'');
-        }
+        window.localStorage.setItem("userId", '');
+        window.localStorage.setItem("userPwd",'');
         window.localStorage.setItem("isLogin", "false")
         window.location.replace("/");
     }

@@ -47,6 +47,10 @@ function Detail(props) {
         const toggleCastView = () => {
             setCastToggle(!CastToggle)
         }
+        // 리뷰 목록 업데이트
+        const updateReview = (newReview) => {
+            setReviewLists(ReviewLists.concat(newReview))
+        };
 
     return (
         <div>
@@ -68,7 +72,6 @@ function Detail(props) {
             </div>
             {CastToggle &&
                 <Row gutter={[16, 16]}>
-                    {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
                     {Cast && Cast.map((cast, index) =>(
                         <React.Fragment key={index}>
                             <GridCards2 image={cast.profile_path ? `${cast.profile_path}` : null} characterName={`${cast.name}`} character={`${cast.character}`}/>
@@ -80,7 +83,7 @@ function Detail(props) {
             
             {/* 리뷰 */}
             <div>
-                <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId}  />
+                <Reviews movieTitle={Movie.title} ReviewLists={ReviewLists} movId={movieId} refreshFunction={updateReview} />
             </div>
             </div>
             </div>
