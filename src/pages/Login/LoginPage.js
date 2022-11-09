@@ -115,9 +115,13 @@ img{
 } 
 `;
 const LoginPage=()=>{
+    // 처음에 userID, userPwd의 값을 ''으로 잡는다 그러면 처음 접속하는 사람들도 userId의 값이 생김
+    window.localStorage.setItem('userId', '');
+    window.localStorage.setItem('userPwd', '');
     let navigate = useNavigate();
-    const [inputId, setInputId] = useState(window.localStorage.getItem(window.localStorage.getItem('autoLogin') === "TRUE" ? "autoId" : "userId"));
-    const [inputPwd, setInputPwd] = useState(window.localStorage.getItem(window.localStorage.getItem('autoLogin') === "TRUE" ? "autoPwd" : "userPwd"));
+
+    const [inputId, setInputId] = useState(window.localStorage.getItem(window.localStorage.getItem('autoLogin') === "TRUE" ? 'autoId' : 'userId'));
+    const [inputPwd, setInputPwd] = useState(window.localStorage.getItem(window.localStorage.getItem('autoLogin') === "TRUE" ? 'autoPwd' : 'userPwd'));
     const [isId, setIsId] = useState(false);
     const [isPwd, setIsPwd] = useState(false);
     const [submit, setSubmit] = useState(true);
