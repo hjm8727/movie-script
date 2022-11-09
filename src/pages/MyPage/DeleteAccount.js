@@ -87,6 +87,8 @@ const DeleteAccount=()=>{
     // 삭제 성공시 모달창 이후 로그인 페이지로 이동
     const closedeletModal = () =>{
         setDeleteModal(true);
+        window.localStorage.setItem("userId", '');
+        window.localStorage.getItem("userPwd", '');
         window.location.replace('/Login/LoginPage');
     }
     const closeModal = () => {
