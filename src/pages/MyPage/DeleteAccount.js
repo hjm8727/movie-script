@@ -109,11 +109,12 @@ const DeleteAccount=()=>{
         if(inputId === userId && inputPwd === userPwd){
             console.log("로그인 계정이랑 일치");
         }else{
-            alert("로그인 계정이랑 일치하지 않음")
+            setModalOpen(true);
+            setModalHeader("오류");
+            setModalText("일치하는 회원정보가 없습니다.");
         }
-    }
+    };
     const onClickDelete = async()=> {
-        try {
         if(loginCheck) {
             const deleteUser = await MovieApi.deleteUser(inputId,inputEmail,inputPwd);
             if(deleteUser.data.statusCode === 200) {
@@ -125,12 +126,8 @@ const DeleteAccount=()=>{
                 window.localStorage.setItem("userPwd",'');
                 window.localStorage.setItem("autoLogin",'');
             }}
-    } catch (e) {
-        setModalOpen(true);
-        setModalHeader("오류");
-        setModalText("일치하는 회원정보가 없습니다.");
-    }
-    }
+    };
+    
 
     return(
         <DeleteBlock>

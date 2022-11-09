@@ -234,7 +234,6 @@ const SignUp=()=>{
                 <hr/>
                 <div className="item"><button type="submit" disabled={submit} className="signUpButton" onClick={onSubmit}>확인</button></div>
                 </div>
-                <Modal></Modal>
                 <Modal open={modalOpen} close={closeModal} header="회원가입 완료">회원가입을 축하드립니다. 로그인 후 이용해 주세요</Modal>
                 </div>
             </SignUpBlock>

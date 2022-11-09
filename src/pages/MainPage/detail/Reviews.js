@@ -23,6 +23,7 @@ function Reviews(props) {
     }
     // 로그인된 사용자 ID 받아오기
     const idc = window.localStorage.getItem("userId");
+    console.log(idc);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -38,7 +39,7 @@ function Reviews(props) {
         .then(response => {
             if(response.data.statusCode === 200) {
             setReview("")
-            props.refreshFunction(response.data.result)
+            // props.refreshFunction(response.data.result)
             window.location.replace('/movie/'+rev.movie_id);
         } else {
             setModalOpen(true);

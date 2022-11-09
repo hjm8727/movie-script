@@ -18,10 +18,26 @@ hr {
 `
 
 function RComment(props) {
+
+    // 작성자
+    let author = props.comment.id;
+    // 이름 길이 
+    let count = props.comment.id.length;
+    
+    const seq = "*";
     return (
         <RE>
-            <Comment author={<b>{props.comment.id}</b>} content={<p>{props.comment.comment}</p>}/>
+            {count === 2 ?
+            <>
+            <Comment author={<b>{author.substring(0, 1) + seq}</b>} content={<p>{props.comment.comment}</p>}/>
             <p className='under'></p>
+            </>
+            :
+            <>
+            <Comment author={<b>{author.substring(0, 1) + seq + author.substring(2)}</b>} content={<p>{props.comment.comment}</p>}/>
+            <p className='under'></p>
+            </>
+            }
         </RE>
     );
 }

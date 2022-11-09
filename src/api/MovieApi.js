@@ -27,7 +27,7 @@ const MovieApi={
             name : inputName,
             email : inputEmail
         }
-        return await axios.post(MOVIE_DOMAIN + "member/searchId", finding, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "/member/searchId", finding, HEADER)
     },
     // 비밀번호 찾기 api
     findPassword : async function(inputId, inputEmail){
@@ -35,7 +35,7 @@ const MovieApi={
             id : inputId,
             email : inputEmail
         }
-        return await axios.post(MOVIE_DOMAIN + "member/searchPassword", finding, HEADER)
+        return await axios.post(MOVIE_DOMAIN + "/member/searchPassword", finding, HEADER)
     },
     // 비밀번호 수정 API
     setPwd : async function(id ,password) {

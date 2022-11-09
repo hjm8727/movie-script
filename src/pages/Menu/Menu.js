@@ -19,8 +19,6 @@ const Container = styled.div`
     .dropdown-icon  img{
         /* 로그인 아이콘 */
     }
-
-
 }
     width : 100%;
     background-color: black;
@@ -29,7 +27,6 @@ const Container = styled.div`
         text-decoration: none;
         color: white;
     }
-
     ul li{
         list-style: none;
     }
@@ -88,7 +85,7 @@ const Container = styled.div`
 
     // 아이콘 드롭다운
     .dropdown-icon{
-        margin-right: 20px;
+        margin-right: 30px;
         list-style : none; 
         margin-top: 20px;
         cursor : pointer;
@@ -102,19 +99,16 @@ const Container = styled.div`
         color: white;
         width: 115px;
         padding: 15px;
-        margin-left: -59px;
+        margin-left: -57px;
     }
-
     .dropdown-content-icon li{
         color : white;
         font-size: 18px;
         padding : 10px 5px;
     }
-
     .dropdown-content-icon :hover{
         color: #FFD369;
     }
-
     .dropdown-icon:hover .dropdown-content-icon  {
         display: block;
     }
@@ -124,8 +118,7 @@ const Container = styled.div`
     }
     .category-icon{
         color: #FFD369;
-        font-size: 23px;
-        font-weight: 400;
+        font-size: 25px;
         list-style : none; 
         margin-top: 12px;
         cursor : pointer;
@@ -141,17 +134,14 @@ const Container = styled.div`
         padding: 15px;
         margin-left: -49px;
     }
-
     .category-content-icon li{
         color : white;
         font-size: 18px;
         padding : 10px 5px;
     }
-
     .category-content-icon :hover{
         color: #FFD369;
     }
-
     .category-icon:hover .category-content-icon {
         display: block;
     }
@@ -213,8 +203,8 @@ const Menu = () => {
                     <p className="category-icon">영화</p>
                     <ul className="category-content-icon">
                         <li><Link to ="/pages/Category/NowPlaying">최신 영화</Link> </li>
-                        <li><Link to ="/pages/Category/TopRated">인기 영화</Link></li>
-                        <li><Link to ="/pages/Category/Popular">최고 평점 영화</Link></li>
+                        <li><Link to ="/pages/Category/Popular">인기 영화</Link></li>
+                        <li><Link to ="/pages/Category/TopRated">최고 평점 영화</Link></li>
                         <li><Link to ="/pages/Category/UpComing">개봉 예정작</Link></li>
                     </ul>
                 </li>
@@ -222,7 +212,7 @@ const Menu = () => {
                 <li className="search" >
                         <input className="search-box" type="text" value={inputTxt} onKeyPress={onKeyPress} onChange={onChangeTxt} placeholder="영화 제목을 입력하세요."/>
                         <button className="submit" onClick={onClickSearch}>search</button>
-                        {/* <Link to ="/Menu/SearchResult/SearchResult"  onClick={onClickSearch}><button class="submit">search</button></Link> */}
+
                 </li>
 
                 {isLogin ?

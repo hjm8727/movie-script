@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import MovieApi from "../../api/MovieApi";
+import Modal from "../../util/Modal";
 import LoginPage from "../Login/LoginPage";
 
 const StyleInfoSet = styled.div`
@@ -96,6 +97,13 @@ span {
 }
 `;
 const InfoSet = () => {
+    
+    // 모달
+    const [Emodal , setEModal] = useState(false);
+    const [modalOpen , setModalOpen] = useState(false);
+    const [modalHeader, setModalHeader] = useState(false);
+    const [modalText, setModalText] = useState(false);
+
     // 비밀번호 찾기
     // 키보드 입력
     const [inputId, setInputId] = useState("");
@@ -166,7 +174,9 @@ const InfoSet = () => {
         if(inputId === id) {
             console.log("현재 아이디랑 로그인 계정이랑 일치함");
         } else {
-            alert("현재 아이디가 일치하지 않음");
+            setModalHeader("입력 오류")
+            setModalText("아이디가 일치하지 않습니다.")
+            setEModal(true);
         }
     }
 
@@ -178,7 +188,9 @@ const InfoSet = () => {
             const newPassword = await MovieApi.setPwd(inputId, newInputPwd);
             console.log(newPassword.data);
             if(newPassword.data.statusCode === 200) {
-                window.location.replace('/');
+                setModalHeader("비밀번호 변경 완료")
+                setModalText("비밀번호가 성공적으로 변경 되었습니다.")
+                setModalOpen(true);
             } else {
                 console.log("수정 실패..");
             }
@@ -187,7 +199,16 @@ const InfoSet = () => {
             console.log(isId);
             alert("다시 확인 부탁드립니다.");
         }
-    }
+    }    
+    const closeEModal = () =>{
+        setEModal(false);
+    };
+
+    const closeModal = () => {
+        setModalOpen(true);
+        window.location.replace('/');
+    };
+
 
     return (
         <StyleInfoSet>
@@ -224,6 +245,8 @@ const InfoSet = () => {
                     <div>
                         <button className="button-submit" onClick={onClickSet}>수정 완료</button>
                     </div>
+                    <Modal open={Emodal} close={closeEModal} header={modalHeader}>{modalText}</Modal>
+                    <Modal open={modalOpen} close={closeModal} header={modalHeader}>{modalText}</Modal>
             </div>
         </div>
         </StyleInfoSet>
