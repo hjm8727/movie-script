@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MovieApi from "../../api/MovieApi";
 import LoginPage from "../Login/LoginPage";
+import Main from "../Main";
+import Mypage from "./Mypage";
 
 const StyleInquire = styled.div`
 /* 1:1 문의하기 페이지 css */
@@ -85,6 +87,7 @@ const Inquire = () => {
     // 문의 내용 입력받기
     const [inputText, setInputText] = useState("");
     const [inputSelect, setInputSelect] = useState("단순 변심");
+    const navigate = useNavigate();
 
     // 비로그인 상태 도메인 입력 접속 시 막습니다.
     let isLogin = window.localStorage.getItem('isLogin');
@@ -99,14 +102,18 @@ const Inquire = () => {
     const onChangeSelect = e => setInputSelect(e.target.value);
     
     /** 문의 내용 전송 함수 */
-    const onClickSubmit = async () => {
-        const send = await MovieApi.qnaSend(userId, inputSelect, inputText);
-        if(send.data.statusCode === 200) {
-            console.log("성공");
-            alert("문의 사항이 접수 되었습니다.");
-            window.location.replace('/');
+    const onClickSubmit = async e => {
+        if(inputText.length <= 10 || inputText.length >= 1000) {
+            alert('문의 사항을 최소 10 ~ 1000글자 이내로 부탁드립니다.');
+            e.preventDefault();
         } else {
-            alert("1000글자 이하로 적어주세요.");
+            const send = await MovieApi.qnaSend(userId, inputSelect, inputText);
+            if(send.data.statusCode === 200) {
+                alert('문의가 정상 전송 되었습니다.');
+            } else {
+                alert('문의 전송이 실패 하였습니다.');
+                e.preventDefault();
+            }
         }
     }
     
@@ -120,8 +127,8 @@ const Inquire = () => {
             </nav>
                 <h1 className='inquire-head'>1:1 문의하기</h1>
             <form className="inquire-container">
-                    <label for='why' className="inquire-text">문의 이유를 선택해주세요.</label>
-                    <select className="inquire" value={inputSelect} onChange={onChangeSelect}>
+                    <label id='why' className="inquire-text">문의 이유를 선택해주세요.</label>
+                    <select id="why" className="inquire" value={inputSelect} onChange={onChangeSelect}>
                         <option>단순 변심</option>
                         <option>시작할 때 문제가 있음</option>
                         <option>사이트가 맘에 들지가 않음</option>
@@ -132,7 +139,7 @@ const Inquire = () => {
                     <p />
                     <textarea className="content" placeholder="문의 내용" rows={50} cols={50} value={inputText} onChange={onChangeText} minLength={30} maxLength={1000}/>
                     <p />
-                    <button className="inquire-submit" onClick={onClickSubmit}>제출</button>
+                    <Link to='/' onClick={onClickSubmit}><button className="inquire-submit">제출</button></Link>
             </form>
         </div>
     </StyleInquire>

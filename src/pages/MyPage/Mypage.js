@@ -145,6 +145,10 @@ button {
         width: 10%;
     }
 }
+.total {
+    // 크기 줄이면 안에 표가 테두리 밖으로 빠져나가는거 방지
+    word-break:break-all;
+}
 `;
 
     // 관리자 계정인지 확인
@@ -232,7 +236,7 @@ return (
         <div>
         <nav className="nav nav-pills nav-justified">
             <Link className="nav-link" style={{fontSize: '25px'}} to="/">홈</Link>
-            <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>마이페이지</Link>
+            <Link className="nav-link mypage" aria-current="page" to="./" mypage aria-disabled>마이페이지</Link>
             <Link className="nav-link" to="/MyPage/Inquire">1:1 문의하기</Link>
         </nav>
         <div className="container">
@@ -251,13 +255,13 @@ return (
             <button className="list-open" onClick={onClickList}>내 문의 내역</button>
             {/* 문의 내역 클릭하면 보이고 안 보이게 하는 그거.. */}
             {listOpen &&
-            <table>
-                <thead>
-                    <tr>
-                        <th>회원 아이디</th>
-                        <th>문의 제목</th>
-                        <th>문의 내용</th>
-                        <th>문의 날짜</th>
+            <table className="total" >
+                <thead className="total">
+                    <tr className="total">
+                        <th className="total">회원 아이디</th>
+                        <th className="total">문의 제목</th>
+                        <th className="total">문의 내용</th>
+                        <th className="total">문의 날짜</th>
                     </tr>
                 </thead>
                 {/* 위에서 짠 list.map 을 하나의 컴포넌트로 가져옴 */}
