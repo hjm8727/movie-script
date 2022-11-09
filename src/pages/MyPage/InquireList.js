@@ -49,27 +49,31 @@ table,th, td {
 
 const InquireList = () => {
 
+  // 모달
   const [modalOpen, setModalOpen] = useState(false);
+  // 모달 내용
   const [modalText, setModalText] = useState('');
+  // 문의 내용을 가져와서 담기 위한 변수
   const [inquireInfo, setInquireInfo] = useState('');
 
 const closeModal = () => {
   setModalOpen(false);
 }
 
+  /** 문의 내용을 가져오는 useEffect */
   useEffect(() => {
     const inquireData = async () => {
       try {
         const response = await MovieApi.inquireInfo(); // 전체 리스트 조회
         setInquireInfo(response.data.results);
-        console.log(response.data.results);
       } catch (e) {
         console.log(e);
       }
     };
     inquireData();
   }, []);
-
+  
+  // 비로그인 접근 금지
   const userId = window.localStorage.getItem("userId");
   if(userId !== 'admin123') {
     return(
@@ -94,10 +98,12 @@ const closeModal = () => {
                     <th>문의 날짜</th>
                   </tr>
                 </thead>
+                {/* 데이터가 배열 형태로 들어와서 map 함수를 써서 하나씩 까기 key 값은 고유한 문의 아이디(글번호?)를 집어넣음*/}
                 {inquireInfo && inquireInfo.map(info => (
                   <tbody key={info.id}>
                     <tr>
                       <td>{info.member_id}</td>
+                      {/* 처음에는 onClick 함수를 따로 만들어서 썼는데 계속 클릭 시 마지막 문의 내용만 보여서 중간에 바로 setModalText에 값을 넣어주니까 잘 됐음.. 이거 좀 힘들었어요 */}
                       <td onClick={() => {setModalText(info);setModalOpen(true);}}>{info.qna_title}</td>
                       <td>{info.create_time}</td>
                     </tr>

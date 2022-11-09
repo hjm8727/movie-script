@@ -86,6 +86,7 @@ const Inquire = () => {
     const [inputText, setInputText] = useState("");
     const [inputSelect, setInputSelect] = useState("단순 변심");
 
+    // 비로그인 상태 도메인 입력 접속 시 막습니다.
     let isLogin = window.localStorage.getItem('isLogin');
     if(isLogin !== 'true') {
         return(
@@ -93,9 +94,11 @@ const Inquire = () => {
         );
     }
 
+    // 문의 이유와 내용의 값을 담아줌
     const onChangeText = e => setInputText(e.target.value);
     const onChangeSelect = e => setInputSelect(e.target.value);
     
+    /** 문의 내용 전송 함수 */
     const onClickSubmit = async () => {
         const send = await MovieApi.qnaSend(userId, inputSelect, inputText);
         if(send.data.statusCode === 200) {
