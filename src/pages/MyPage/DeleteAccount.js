@@ -73,11 +73,12 @@ const DeleteAccount=()=>{
     const [inputId, setInputId] = useState("");
     const [inputPwd, setInputPwd] = useState("");
     const [inputEmail, setInputEmail] = useState("");
-
+    
     // 정상 삭제시 모달
     const [deleteModal,setDeleteModal] = useState(false);
     let navigate = useNavigate();
-
+    // 삭제 실패 모달
+    // const [closefalsedeletModal,setclosefalsedeletModal] = useState(false);
     // 오류시 모달창
     const [modalOpen, setModalOpen] = useState(false);
     // 모달 header/text 입력
@@ -118,16 +119,24 @@ const DeleteAccount=()=>{
     };
     const onClickDelete = async()=> {
         if(loginCheck) {
-            const deleteUser = await MovieApi.deleteUser(inputId,inputEmail,inputPwd);
-            if(deleteUser.data.statusCode === 200) {
-                console.log("회원 정보가 탈퇴되었습니다.");
-                setDeleteModal(true);
-                const isAuto = window.localStorage.getItem("autoLogin");
-                console.log(isAuto);
-                window.localStorage.setItem("userId", '');
-                window.localStorage.setItem("userPwd",'');
-                window.localStorage.setItem("autoLogin",'');
-            }}
+            try{
+                const deleteUser = await MovieApi.deleteUser(inputId,inputEmail,inputPwd);
+                if(deleteUser.data.statusCode === 200) {
+                    console.log("회원 정보가 탈퇴되었습니다.");
+                    setDeleteModal(true);
+                    const isAuto = window.localStorage.getItem("autoLogin");
+                    console.log(isAuto);
+                    window.localStorage.setItem("userId", '');
+                    window.localStorage.setItem("userPwd",'');
+                    window.localStorage.setItem("autoLogin",'');
+                    window.localStorage.setItem("isLogin",'false');
+                }}
+                catch(e){
+                    setModalOpen(true);
+                    setModalHeader("오류");
+                    setModalText("일치하는 회원정보가 없습니다.");
+                }
+            }
     };
 
     return(
