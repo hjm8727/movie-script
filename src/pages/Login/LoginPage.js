@@ -169,12 +169,12 @@ const LoginPage=()=>{
                 window.localStorage.setItem("userPwd",inputPwd);
                 window.localStorage.setItem('autoId', inputId);
                 window.localStorage.setItem('autoPwd', inputPwd);
-                window.localStorage.setItem("isLogin", true);
+                window.localStorage.setItem("isLogin", 'true');
                 window.location.replace("/");
                 console.log("로그인 성공");
             } else {
                 setModalOpen(true);
-                window.localStorage.setItem("isLogin", false);
+                window.localStorage.setItem("isLogin", 'false');
             }
         } catch(e) {
             setModalOpen(true);
