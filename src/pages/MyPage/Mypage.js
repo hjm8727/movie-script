@@ -343,7 +343,7 @@ function AdminPage() {
     <StyleMypage>
         <div>
         <nav className="nav nav-pills nav-justified">
-            <Link className="nav-link" to="/">홈</Link>
+            <Link className="nav-link" style={{fontSize: '25px'}} to="/">홈</Link>
             <Link className="nav-link mypage" aria-current="page" to="./"mypage aria-disabled>관리자 페이지</Link>
             <Link className="nav-link" to="/MyPage/InquireList">문의 내역 확인</Link>
             <button className="logout" onClick={onClickLogout}>로그아웃</button>
