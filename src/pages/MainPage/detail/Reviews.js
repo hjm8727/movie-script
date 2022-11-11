@@ -43,7 +43,6 @@ function Reviews(props) {
             }
         } catch (e) {
     setModalOpen(true);
-    console.log("catch")
     }}
 
     // 모달 창

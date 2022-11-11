@@ -41,13 +41,12 @@ function Detail(props) {
             // json() - body에 있는 정보들만 꺼내 바꿔줌
             .then(response => response.json())
             .then(response => {
-                console.log(response)
-                // 영화 정보 넣기
-                setMovie(response.results)
-                // 배우 정보 넣기
-                setCast(response.results.cast)
-                // 리뷰 정보 넣기
-                setReviewLists(response.results.review)
+            // 영화 정보 넣기
+            setMovie(response.results)
+            // 배우 정보 넣기
+            setCast(response.results.cast)
+            // 리뷰 정보 넣기
+            setReviewLists(response.results.review)
         })
         }, []);
 

@@ -112,9 +112,7 @@ function MainPage() {
 
             <h2 style={{color: '#FFD369'}}>인기 영화</h2>
             <hr/>
-
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
-
             <HorizontalScroll>
             {Movies2 && Movies2.map((movie, index) => (
                 <React.Fragment key={index}>
@@ -127,7 +125,6 @@ function MainPage() {
             <h2 style={{color: '#FFD369'}}>최고 평점 영화</h2>
             <hr/>
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
-
             <HorizontalScroll>
             {Movies3 && Movies3.map((movie, index) => (
                 <React.Fragment key={index}>
@@ -140,7 +137,6 @@ function MainPage() {
             <h2 style={{color: '#FFD369'}}>개봉 예정작</h2>
             <hr/>
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
-
             <HorizontalScroll>
             {Movies4 && Movies4.map((movie, index) => (
                 <React.Fragment key={index}>

@@ -17,14 +17,14 @@ function Popular() {
     // 렌더링시 DB에서 영화 정보 받아오는 작업
     useEffect(() => {
         const popular = `http://cokebear756.synology.me:62322/api/movie/popular?page=0`;
-        FetchMovies(popular )
+        FetchMovies(popular)
     }, []);
 
     // 정보 받아오기 및 처리
-    const FetchMovies = (popular ) => {
+    const FetchMovies = (popular) => {
         // 로딩 보여주기위해 true
         setLoading(true)
-        fetch(popular , {
+        fetch(popular, {
             // fetch() 함수에서 default method는 GET
             // POST인 경우에는 fetch() 함수에 method 정보를 인자로 넘겨줌
             method : "POST",
