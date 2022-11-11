@@ -29,16 +29,24 @@ function Detail(props) {
     useEffect(() => {
         let contentInfo = `http://cokebear756.synology.me:62322/api/movie/${movieId}`;
 
-        // 영화 상세 정보 처리
+        // 영화 상세 정보 받아오기 및 처리
         fetch(contentInfo, {
+            // fetch() 함수에서 default method는 GET
+            // POST인 경우에는 fetch() 함수에 method 정보를 인자로 넘겨줌
             method: "POST",
+            // body는 JSON형태로 보내기 위해 JSON.stringfy() 함수에 객체를 인자로 전달하여 JSON형태로 변환
             body: JSON.stringify(Movie, Cast, ReviewLists)
         })
+            // json 데이터 형식으로 변환
+            // json() - body에 있는 정보들만 꺼내 바꿔줌
             .then(response => response.json())
             .then(response => {
                 console.log(response)
+                // 영화 정보 넣기
                 setMovie(response.results)
+                // 배우 정보 넣기
                 setCast(response.results.cast)
+                // 리뷰 정보 넣기
                 setReviewLists(response.results.review)
         })
         }, []);

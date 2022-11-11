@@ -20,7 +20,7 @@ function Trailer() {
     const [Trailer3, setTrailer3] = useState('');
     const [Trailer4, setTrailer4] = useState('');
 
-    // DB에서 예고편 youtube url 받아오기
+    // 렌더링시 DB에서 예고편 youtube url 받아오는 작업
     useEffect(() => {
         const nowTrailer = `http://cokebear756.synology.me:62322/api/movie/436270`;
         FetchTrailer(nowTrailer)
@@ -38,15 +38,21 @@ function Trailer() {
         FetchTrailer4(nowTrailer4)
     }, []);
 
-    // 받아온 정보 처리
+    // 정보 받아오기 및 처리
     const FetchTrailer = (nowTrailer) => {
         fetch(nowTrailer, {
+            // fetch() 함수에서 default method는 GET
+            // POST인 경우에는 fetch() 함수에 method 정보를 인자로 넘겨줌
             method : "POST",
+            // body는 JSON형태로 보내기 위해 JSON.stringfy() 함수에 객체를 인자로 전달하여 JSON형태로 변환
             body: JSON.stringify(Trailer)
         })
+        // json 데이터 형식으로 변환
+        // json() - body에 있는 정보들만 꺼내 바꿔줌
         .then(res => res.json())
         .then(res => {
-            setTrailer(res.results.youtube_url_list[0]) 
+        // url list에 있는것 중 첫번째 값 넣기
+        setTrailer(res.results.youtube_url_list[0]) 
         })
     };
     const FetchTrailer2 = (nowTrailer2) => {

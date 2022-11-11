@@ -14,7 +14,7 @@ function MainPage() {
     const [Movies3, setMovies3] = useState([]);
     const [Movies4, setMovies4] = useState([]);
 
-    // DB에서 영화 정보 카테고리별 받아오기
+    // 렌더링시 DB에서 영화 정보 카테고리별 받아오는 작업
     useEffect(() => {
         const nowPlaying = `http://cokebear756.synology.me:62322/api/movie/nowPlaying?page=0`;
         FetchMovies(nowPlaying)
@@ -30,15 +30,23 @@ function MainPage() {
     }, []);
     
 
-    // 받아온 정보 처리
+    // 정보 받아오기 및 처리
     const FetchMovies = (nowPlaying) => {
+        // 로딩 보여주기위해 true
         setLoading(true)
         fetch(nowPlaying, {
+            // fetch() 함수에서 default method는 GET
+            // POST인 경우에는 fetch() 함수에 method 정보를 인자로 넘겨줌
             method : "POST",
+            // body는 JSON형태로 보내기 위해 JSON.stringfy() 함수에 객체를 인자로 전달하여 JSON형태로 변환
             body: JSON.stringify(Movies)
         })
+        // json 데이터 형식으로 변환
+        // json() - body에 있는 정보들만 꺼내 바꿔줌
         .then(response => response.json())
         .then(response => {
+        // ... spread operator 배열 복제 (ES6 추가)
+        // DB 배열에 있는 정보 Movies에 넣기
         setMovies([...Movies,...response.results.contents])
         }, setLoading(false))
     };
@@ -104,16 +112,12 @@ function MainPage() {
 
             <h2 style={{color: '#FFD369'}}>인기 영화</h2>
             <hr/>
-            {/* 로딩시 보여주기 */}
-            {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
-            {/* 카테고리 별로 맵에 담아서 출력 */}
 
-            {/* 횡스크롤 */}
+            {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
+
             <HorizontalScroll>
-            {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
             {Movies2 && Movies2.map((movie, index) => (
                 <React.Fragment key={index}>
-                {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
                 <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}
@@ -122,16 +126,11 @@ function MainPage() {
 
             <h2 style={{color: '#FFD369'}}>최고 평점 영화</h2>
             <hr/>
-            {/* 로딩시 보여주기 */}
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
-            {/* 카테고리 별로 맵에 담아서 출력 */}
 
-            {/* 횡스크롤 */}
             <HorizontalScroll>
-            {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
             {Movies3 && Movies3.map((movie, index) => (
                 <React.Fragment key={index}>
-                {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
                 <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}
@@ -140,16 +139,11 @@ function MainPage() {
             
             <h2 style={{color: '#FFD369'}}>개봉 예정작</h2>
             <hr/>
-            {/* 로딩시 보여주기 */}
             {Loading && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><NowLoading/></div>}
-            {/* 카테고리 별로 맵에 담아서 출력 */}
 
-            {/* 횡스크롤 */}
             <HorizontalScroll>
-            {/* DB에서 받아온 데이터 map에 넣어서 출력 */}
             {Movies4 && Movies4.map((movie, index) => (
                 <React.Fragment key={index}>
-                {/* 상세 페이지로 이동을 위한 movie Id와 포스터 이미지 props */}
                 <GridCards id={movie.movie_id} image={movie.poster_path ? `${movie.poster_path}` : NoImage}/>
                 </React.Fragment>
             ))}

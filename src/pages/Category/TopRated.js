@@ -7,28 +7,36 @@ import Menu from '../Menu/Menu';
 
 // 최고 평점 영화
 function TopRated() {
-    // DB에서 영화 데이터 받아오기
+    // DB에서 영화 데이터 받아올 배열
     const [Movies, setMovies] = useState([]);
     // 더보기 위한 페이지 세팅
     const [CurrentPage, setCurrentPage] = useState(0);
     // 로딩중
     const [Loading, setLoading] = useState(true);
     
-    // DB에서 영화 정보 받아오기
+    // 렌더링시 DB에서 영화 정보 받아오는 작업
     useEffect(() => {
         const topRated = `http://cokebear756.synology.me:62322/api/movie/topRated?page=0`;
         FetchMovies(topRated)
     }, []);
 
-    // 받아온 정보 처리
+    // 정보 받아오기 및 처리
     const FetchMovies = (topRated) => {
+        // 로딩 보여주기위해 true
         setLoading(true)
         fetch(topRated, {
+            // fetch() 함수에서 default method는 GET
+            // POST인 경우에는 fetch() 함수에 method 정보를 인자로 넘겨줌
             method : "POST",
+            // body는 JSON형태로 보내기 위해 JSON.stringfy() 함수에 객체를 인자로 전달하여 JSON형태로 변환
             body: JSON.stringify(Movies)
         })
+        // json 데이터 형식으로 변환
+        // json() - body에 있는 정보들만 꺼내 바꿔줌
         .then(response => response.json())
         .then(response => {
+        // ... spread operator 배열 복제 (ES6 추가)
+        // DB 배열에 있는 정보 Movies에 넣기
         setMovies([...Movies,...response.results.contents])
         setCurrentPage(response.results.page)
         }, setLoading(false))
