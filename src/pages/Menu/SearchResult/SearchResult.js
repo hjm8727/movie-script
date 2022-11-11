@@ -32,7 +32,7 @@ const Container = styled.div`
             const fetchData = async () =>{
                 setLoading(true);
                 try{
-                    // getItem 으로 Menu 에서 검색한값(a)을 받아옴 검색값(a)을 searchREs 에 담음
+                    // getItem 으로 Menu 에서 검색한값(a)을 받아옴 검색값(a)을 searchRes 에 담음
                     const searchRes = window.localStorage.getItem("inputTxt");
                     // 서버에 검색한값(a) 를 전송함
                     // 전송해주면 출력해야할 값을 자바 로직으로 처리
@@ -44,6 +44,7 @@ const Container = styled.div`
                         setMovies(res.data.results);
                         // 조건부 랜더링을 위한 Result
                         setResult(true);
+                        console.log(res.data.results.page);
                         console.log(res.data.message);
                         console.log(Movies);
                     }else{

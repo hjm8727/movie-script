@@ -6,6 +6,7 @@ import DetInfo from './DetInfo';
 import DetailImage from './DetailImage';
 import Reviews from './Reviews';
 import Menu from '../../Menu/Menu';
+import Genres from './Genres';
 
 // 포스터 클릭시 보이는 영화 상세 페이지
 function Detail(props) {
@@ -24,6 +25,9 @@ function Detail(props) {
 
     // 리뷰 목록
     const [ReviewLists, setReviewLists] = useState([]);
+    
+    // 장르
+    const [Genre, setGenre] = useState([]);
 
     // 영화 상세정보/배우/리뷰
     useEffect(() => {
@@ -47,9 +51,10 @@ function Detail(props) {
             setCast(response.results.cast)
             // 리뷰 정보 넣기
             setReviewLists(response.results.review)
+            // 장르 정보 넣기
+            setGenre(response.results.genre)
         })
         }, []);
-
         // 배우 정보를 토글로 가렸다 보여주기
         const toggleCastView = () => {
             setCastToggle(!CastToggle)
@@ -71,8 +76,14 @@ function Detail(props) {
             {/* 상세 페이지 바디 */}
             <div style={{ width: '85%', margin: '1rem auto'}}>
                 {/* 받아온 정보 DetInfo로 넘김 */}
-                <DetInfo movie={Movie} />
-            
+                <DetInfo movie={Movie}/>
+                {/* 장르 */}
+                {Genre && Genre.map((genre, index) => (
+                    <React.Fragment key={index}>
+                        <Genres genre={genre}/>
+                    </React.Fragment>
+                ))}
+
             {/* 영화 배우 정보 */}
             <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem'}}>
                 <Button style={{backgroundColor: '#FFD669', color: 'black'}} onClick={toggleCastView}>출연 배우 보기</Button>
