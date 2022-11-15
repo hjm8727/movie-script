@@ -26,7 +26,7 @@ const Container = styled.div`
     const SearchResult = () =>{
         const [Movies , setMovies] = useState('');
         const [isResult, setResult] = useState(false);
-        const [loading,setLoading] = useState(false);
+        const [loading, setLoading] = useState(false);
         
         useEffect(() => {
             const fetchData = async () =>{
